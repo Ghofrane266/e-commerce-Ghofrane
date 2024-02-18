@@ -6,6 +6,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import { FaCartPlus } from "react-icons/fa6";
 import React, { Component } from 'react'
 import Offcanv from './Offcanv';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import { NavLink } from 'react-router-dom';
 
 export default class Navb extends Component {
     constructor() {
@@ -13,16 +15,16 @@ export default class Navb extends Component {
         this.state = {
             show: false
         }
-    this.handleClose=this.handleClose.bind(this)
+        this.handleClose = this.handleClose.bind(this)
     }
-    handleShow(){
+    handleShow() {
         this.setState({
-            show:true
+            show: true
         })
     }
-    handleClose(){
+    handleClose() {
         this.setState({
-            show:false
+            show: false
         })
     }
     render() {
@@ -38,14 +40,24 @@ export default class Navb extends Component {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="#action1"><i>Home</i></Nav.Link>
-                            <Nav.Link href="#action2"><i>Vlog</i></Nav.Link>
-                            <Nav.Link href="#action3"><i>Products</i></Nav.Link>
+                            <Nav.Link to="/Home" as={NavLink} ><i>Home</i></Nav.Link>
+                            <Nav.Link to="/Vlog" as={NavLink}><i>Vlog</i></Nav.Link>
+                            <NavDropdown title="Products" id="navbarScrollingDropdown">
+                                <NavDropdown.Item href="#action3"><Nav.Link to="/Hair Product" as={NavLink}><i>Hair Product</i></Nav.Link></NavDropdown.Item>
+                                <NavDropdown.Item href="#action4">
+                               <Nav.Link to="/skin Product" as={NavLink}>  skin Product</Nav.Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action4">
+                                <Nav.Link to=" /Parfumes" as={NavLink}> Parfumes</Nav.Link>
+                    
+                                </NavDropdown.Item>
+                                <NavDropdown.Divider />
+                            </NavDropdown>
 
 
                         </Nav>
                         <Form className="d-flex">
-                            <FaCartPlus size={50} className='mx-3'  onClick={()=>this.handleShow()}/>
+                            <FaCartPlus size={50} className='mx-3' onClick={() => this.handleShow()} />
                             <Form.Control
                                 type="search"
                                 placeholder="Search"
@@ -57,7 +69,7 @@ export default class Navb extends Component {
 
                     </Navbar.Collapse>
                 </Container>
-                <Offcanv  show={this.state.show} handleClose={this.handleClose}/>
+                <Offcanv show={this.state.show} handleClose={this.handleClose} />
             </Navbar>
 
 

@@ -16,14 +16,10 @@ export default class Offcanv extends Component {
   
         <Offcanvas show={this.props.show} onHide={this.props.handleClose}  >
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title>List of Product</Offcanvas.Title>
+            <Offcanvas.Title>List of Products</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-          <ul>
-              {this.props.itemList.map((product, index) => (
-                <li key={index}>{product.name}</li>
-              ))}
-            </ul>
+         
           </Offcanvas.Body>
         </Offcanvas>
       </>

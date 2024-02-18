@@ -7,6 +7,23 @@ function handleRequest(request, response) {
         response.writeHead(200, { "content-type": 'text/plain' })
         return response.end("first server")
     }
+    else if(request.method==="POST"&&request.url==="/"){
+      let body=""
+    }
+    else if(request.method === "GET" && request.url === "/"){
+        response.writeHead(200, { "content-type": 'text/html' })
+
+        return response.end(`
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <title>text</title>
+          </head>
+          <body>
+          <h1>hello world!</h1>
+          </body>
+        </html>`)
+    }
     else {
         response.writeHead(404, { "content-type": 'text/plain' })
         return response.end("404 not found")
