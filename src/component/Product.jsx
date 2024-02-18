@@ -1,36 +1,62 @@
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import {skincareProducts} from '../constants/cards'
+import { skincareProducts } from '../constants/cards'
 import Modl from './Modl';
+import Offcanv from './Offcanv';
 export default class Product extends Component {
+  constructor(props) {
+    super()
+    this.state = {
+      show: false,
+      selectedProduct: null,
+     
+    }
+    this.handleClose = this.handleClose.bind(this)
+   
+  }
+  handleShow(product) {
+    this.setState({
+      show: true,
+      selectedProduct: product,
+    })
+  }
+  handleClose() {
+    this.setState({
+      show: false,
+      selectedProduct: null
+    })
+  }
+  
   render() {
+
     return (
-       <div className='d-flex flex-wrap gap-3 justify-content-center '>
-         {skincareProducts.map((e)=>(
-            <Card style={{ width: '18rem' }} className='mt-5 d-flex justify-content-between  flex-column'  >
+      <div className='d-flex flex-wrap gap-3 justify-content-center '>
+        {skincareProducts.map((product) => (
+          <Card key={product.id} style={{ width: '18rem' }} className='mt-5 d-flex justify-content-between  flex-column'  >
             <div className=''>
-            <Card.Img variant="top" src={e.url} />
-            <Card.Body>
-              <Card.Title >{e.name}</Card.Title>
-              <Card.Text>
-               {e.description}
-              </Card.Text>
-             
-            </Card.Body>
+              <Card.Img variant="top" src={product.url} />
+              <Card.Body>
+                <Card.Title ><strong><i>{product.name}</i></strong></Card.Title>
+                <Card.Text>
+                  <strong>${product.price}</strong>
+                </Card.Text>
+
+              </Card.Body>
             </div>
-           <div className='d-flex  flex-column gap-2 mx-2 mb-3'>
-           <Button variant="primary">Add to card</Button>
-            <Button variant="primary" onClick={(=>)}>View Details </Button>
-           </div>
-            
+            <div className='d-flex  flex-column gap-2 mx-2 mb-3'>
+              <Button variant="primary" onClick={()=>this.props.addToCart(product)}>Add to card</Button>
+              <Button variant="primary" onClick={() => this.handleShow(product)}  >View Details </Button>
+            </div>
+            <Modl show={this.state.show} handle={this.handleClose} selectedP={this.state.selectedProduct} />
+           
           </Card>
         ))
         }
-       </div>
-    
-       
-      
+      </div>
+
+
+
     )
   }
 }

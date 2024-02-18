@@ -30,7 +30,7 @@ export default class Navb extends Component {
 
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container fluid>
-                    <Navbar.Brand href="#">My Beauty</Navbar.Brand>
+                    <Navbar.Brand href="#"><strong><i>My Beauty</i></strong></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -38,9 +38,9 @@ export default class Navb extends Component {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="#action1">Home</Nav.Link>
-                            <Nav.Link href="#action2">Vlog</Nav.Link>
-                            <Nav.Link href="#action3">Products</Nav.Link>
+                            <Nav.Link href="#action1"><i>Home</i></Nav.Link>
+                            <Nav.Link href="#action2"><i>Vlog</i></Nav.Link>
+                            <Nav.Link href="#action3"><i>Products</i></Nav.Link>
 
 
                         </Nav>
