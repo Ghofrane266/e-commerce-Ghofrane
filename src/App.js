@@ -1,41 +1,46 @@
 
-import React, { Component } from 'react'
-import Navb from './component/Navb'
+import Navb from "./component/Navb"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Product from './component/Product';
-import Carsl from './component/Carsl';
-import { Routes,Route } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
-import Home from './component/Home'
-import Vlog from './component/Vlog';
-import skinProduct from './component/SkinProduct'
-import Parfumes from './component/Parfumes';
-import HairProduct from './component/HairProduct'
+import Product from "./component/Product";
+import { useState, useCallback } from "react";
 
-export default class Navigate extends Component {
-  constructor(){
-super()
+
+export default function App() {
+
+  const [itemList, setItemList] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+// add to cart
+  const addToCart = (product) => {
+    setItemList(prevItemList => [...prevItemList, product])
   }
-  render() {
-    return (
-      <div>
-        <Navb/>
-    
-        <Container>
-          <Routes>
-            <Route path="/Home" element={<Home/>}/>
-            <Route path="/Vlog" element={<Vlog/>}/>
-            <Route path="/skin Product" element={<skinProduct/>}/>
-            <Route path="/Hair Product" element={<HairProduct/>}/>
-            <Route path="/Parfumes" element={<Parfumes/>}/>
-          </Routes>
-        </Container>
-      
-    
-      </div>
-    
-    )
+  const addcart = useCallback((product) => { addToCart(product) }, [])
+  //remove product
+  const removeFromCart = (productToRemove) => {
+    setItemList(prevItemList => prevItemList.filter(product => product !== productToRemove));
   }
+  const removeProduct = useCallback((product) => { removeFromCart(product) }, []);
+  //change value
+  const handleChange = (e) => {
+    setSearchValue(e.target.value);
+  }
+  
+  return (
+
+    <>
+      <Navb itemList={itemList} addcart={addcart}   changeValue={handleChange}/>
+      <div><Product addcart={addcart} itemList={itemList}   searchValue={searchValue}/></div>
+
+    </>
+
+  )
 }
+
+
+
+
+
+
+
+
 
 
