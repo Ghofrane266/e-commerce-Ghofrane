@@ -2,8 +2,12 @@
 import Navb from "./component/Navb"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Product from "./component/Product";
-import { useState, useCallback } from "react";
-
+import { useState } from "react";
+import { Routes,Route} from "react-router-dom";
+import Vlog from './pages/Vlog'
+import OneProduct from "./pages/OneProduct";
+import NotFound from "./pages/NotFound";
+import CheckOut from "./pages/CheckOut";
 
 export default function App() {
 
@@ -13,12 +17,10 @@ export default function App() {
   const addToCart = (product) => {
     setItemList(prevItemList => [...prevItemList, product])
   }
-  const addcart = useCallback((product) => { addToCart(product) }, [])
   //remove product
   const removeFromCart = (productToRemove) => {
     setItemList(prevItemList => prevItemList.filter(product => product !== productToRemove));
   }
-  const removeProduct = useCallback((product) => { removeFromCart(product) }, []);
   //change value
   const handleChange = (e) => {
     setSearchValue(e.target.value);
@@ -26,11 +28,20 @@ export default function App() {
   
   return (
 
-    <>
-      <Navb itemList={itemList} addcart={addcart}   changeValue={handleChange}/>
-      <div><Product addcart={addcart} itemList={itemList}   searchValue={searchValue}/></div>
+    <div>
+      <Navb itemList={itemList} addToCart={addToCart}   changeValue={handleChange} removeFromCart={removeFromCart}/>
+      
+      <Routes>
+        <Route index element={<Product addToCart={addToCart} itemList={itemList}   searchValue={searchValue}/>}/>
+        <Route path="/Vlog" element={<Vlog/>}/>
+        <Route path="/OneProduct/:id" element={<OneProduct/>}/>
+        <Route path="/CheckOut" element={<CheckOut/>}/>
+        <Route path="*" element={<NotFound/>}/>
+      </Routes>
+     
+      
 
-    </>
+    </div>
 
   )
 }

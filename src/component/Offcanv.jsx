@@ -5,13 +5,10 @@ import Button from 'react-bootstrap/Button';
 
 
 export default function Offcanv(props) {
-  const removeI = (item) => {
-        props.removeItem(item); 
-    } 
 
   return (
     <>
-      <Offcanvas show={props.show} onHide={props.onHide} items={props.items}  removeitem={props.removeitem} >
+      <Offcanvas show={props.show} onHide={props.onHide} items={props.items} removeitems={props.removeitems}   >
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>List of products</Offcanvas.Title>
         </Offcanvas.Header>
@@ -26,9 +23,9 @@ export default function Offcanv(props) {
                     <Card.Text>
                       <strong>$ {item.price}</strong>
                     </Card.Text>
-                    <div className='d-flex gap-1' style={{marginLeft:'-12%'}}
-                  >
-                      <Button variant="danger" onClick={()=>removeI(item)} > remove </Button>
+                    <div className='d-flex gap-1' style={{ marginLeft: '-12%' }}
+                    >
+                      <Button variant="danger" onClick={() => props.removeitems(item)} > remove </Button>
                       <Button variant="danger"  > + </Button>
                       <Button variant="danger"> - </Button>
 

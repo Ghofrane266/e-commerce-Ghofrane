@@ -1,30 +1,16 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Placeholder from 'react-bootstrap/Placeholder';
-import Modl from './Modl';
+import { Link } from 'react-router-dom';
 
 export default function Product(props) {
   const [state, setState] = useState({
     data: [],
     isLoading: false
   });
-  const [show, setshow] = useState(false);
-  const[selectedP,setSelectedP]=useState(null)
-  const handleClose = () => {
-    setshow(false);
-    setSelectedP(null)
-  }
-  const handleShow = (product) => {
-    setshow(true);
-    setSelectedP(product)
-  };
-  const onhandleClose = useCallback(() => { handleClose() }, [])
-  const addProductToCart = (product) => {
-    props.addcart(product); 
-  }
-  
+
   const getData = async () => {
     try {
       await setState({ ...state, isLoading: true });
@@ -81,12 +67,10 @@ export default function Product(props) {
                 <strong>$ {product.price}</strong>
               </Card.Text>
              <div className='d-flex  flex-column gap-2 mx-2 '>
-             <Button variant="primary" onClick={()=>addProductToCart(product)}>add to cart</Button>
-              <Button variant="primary" onClick={()=>handleShow(product)}>View details</Button>
+             <Button variant="primary" onClick={()=>props.addToCart(product)}>add to cart</Button>
+              <Link to={`/OneProduct/${product.id}`} className='btn btn-primary'>View details</Link>
              </div>
-
             </Card.Body>
-            <Modl show={show} onHide={onhandleClose} selected={selectedP} />
           </Card>
 
         )))}
