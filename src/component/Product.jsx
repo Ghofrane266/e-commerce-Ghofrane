@@ -14,7 +14,7 @@ export default function Product(props) {
   const getData = async () => {
     try {
       await setState({ ...state, isLoading: true });
-      let response = await axios.get("http://localhost:4000/products");
+      let response = await axios.get("http://localhost:4000/api/v1/products");
       setState({ data: response.data, isLoading: false });
 
     }
@@ -30,7 +30,7 @@ export default function Product(props) {
   const searchData = async()=>{
     try{
       await setState({...state,isLoading:true});
-      let response=await axios.post("http://localhost:4000/search",{text:props.searchValue});
+      let response=await axios.post("http://localhost:4000/api/v1/products/search",{text:props.searchValue});
       setState({data:response.data,isLoading:false});
     }
     catch{
