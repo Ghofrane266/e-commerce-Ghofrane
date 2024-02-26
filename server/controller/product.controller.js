@@ -1,14 +1,21 @@
-let products = require("../data.json");
+const {Product}=require("../model/models");
 
 
-const selectAll=(req, res) => {
-    res.send(products)};
+const selectAll= async (req, res) => {
+    try {
+       const response= await Product.find()
+       res.send(response)
+    } catch (error) {
+        console.log(error);
+    }};
  
- const findOne=(req,res)=>{
-    const{id}=req.params;
-    let myProduct=products.find((e)=>e.id===+id);
-    if(myProduct) res.send(myProduct);
-    else res.status(400).send("id not found !")
+ const findOne= async(req,res)=>{
+    try {
+        const found =await Product.findOne({id:+req.params.id});
+        res.send(found);
+    } catch (error) {
+        console.log(error);
+    }
 }
 const search=(req, res) => {
     const { text } = req.body;
