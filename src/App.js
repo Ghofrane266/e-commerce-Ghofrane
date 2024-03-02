@@ -1,7 +1,7 @@
 
-import Navb from "./component/Navb"
+import Navb from "./components/Navb"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Product from "./component/Product";
+import Product from "./components/Product";
 import { useState } from "react";
 import { Routes,Route} from "react-router-dom";
 import Vlog from './pages/Vlog'
