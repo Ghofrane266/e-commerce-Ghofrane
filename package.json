@@ -10,8 +10,10 @@
     "bootstrap": "^5.3.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "express": "^4.18.3",
     "mongoose": "^8.2.0",
-    "nodemon": "^3.0.3",
+    "mysql2": "^3.9.2",
+    "nodemon": "^3.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.1",
     "react-dom": "^18.2.0",
@@ -26,7 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodemon server/index.js",
-    "seed":"node server/model/seed.js"
+    "seed": "nodemon server/model/seed.js"
   },
   "eslintConfig": {
     "extends": [
