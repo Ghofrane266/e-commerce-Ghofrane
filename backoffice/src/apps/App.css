@@ -1,0 +1,14 @@
+.App {
+    background: linear-gradient(106.37deg,
+            #b3cedc 29.63%,
+            #7FC7D9 51.55%,
+            #b3cedc 90.85%);
+    height: 100vh;
+}
+
+.Glass {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    background-color:rgba(255,255,255,0.54)
+}

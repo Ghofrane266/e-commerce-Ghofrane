@@ -19,8 +19,13 @@ export default function Router() {
     const [user, setUser] = useState({
         id: 1,
         userName: "Emily",
+        userLastName:"jhon",
         Age: 24,
-        imageUrl: "https://pxbar.com/wp-content/uploads/2023/09/dp-images-for-girls-cartoon-1-1024x1024.jpg"
+        imageUrl: "https://pxbar.com/wp-content/uploads/2023/09/dp-images-for-girls-cartoon-1-1024x1024.jpg",
+        Email:"ghoficherni@gmail.com",
+        job:"web developper",
+        phone:53624895
+
     });
     return (
         <Provider store={store} > 
