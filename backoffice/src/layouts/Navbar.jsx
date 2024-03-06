@@ -19,7 +19,7 @@ export default function Navbar({ isOpen, setIsOpen }) {
                     )}
                 </div>
                 <div className='Search m-5'>
-                    <input placeholder='search' />
+                    <input type='search' placeholder='search' />
                     <MdOutlineNotificationAdd className='m-3' size={30} style={{ color: '#068DA9' }} />
                 </div>
                 <div className="d-flex align-items-center gap-1">
