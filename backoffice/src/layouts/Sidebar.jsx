@@ -6,11 +6,12 @@ import { IoPersonOutline } from "react-icons/io5";
 import { LiaClipboardListSolid } from "react-icons/lia";
 import { MdOutlineAnalytics } from "react-icons/md";
 import './sidebar.css';
-
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Sidebar({ setIsOpen }) {
+  const navigate = useNavigate()
   return (
     <div className='Side' style={{ zIndex: 5, position: 'fixed', height: '100%', width: 300, backgroundColor: "#068DA9" }}>
       <div className='d-flex justify-content-between' >
@@ -20,35 +21,35 @@ export default function Sidebar({ setIsOpen }) {
       <div className='Menu'>
 
         <div className='MenuItem' >
-          <div > <LuHome /></div>
-          <span>Dashboard</span>
+          <LuHome size={25} />
+          <span onClick={() => navigate("/")}>Dashboard</span>
         </div>
         <div className='MenuItem'>
-          <div> <LuClipboardList /></div>
-          <span>Orders</span>
+          <LuClipboardList size={25} />
+          <span >Orders</span>
         </div>
         <div className='MenuItem' >
-          <div> <IoPersonOutline /></div>
-          <span>Custtomers</span>
+          <IoPersonOutline size={25} />
+          <span onClick={() => navigate("profile")}>Users</span>
         </div>
         <div className='MenuItem' >
-          <div><LiaClipboardListSolid /></div>
+          <LiaClipboardListSolid size={25} />
 
 
           <span>
-            <NavDropdown title="Products" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">  add Product</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
+            <NavDropdown title="Products" id="navbarScrollingDropdown" >
+              <NavDropdown.Item onClick={() => navigate("products/")}>  Product list</NavDropdown.Item>
+
+              <NavDropdown.Item onClick={() => navigate("products/add")}>  add Product</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => navigate("products/:id")}>
                 Product detaills
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Product
-              </NavDropdown.Item>
-              </NavDropdown>
+
+            </NavDropdown>
           </span>
         </div>
         <div className='MenuItem'>
-          <div><MdOutlineAnalytics /></div>
+          <MdOutlineAnalytics size={25} />
           <span>
             Analytics</span>
 

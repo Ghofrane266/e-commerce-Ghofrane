@@ -1,7 +1,7 @@
 export const dataProducts = [
     
         {
-            id: 1,
+        
             title: "Hyaluronic Acid Serum",
             description: "This hydrating serum plumps and smooths the skin while reducing the appearance of fine lines and wrinkles.",
             image: "hyaluronic_acid_serum.jpg",
@@ -10,7 +10,7 @@ export const dataProducts = [
             
         },
         {
-            id: 2,
+            
             title: "Retinol Night Cream",
             description: "Renew and rejuvenate your skin overnight with this powerful retinol-infused night cream.",
             image: "retinol_night_cream.jpg",
@@ -19,7 +19,7 @@ export const dataProducts = [
             
         },
         {
-            id: 3,
+            
             title: "Vitamin C Brightening Serum",
             description: "Brighten and even out your complexion with this vitamin C serum, packed with antioxidants for glowing skin.",
             image: "vitamin_c_brightening_serum.jpg",
@@ -28,7 +28,7 @@ export const dataProducts = [
             
         },
         {
-            id: 4,
+            
             title: "SPF 30 Daily Moisturizer",
             description: "Protect your skin from harmful UV rays while moisturizing with this lightweight SPF 30 moisturizer.",
             image: "spf_30_daily_moisturizer.jpg",
@@ -37,7 +37,7 @@ export const dataProducts = [
             
         },
         {
-            id: 5,
+            
             title: "Gentle Foaming Cleanser",
             description: "Cleanse away impurities and excess oil with this gentle foaming cleanser, leaving your skin feeling refreshed and balanced.",
             image: "gentle_foaming_cleanser.jpg",
@@ -46,7 +46,7 @@ export const dataProducts = [
             
         },
         {
-            id: 6,
+           
             title: "Exfoliating Facial Scrub",
             description: "Achieve smoother, softer skin with this exfoliating facial scrub, formulated to remove dead skin cells and unclog pores.",
             image: "exfoliating_facial_scrub.jpg",
@@ -55,7 +55,7 @@ export const dataProducts = [
             
         },
         {
-            id: 7,
+            
             title: "Hyaluronic Acid Moisturizer",
             description: "Hydrate and nourish your skin with this lightweight moisturizer infused with hyaluronic acid for all-day hydration.",
             image: "hyaluronic_acid_moisturizer.jpg",
@@ -64,7 +64,7 @@ export const dataProducts = [
             
         },
         {
-            id: 8,
+            
             title: "Anti-Aging Eye Cream",
             description: "Reduce the appearance of fine lines, wrinkles, and dark circles with this potent anti-aging eye cream.",
             image: "anti_aging_eye_cream.jpg",
@@ -73,7 +73,7 @@ export const dataProducts = [
             
         },
         {
-            id: 9,
+           
             title: "Clarifying Clay Mask",
             description: "Draw out impurities and detoxify your skin with this clarifying clay mask, leaving your complexion feeling fresh and clear.",
             image: "clarifying_clay_mask.jpg",
@@ -82,7 +82,7 @@ export const dataProducts = [
             
         },
         {
-            id: 10,
+            
             title: "Brightening Face Oil",
             description: "Revitalize dull skin and improve radiance with this brightening face oil, enriched with nourishing botanical extracts.",
             image: "brightening_face_oil.jpg",

@@ -1,12 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../../../router/Router';
 import { useNavigate } from 'react-router-dom';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+import { FaUserTie } from "react-icons/fa";
 
+import Card from 'react-bootstrap/Card';
+import { MdEdit } from "react-icons/md";
 
 export default function EditProfile() {
   const [updatedName, setUpdatedName] = useState("")
@@ -14,48 +12,40 @@ export default function EditProfile() {
   const navigate = useNavigate()
   return (
 
-    <section className="d-flex justify-content-center p-5">
-      <Card style={{ width: "500px", height: "500px" }} >
 
-        <CardMedia
-          component="img"
-          height="140"
-          src={user.imageUrl}
-        />
+    <Card style={{ width: '30rem' }}>
 
 
-        <CardContent>
-          <div className='py-5 mx-3'>
-            <div>   <input type="text" placeholder="FirstName" style={{ width: "450px" }} onChange={(e) => setUpdatedName(e.target.value)} /></div>
+      <Card.Body >
+        <div><FaUserTie size={50}/></div>
+        <div className='mt-3'><Card.Title> <strong>Information:</strong>
+        </Card.Title>
 
-            <div>
-              <input type="text" placeholder="LastName" style={{ width: "450px" }} />
+          <Card.Text>
+            <strong>First Name:</strong>
+            <div ><input type="text" placeholder='first Name' />
+              <MdEdit style={{ margin: "10px" }} size={20} />
             </div>
-            <div>
-              <input type="text" placeholder="email address" style={{ width: "450px" }} />
-            </div>
-            <div>
-              <input type="text" placeholder="job" style={{ width: "450px" }} />
-            </div>
-
-            <div>
-              <input type="text" placeholder="phone number" style={{ width: "450px" }} />
-            </div>
-
-          </div>
-        </CardContent>
-
-
-
-        <CardActions >
-          <div><Button size="small" onClick={() => {
-            setUser({ ...user, userName: updatedName })
+         <strong>   Last Name:</strong>
+            <div ><input type="text" placeholder='Last Name' />
+              <MdEdit style={{ margin: "10px" }} size={20} /></div>
+           <strong> Job:</strong>
+            <div ><input type="text" placeholder='job' />
+              <MdEdit style={{ margin: "10px" }} size={20} /></div>
+           <strong> Email:</strong>
+            <div ><input type="text" placeholder='e-mail' />
+              <MdEdit style={{ margin: "10px" }} size={20} /></div>
+          <strong>  Phone:</strong>
+            <div ><input type="text" placeholder='Phone' />
+              <MdEdit style={{ margin: "10px" }} size={20} /></div>
+          </Card.Text>
+          <div className='btn' style={{ background: "#068DA9", marginLeft: "75%" }} onClick={() => { setUser({ ...user, userName: updatedName })
             navigate(-1)
-          }}>Save</Button></div>
-        </CardActions>
+          }} >Save</div>
+        </div>
+      </Card.Body>
 
-      </Card>
-    </section>
+    </Card>
 
   );
 }

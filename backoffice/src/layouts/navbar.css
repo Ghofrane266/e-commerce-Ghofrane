@@ -1,8 +1,29 @@
-
+.Search{
+  background:#f4f8f9;
+  border-radius: 15px;
+  color: rgba(113, 99,186,255);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+}
 .Search input{
-  border-radius: 4rem;
-  height: 30px;
-  border: 0;
+ background: transparent;
+ padding: 2px;
+ border: 0;
+ outline: 0;
+ color: #068DA9;
+
+}
+.Search i{
   color: #068DA9;
- 
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+.Navb{
+  box-shadow: -4px 21px 50px -3px #7FC7D9;
+}
+.Icon i{
+  cursor: pointer;
 }
