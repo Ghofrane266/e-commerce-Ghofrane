@@ -4,11 +4,17 @@ import axios from "axios";
 
 
 export const fetchProducts=createAsyncThunk("fetchProducts",async()=>{
-    const response=await axios.get("http://localhost:4000/api/v1/products")
+    const response=await axios.get("http://localhost:5000/api/v1/products")
     return response.data
 })
-
-
+export const fetchProduct=createAsyncThunk("fetchProduct",async(id)=>{
+    const response=await axios.get("http://localhost:5000/api/v1/products/"+id)
+    return response.data
+})
+export const sendProduct=createAsyncThunk("addProduct",async(body)=>{
+    const response=await axios.post("http://localhost:5000/api/v1/products/",body)
+    return response.data
+})
 
 
 export const counterSlice=createSlice({
@@ -25,6 +31,12 @@ export const counterSlice=createSlice({
         builder.addCase(fetchProducts.fulfilled,(state,action)=>{
             state.products.items=action.payload
         })
-    }
+        builder.addCase(fetchProduct.fulfilled,(state,action)=>{
+            state.product=action.payload
+    })
+    builder.addCase(sendProduct.fulfilled,(state,action)=>{
+        state.product=action.payload
+})
+}
 })
 export default counterSlice.reducer;

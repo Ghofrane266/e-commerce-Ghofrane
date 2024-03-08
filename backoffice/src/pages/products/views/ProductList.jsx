@@ -5,12 +5,12 @@ import Table from 'react-bootstrap/Table';
 import { useNavigate } from 'react-router-dom';
 import './product.css'
 export default function ProductList() {
-  // const products = useSelector((state) => state.products.products.items)
-  // const dispatch = useDispatch()
-  // useEffect(() => {
-  //   dispatch(fetchProducts())
-  // }, [dispatch])
-  // console.log(products,"state")
+  const products = useSelector((state) => state.products.products.items)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchProducts())
+  }, [dispatch])
+  console.log(products,"state")
   const navigate= useNavigate()
   return (
     // <h2> Product List:</h2>

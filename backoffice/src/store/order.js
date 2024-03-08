@@ -3,23 +3,23 @@ import axios from "axios";
 
 
 export const fetchProducts = createAsyncThunk("fetchProducts", async () => {
-    const response = await axios.get("http://localhost:4000/api/v1/products")
+    const response = await axios.get("")
     return response.data
 })
 
 
 export const orderSlice = createSlice({
-    name: 'products',
+    name: 'order',
     initialState: {
-        product: null,
-        products: {
+       order: null,
+        orders: {
             items: [],
             count: 0
         },
         reducers: {},
         extraReducers(builder) {
            builder.addCase(fetchProducts.fulfilled,(state,action)=>{
-            state.products.items=action.payload
+            state.orders.items=action.payload
            })
         }
     }
