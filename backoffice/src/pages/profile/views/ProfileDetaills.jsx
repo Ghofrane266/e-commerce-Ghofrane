@@ -12,11 +12,11 @@ export default function ProfileDetaills({ isOpen }) {
   return (
 
 
-    <section className='upc ml-5'>
+    <section className='upc ml-5 mt-5'>
       <div className="gradiant"></div>
       <div className="profile-down">
         <img src={user.imageUrl} alt="user image" />
-        <div className="profile-title">{user.userName}  {user.userLastName}</div>
+        <div className="profile-title">{user.userName} </div>
         <div className="profile-description">
           <div><strong>Job: </strong>{user.job}</div>
           <div><strong>E-mail: </strong>{user.Email}</div>

@@ -1,51 +1,42 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../../../router/Router';
 import { useNavigate } from 'react-router-dom';
-import { FaUserTie } from "react-icons/fa";
+import './profiledetaills.css'
 
-import Card from 'react-bootstrap/Card';
-import { MdEdit } from "react-icons/md";
+
 
 export default function EditProfile() {
-  const [updatedName, setUpdatedName] = useState("")
+  const [userUpdated, setUserUpdated] = useState({})
   const { user, setUser } = useContext(UserContext);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserUpdated({ ...userUpdated, [name]: value })
+  }
   const navigate = useNavigate()
   return (
-
-
-    <Card style={{ width: '30rem' }}>
-
-
-      <Card.Body >
-        <div><FaUserTie size={50}/></div>
-        <div className='mt-3'><Card.Title> <strong>Information:</strong>
-        </Card.Title>
-
-          <Card.Text>
-            <strong>First Name:</strong>
-            <div ><input type="text" placeholder='first Name' />
-              <MdEdit style={{ margin: "10px" }} size={20} />
-            </div>
-         <strong>   Last Name:</strong>
-            <div ><input type="text" placeholder='Last Name' />
-              <MdEdit style={{ margin: "10px" }} size={20} /></div>
-           <strong> Job:</strong>
-            <div ><input type="text" placeholder='job' />
-              <MdEdit style={{ margin: "10px" }} size={20} /></div>
-           <strong> Email:</strong>
-            <div ><input type="text" placeholder='e-mail' />
-              <MdEdit style={{ margin: "10px" }} size={20} /></div>
-          <strong>  Phone:</strong>
-            <div ><input type="text" placeholder='Phone' />
-              <MdEdit style={{ margin: "10px" }} size={20} /></div>
-          </Card.Text>
-          <div className='btn' style={{ background: "#068DA9", marginLeft: "75%" }} onClick={() => { setUser({ ...user, userName: updatedName })
-            navigate(-1)
-          }} >Save</div>
+    <section className="upc ml-5 mt-5">
+      <div className="gradiant"></div>
+      <div className="profile-down">
+        <img src="https://cdn3.vectorstock.com/i/1000x1000/30/97/flat-business-man-user-profile-avatar-icon-vector-4333097.jpg" alt="" />
+        {/* <div className="profile-title">User Name</div> */}
+        <div className="profile-description">
+          <div> User Name:</div>
+          <input name='userName' type="text" placeholder='user name' value={userUpdated.userName} onChange={handleChange} />
+          <div>Job:</div>
+          <input name='job' type="text" placeholder='job' value={userUpdated.job} onChange={handleChange} />
+          <div>Email:</div>
+          <input name='Email' type="text" placeholder='email' value={userUpdated.Email} onChange={handleChange} />
+          <div>Phone:</div>
+          <input name='phone' type="text" placeholder='phone' value={userUpdated.phone} onChange={handleChange} />
         </div>
-      </Card.Body>
+        <div className="profile-button btn" onClick={() => {
+          setUser({ ...user, ...userUpdated });
+          navigate(-1)
+        }
 
-    </Card>
+        }>Save</div>
+      </div>
+    </section>
 
   );
 }
