@@ -4,7 +4,7 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
- generator client {
+generator client {
   provider = "prisma-client-js"
 }
 
@@ -13,11 +13,77 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product{
-   id          Int      @id @default(autoincrement())
-  title       String   @unique
+model Product {
+  id          Int     @id @default(autoincrement())
+  title       String  @unique
   description String?
-  image      String
-  url        String   @db.LongText
-  price      Float
+  image       String
+  url         String  @db.LongText
+  price       Float
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  fullName String
+  password String
+  avatarUrl String?
+  phone     String?
+  address   String?
+}
+
+model Order {
+  id             Int      @id @default(autoincrement())
+  statutCommande String
+  dateCommande   DateTime
+  quantite       Int
+  montant        Float
+}
+
+model Vues {
+  id         Int      @id @default(autoincrement())
+  dateVisite DateTime
+  url        String
+}
+
+model Categorie {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+}
+
+model Commentaire {
+  id          Int      @id @default(autoincrement())
+  note        Int
+  commentaire String
+  date        DateTime
+}
+
+model Likes {
+  id     Int      @id @default(autoincrement())
+  nombre Int
+  date   DateTime
+}
+
+model Payement {
+  id             Int      @id @default(autoincrement())
+  montantPaye    Float
+  date           DateTime
+  statutPayement String
+}
+
+model type {
+  id Int @id @default(autoincrement())
+  // methode      
+}
+
+model Abonnement {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+}
+
+model Content {
+  id Int @id @default(autoincrement())
 }

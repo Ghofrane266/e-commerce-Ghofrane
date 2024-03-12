@@ -13,24 +13,26 @@ import ProductDetaills from '../pages/products/views/ProductDetaills'
 import Profile from '../pages/profile/Profile'
 import ProfileDetaills from '../pages/profile/views/ProfileDetaills'
 import EditProfile from '../pages/profile/views/EditProfile'
+import SignOut from '../apps/SignOut'
+
 export const UserContext = createContext();
 
 export default function Router() {
-    const [user, setUser] = useState({
+    // const [user, setUser] = useState({
      
-        userName: "Emily jhon",
-        imageUrl: "https://pxbar.com/wp-content/uploads/2023/09/dp-images-for-girls-cartoon-1-1024x1024.jpg",
-        Email:"ghoficherni@gmail.com",
-        job:"web developper",
-        phone:53624895
+    //     userName: "Emily jhon",
+    //     imageUrl: "https://pxbar.com/wp-content/uploads/2023/09/dp-images-for-girls-cartoon-1-1024x1024.jpg",
+    //     Email:"ghoficherni@gmail.com",
+    //     job:"web developper",
+    //     phone:53624895
 
-    });
+    // });
     return (
         <Provider store={store} > 
 
         <BrowserRouter>
-          <UserContext.Provider value={{user,setUser}}>
-            <Routes>
+        <Routes>
+          {/* <UserContext.Provider value={{user,setUser}}>
                 {user ? (
                     <Route path='/' element={<App />}>
 
@@ -45,12 +47,16 @@ export default function Router() {
                         <Route path="edit" element={<EditProfile />} />
                     </Route >
 
-                    </Route>
-                ) : (<Route path="/" element={<Auth />} ></Route>)}
+                    </Route> */}
+                 
+                <Route path="/" element={<Auth />} /> 
+                <Route path="register" element={<SignOut/>}/>
                     
-                <Route path="*" element={<NotFound />} />
+                {/* </Route>)} */}
+{/*                     
+                <Route path="*" element={<NotFound />} /> */}
             </Routes>
-        </UserContext.Provider>
+        {/* </UserContext.Provider> */}
 </BrowserRouter>
 </Provider>
     )
