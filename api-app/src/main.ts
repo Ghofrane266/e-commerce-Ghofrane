@@ -12,6 +12,7 @@ async function bootstrap() {
     .setTitle('Product example')
     .setDescription('The Products API description')
     .setVersion('1.0')
+    .addApiKey({type:'apiKey',name:'Authorization',in:'header'},'apiKey')
     .addTag('products')
     .build();
   const document = SwaggerModule.createDocument(app, config);

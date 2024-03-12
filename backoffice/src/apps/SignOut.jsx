@@ -2,7 +2,7 @@ import React from 'react'
 import './auth.css'
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
-
+import { MdEmail } from "react-icons/md";
 function SignOut() {
   return (
     <div className='Auth'>
@@ -14,6 +14,7 @@ function SignOut() {
                 </div>
                 <div className='input-box'>
                     <input type="text" placeholder='Email' required />
+                    <MdEmail className='icon'/>
                     
                 </div>
                 <div className='input-box'>
