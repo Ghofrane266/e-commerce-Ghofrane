@@ -13,7 +13,7 @@ function SignOut() {
                     <FaUser className='icon'/>
                 </div>
                 <div className='input-box'>
-                    <input type="text" placeholder='Email' required />
+                    <input type="email" placeholder='email' required />
                     <MdEmail className='icon'/>
                     
                 </div>

@@ -14,30 +14,41 @@ datasource db {
 }
 
 model Product {
-  id          Int     @id @default(autoincrement())
-  title       String  @unique
-  description String?
-  image       String
-  url         String  @db.LongText
-  price       Float
+  id           Int            @id @default(autoincrement())
+  title        String         @unique
+  description  String?
+  image        String
+  url          String         @db.LongText
+  price        Float
+  productorder ProductOrder[]
+}
+
+model ProductOrder {
+  id        Int     @id @default(autoincrement())
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId Int?
+  Order     Order?   @relation(fields: [orderId], references: [id])
+  orderId   Int?
+  @@unique(fields:[productId,orderId],name: "productorder")
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
-  fullName String
-  password String
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  fullName  String
+  password  String
   avatarUrl String?
   phone     String?
   address   String?
 }
 
 model Order {
-  id             Int      @id @default(autoincrement())
+  id             Int            @id @default(autoincrement())
   statutCommande String
   dateCommande   DateTime
   quantite       Int
   montant        Float
+  productorder   ProductOrder[]
 }
 
 model Vues {
