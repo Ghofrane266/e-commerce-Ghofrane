@@ -1,18 +1,23 @@
 
 import Navb from "./components/Navb"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Product from "./components/Product";
+// import Product from "./components/Product";
 import { useState } from "react";
 import { Routes,Route} from "react-router-dom";
-import Vlog from './pages/Vlog'
+import Blog from './pages/Blog'
 import OneProduct from "./pages/OneProduct";
 import NotFound from "./pages/NotFound";
-import CheckOut from "./pages/CheckOut";
+import Contact from "./pages/Contact";
+import Home from './pages/Home'
+import './App.css'
+import Footer from "./components/Footer";
+import Login from "./pages/Login";
+import Products from "./pages/Products";
 
 export default function App() {
 
   const [itemList, setItemList] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
+  // const [searchValue, setSearchValue] = useState('');
 // add to cart
   const addToCart = (product) => {
     setItemList(prevItemList => [...prevItemList, product])
@@ -22,26 +27,35 @@ export default function App() {
     setItemList(prevItemList => prevItemList.filter(product => product !== productToRemove));
   }
   //change value
-  const handleChange = (e) => {
-    setSearchValue(e.target.value);
-  }
+  // const handleChange = (e) => {
+  //   setSearchValue(e.target.value);
+  // }
   
   return (
 
-    <div>
-      <Navb itemList={itemList} addToCart={addToCart}   changeValue={handleChange} removeFromCart={removeFromCart}/>
+    <>
+    <Navb itemList={itemList} addToCart={addToCart}    removeFromCart={removeFromCart}/>
       
       <Routes>
-        <Route index element={<Product addToCart={addToCart} itemList={itemList}   searchValue={searchValue}/>}/>
-        <Route path="/Vlog" element={<Vlog/>}/>
+        {/* <Route index element={<Product addToCart={addToCart} itemList={itemList}   searchValue={searchValue}/>}/> */}
+        <Route path="/" element={<Home/>}/>
+
+        <Route path="/Blog" element={<Blog/>}/>
         <Route path="/OneProduct/:id" element={<OneProduct/>}/>
-        <Route path="/CheckOut" element={<CheckOut/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/contact" element={<Contact/>}/>
+        <Route path="/products" element={<Products/>}/>
+        
+        
         <Route path="*" element={<NotFound/>}/>
       </Routes>
-     
+    
       
-
-    </div>
+    
+    </>
+      
+  
+      
 
   )
 }
