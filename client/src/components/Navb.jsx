@@ -21,7 +21,7 @@ export default function Navb(props) {
   
     return (
         
-        <Navbar expand="lg" className="nav"  list={props.itemList}  addcart={props.addToCart}  changeValue={props.changeValue} changeitem={props.removeFromCart} >
+        <Navbar expand="lg" className="nav"  list={props.itemList}  addcart={props.addToCart}  changeValue={props.changeValue} changeitem={props.removeFromCart} style={{position:'fixed',width:"100%"}} >
             <Container fluid>
                 <Navbar.Brand href="#"  className='fs-4 fw-bold textp'><i>logo</i></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll"  style={{color:"white"}}/>
