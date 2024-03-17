@@ -13,8 +13,8 @@ function App() {
   return (
     <div className='App'>
 <div className='Glass'>
-        <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
       {isOpen && <Sidebar setIsOpen={setIsOpen} />}
+        <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
       <div style={{ paddingLeft: isOpen ? 300 : 0, paddingTop: 70 }}>
         <Outlet />
       </div>

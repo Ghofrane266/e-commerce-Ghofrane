@@ -2,16 +2,18 @@ import React, { useContext, useState } from 'react'
 import { UserContext } from '../../../router/Router';
 import { useNavigate } from 'react-router-dom';
 import './profiledetaills.css'
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
 export default function EditProfile() {
   const [userUpdated, setUserUpdated] = useState({})
-  const { user, setUser } = useContext(UserContext);
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserUpdated({ ...userUpdated, [name]: value })
-  }
+  const user =useSelector((store)=>store.auth.me);
+  const dispatch = useDispatch();
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setUserUpdated({ ...userUpdated, [name]: value })
+  // }
   const navigate = useNavigate()
   return (
     <section className="upc ml-5 mt-5">
@@ -21,16 +23,16 @@ export default function EditProfile() {
         {/* <div className="profile-title">User Name</div> */}
         <div className="profile-description">
           <div> User Name:</div>
-          <input name='userName' type="text" placeholder='user name' value={userUpdated.userName} onChange={handleChange} />
+          <input name='userName' type="text" placeholder='user name' value={userUpdated.FullName}  />
           <div>Job:</div>
-          <input name='job' type="text" placeholder='job' value={userUpdated.job} onChange={handleChange} />
+          <input name='job' type="text" placeholder='job' value={userUpdated.job}  />
           <div>Email:</div>
-          <input name='Email' type="text" placeholder='email' value={userUpdated.Email} onChange={handleChange} />
+          <input name='Email' type="text" placeholder='email' value={userUpdated.Email}  />
           <div>Phone:</div>
-          <input name='phone' type="text" placeholder='phone' value={userUpdated.phone} onChange={handleChange} />
+          <input name='phone' type="text" placeholder='phone' value={userUpdated.phone}  />
         </div>
         <div className="profile-button btn" onClick={() => {
-          setUser({ ...user, ...userUpdated });
+          dispatch({ ...user, ...userUpdated });
           navigate(-1)
         }
 

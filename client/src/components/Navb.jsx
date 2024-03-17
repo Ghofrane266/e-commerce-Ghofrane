@@ -1,6 +1,6 @@
 
 import Container from 'react-bootstrap/Container';
-// import Form from 'react-bootstrap/Form';
+import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
@@ -26,11 +26,25 @@ export default function Navb(props) {
                 <Navbar.Brand href="#"  className='fs-4 fw-bold textp'><i>logo</i></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll"  style={{color:"white"}}/>
                 <Navbar.Collapse id="navbarScroll" style={{color:"white"}} >
+                {/* <Form >
+                        {/* <FaCartPlus className='mx-3' size={40} onClick={handleShow} /> */}
+{/*                      
+                        <Form.Control
+                     
+                            type="search"
+                             placeholder= "Search"
+                            className=" ms-4 "
+                            // aria-label="Search"
+                            onChange={(e)=>props.changeValue(e)}
+                        /> */}
+                     
+                    {/* </Form> */} 
                     <Nav
                         className="ms-auto my-2 m-5"
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
+                        
                         <Nav.Link to="/" as={NavLink} className='link' style={{color:"white",fontSize:"18px",fontWeight:500,marginRight:'24px'}}  >Home</Nav.Link>
                         
                         <Nav.Link to="/contact" as={NavLink} className='link' style={{color:"white" ,fontSize:"18px",fontWeight:500,marginRight:'24px'}} >Contact</Nav.Link>
@@ -41,18 +55,7 @@ export default function Navb(props) {
                         
                     </Nav>
 
-                    {/* <Form className="d-flex">
-                        <FaCartPlus className='mx-3' size={40} onClick={handleShow} />
-                     
-                        <Form.Control
-                            type="search"
-                             placeholder=   "Search"
-                            className="me-2"
-                            aria-label="Search"
-                            onChange={(e)=>props.changeValue(e)}
-                        />
-                     
-                    </Form> */}
+                   
                 </Navbar.Collapse>
             </Container>
             <Offcanv show={show} onHide={handleClose} items={props.itemList}  removeitems={props.removeFromCart} />

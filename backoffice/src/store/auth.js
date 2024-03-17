@@ -8,6 +8,13 @@ export const login = createAsyncThunk("login",async (args,{dispatch})=>{
     dispatch(getMe())
 
 })
+// export const updateProfile = createAsyncThunk("updateMe",async (body,{dispatch})=>{
+
+//     const response = await axiosPostWithHeaders('auth/update-me',body)
+//     localStorage.setItem('token',response.data)
+//     dispatch(getMe())
+
+// })
 export const getMe = createAsyncThunk("getMe",async ()=>{
     const token =localStorage.getItem('token')
     const response = await axios.get("http://localhost:5000/api/v1/auth/me",{headers:{

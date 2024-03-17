@@ -17,7 +17,7 @@ import Products from "./pages/Products";
 export default function App() {
 
   const [itemList, setItemList] = useState([]);
-  // const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState('');
 // add to cart
   const addToCart = (product) => {
     setItemList(prevItemList => [...prevItemList, product])
@@ -27,14 +27,14 @@ export default function App() {
     setItemList(prevItemList => prevItemList.filter(product => product !== productToRemove));
   }
   //change value
-  // const handleChange = (e) => {
-  //   setSearchValue(e.target.value);
-  // }
+  const handleChange = (e) => {
+    setSearchValue(e.target.value);
+  }
   
   return (
 
     <>
-    <Navb itemList={itemList} addToCart={addToCart}    removeFromCart={removeFromCart}/>
+    <Navb itemList={itemList} addToCart={addToCart} handleChange={handleChange}   removeFromCart={removeFromCart}/>
       
       <Routes>
         {/* <Route index element={<Product addToCart={addToCart} itemList={itemList}   searchValue={searchValue}/>}/> */}
@@ -49,6 +49,7 @@ export default function App() {
         
         <Route path="*" element={<NotFound/>}/>
       </Routes>
+     
     
       
     

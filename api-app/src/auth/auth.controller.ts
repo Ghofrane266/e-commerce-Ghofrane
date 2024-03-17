@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { CreateAuthDto,LoginDto } from './dto/create-auth.dto';
+import { CreateAuthDto, LoginDto } from './dto/create-auth.dto';
 import { ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { CurrentUser } from './decorator/current-user';
 import { JwtAuthGuard } from './jwt-auth.guard';
@@ -17,10 +17,10 @@ export class AuthController {
   @ApiSecurity('apiKey')
   @UseGuards(JwtAuthGuard)
   @Get('me')
-  async findMe(@Request() req, @CurrentUser() user) {
-    console.log(user)
+  async findMe(@Request() req) {
+
     return await this.authService.getMyInfo(
-      req.get('Authorisation').replace('Bearer ',''),
+      req.get('Authorization').replace('Bearer ', ''),
     );
-    }
+  }
 }

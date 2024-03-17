@@ -1,13 +1,14 @@
-import React, { useContext } from 'react'
-import { UserContext } from '../../../router/Router'
+
 import { useNavigate } from 'react-router-dom';
 import './profiledetaills.css'
 import { FaLinkedinIn } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import { FaInstagram } from "react-icons/fa6";
+import { useSelector } from 'react-redux';
 
 export default function ProfileDetaills({ isOpen }) {
-  const { user, setUser } = useContext(UserContext);
+  const user =useSelector((store)=>store.auth.me);
+  
   const navigate = useNavigate()
   return (
 
