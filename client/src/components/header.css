@@ -33,12 +33,12 @@ p {
  .div input:focus{
    box-shadow: 4px 8px 16px  #00ffffa1;
  }
- /* .about{
-   background: #061844 !important;
+ .about{
+   /* background: #061844 !important; */
    color: white;
    
 
- } */
+ }
  /* .about h2{
    font-size: 40px;
     line-height: 1.3;
@@ -52,10 +52,13 @@ p {
    
  } */
  video{
-   position: absolute;
+   /* position: absolute; */
    right: 0;
    bottom: 0;
    z-index: -1;
+   object-fit: cover !important;
+   width: 100%;
+   height: 100vh;
  }
  .content{
    position: absolute;

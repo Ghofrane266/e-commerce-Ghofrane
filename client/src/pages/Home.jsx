@@ -7,7 +7,7 @@ function Home() {
             <Header />
             <section className='about'>
 
-               
+               aboutosrigôgjôegjùEROP
             </section>
 
         </Fragment>

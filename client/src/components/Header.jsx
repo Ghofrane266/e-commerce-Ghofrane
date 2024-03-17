@@ -4,7 +4,7 @@ import hero from '../assets/hero.mp4'
 function Header() {
     return (
       
-            <div className="container">
+            <div className="containn">
                 <video src={hero} autoPlay loop muted/>
                 <section className='content'>
                     <div>
