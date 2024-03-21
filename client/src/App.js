@@ -13,6 +13,7 @@ import './App.css'
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
+import About from "./pages/About";
 
 export default function App() {
 
@@ -45,6 +46,7 @@ export default function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/products" element={<Products/>}/>
+        <Route path="/about" element={<About/>}/>
         
         
         <Route path="*" element={<NotFound/>}/>
