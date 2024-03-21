@@ -5,5 +5,7 @@
     box-sizing: border-box;
 }
 body{
-    background: #0d0c2b;
+    background:linear-gradient(106.37deg,
+    #00AFB9, 
+    #14366F  )
    }

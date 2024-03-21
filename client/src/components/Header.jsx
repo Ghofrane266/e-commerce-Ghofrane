@@ -6,10 +6,10 @@ function Header() {
       
             
               
-            <div className='container'>
-    <div className='contents'>
+            <div className='section1'>
+             <div className='contents'>
                    
-                   <p >
+                   <p className='ppp' >
                        Discover the perfect template to showcase your brand's unique identity
                    </p>
            
