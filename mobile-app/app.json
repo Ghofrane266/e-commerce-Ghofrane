@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "https://d3ui957tjb5bqd.cloudfront.net/uploads/2017/01/Swan-by-Yuri-Kartashev-560x420.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
