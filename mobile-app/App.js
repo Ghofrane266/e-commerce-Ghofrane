@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Test from './Test';
 import Onboarding from './component/Onboarding';
+import BottomTabs from './component/BottomTabs';
 
 
 
@@ -9,8 +10,9 @@ import Onboarding from './component/Onboarding';
 export default function App() {
   return (
     <View style={styles.ghofrane}>
-
-      <Onboarding/>
+       {/* <Test/> */}
+      {/* <Onboarding/> */}
+      <BottomTabs/>
     </View>
  
   )

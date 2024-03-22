@@ -10,13 +10,15 @@ export default function Test() {
       <TextInput placeholder='password'style={{background:"white"}}/>
      </View>
     
-      <View style={{justifyContent:"center",alignItems:"center",gap:20}}>
-      <TouchableOpacity  style={{backgroundColor:"blue" , width:100,height:50,borderRadius:100}}>
-        <Text style={{alignItems:"center"}}>Login</Text>
+     
+     <View style={{justifyContent:"center",alignItems:"center"}}>
+      <TouchableOpacity  style={{backgroundColor:"blue" , width:200,height:35,borderRadius:100,top:20}}>
+        <Text style={{textAlign:"center",justifyContent:"center",marginTop:5}}>Login</Text>
       </TouchableOpacity>
-      <Text>Forgot Password</Text>
+      <Text style={{top:10}}>Forgot Password</Text>
       </View>
     </View>
+     
   )
 }
 
