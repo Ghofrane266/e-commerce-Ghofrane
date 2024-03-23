@@ -13,52 +13,53 @@ const Tab = createMaterialBottomTabNavigator();
 
 export default function BottomTabs() {
   return (
-   <NavigationContainer>
-     <Tab.Navigator
-    initialRouteName="Feed"
-    activeColor="#e91e63"
-   
-    style={styles.container}
-  >
-    <Tab.Screen
-      name="Feed"
-      component={Home}
-      options={{
-        tabBarLabel: 'Home',
-        tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="home" color={color} size={26} />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="Notifications"
-      component={Notification}
-      options={{
-        tabBarLabel: 'Updates',
-        tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="bell" color={color} size={26} />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="Profile"
-      component={Profile}
-      options={{
-        tabBarLabel: 'Profile',
-        tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="account" color={color} size={26} />
-        ),
-      }}
-    />
-  </Tab.Navigator>
-   </NavigationContainer>
+    <NavigationContainer >
+      <Tab.Navigator
+        initialRouteName="Feed"
+        activeColor="#e91e63"
+
+        style={styles.container}
+      >
+        <Tab.Screen
+          
+          name="Home"
+          component={Home}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="home" color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Notifications"
+          component={Notification}
+          options={{
+            tabBarLabel: 'Updates',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="bell" color={color} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            tabBarLabel: 'Profile',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="account" color={color} size={26} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-      
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+
+  },
 })
