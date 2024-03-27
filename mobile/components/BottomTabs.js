@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+
 
 
 import Home from '../screens/Home'
@@ -12,33 +12,26 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const Tab = createMaterialBottomTabNavigator();
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Favoris from '../screens/Favoris';
+import HomeStack from './HomeStack';
 
 const Drawer = createDrawerNavigator();
 
 export default function BottomTabs() {
   return (
-  //   <NavigationContainer >
-  //   <Drawer.Navigator>
-  //   <Drawer.Screen name="Home" component={Home} />
-  //   <Drawer.Screen name="Profile" component={Profile} />
-  //   <Drawer.Screen name="Notification" component={Notification} />
-  //   <Drawer.Screen name="Favoris" component={Favoris} />
-
-  // </Drawer.Navigator>
-  // </NavigationContainer>
-
+  
     
-    <NavigationContainer >
+  
+  
       <Tab.Navigator
-        initialRouteName="Feed"
-        activeColor="#D9EDBF"
+        initialRouteName="HomeStack"
+        activeColor="#00AFB9"
 
         style={styles.container}
       >
         <Tab.Screen
          style={styles.content}
-          name="Home"
-          component={Home}
+          name="HomeStack"
+          component={HomeStack}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
@@ -67,7 +60,8 @@ export default function BottomTabs() {
           }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
+
+   
   )
 }
 

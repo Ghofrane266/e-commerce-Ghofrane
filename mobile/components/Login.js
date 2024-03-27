@@ -3,8 +3,10 @@ import React from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Login() {
+  const navigation=useNavigation()
   return (
     <View style={styles.container}>
 
@@ -32,7 +34,7 @@ export default function Login() {
         <TouchableOpacity style={styles.button}>
           <Text style={styles.sign}>Sign in</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={{}}>
+        <TouchableOpacity onPress={()=>navigation.navigate("signUp")}>
           <Text style={styles.account} >Create new account</Text>
         </TouchableOpacity>
        <View>

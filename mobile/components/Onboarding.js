@@ -99,29 +99,38 @@ import {
   useWindowDimensions,
   Image,
 } from "react-native";
-import React from "react";
+import React, { useRef } from "react";
 import { data } from "../constant/OnboardingData";
 import NextButton from "./Nextbutton";
 
 
+
 export default function Onboarding() {
-  // const { width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   console.log(width);
+  const flatListRef=useRef(null)
+
+  const scrollToNextItem = (index)=>{
+    if(flatListRef.current) {
+      flatListRef.current.scrollToIndex({index , Animated:true})
+  }}
+  
   return (
     <View style={[styles.container, { marginTop: 30 }]}>
       <FlatList
+      ref={flatListRef}
         data={data}
         horizontal
         pagingEnabled
         contentContainerStyle={{ paddingRight: 0 }}
         renderItem={({ item, index }) => (
           <View style={{ marginRight: 0, width }}>
-            <Image source={item.url} style={[styles.image, { width:100, borderRadius: 50 }]} />
+            <Image source={item.url} style={[styles.image, {width, borderRadius: 50 }]} />
             <View style={{ flex: 0.3, justifyContent: "center", alignItems: "center" }}>
               <Text style={styles.title}>{item.name}</Text>
               <Text style={styles.description}>{item.description}</Text>
             </View>
-            <NextButton percentage={(index + 1) * (100 / data.length)} />
+            <NextButton percentage={(index + 1) * (100 / data.length)} scrollToNextItem={scrollToNextItem} index={index} lastIndex={data.length-1} />
           </View>
         )}
       />

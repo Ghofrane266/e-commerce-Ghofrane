@@ -2,14 +2,15 @@ import { View, StyleSheet, TouchableOpacity, Animated } from "react-native";
 import React, { useState } from "react";
 import Svg, { G, Circle } from "react-native-svg";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Nextbutton({ percentage}) {
+export default function Nextbutton({ percentage, index, scrollToNextItem, lastIndex }) {
+  const navigation = useNavigation()
   const size = 128;
-  const strokeWidth =2;
+  const strokeWidth = 2;
   const center = size / 2;
-  const radius = size / 2 - strokeWidth/2
+  const radius = size / 2 - strokeWidth / 2
   const circumference = 2 * Math.PI * radius;
-
   return (
     <View style={styles.container}>
       <Svg width={size} height={size}>
@@ -37,7 +38,7 @@ export default function Nextbutton({ percentage}) {
         </G>
       </Svg>
       <TouchableOpacity style={styles.button}>
-        <AntDesign name="arrowright" size={32} color="#fff" />
+        <AntDesign name="arrowright" size={32} color="#fff" onPress={()=>index===lastIndex ? navigation.navigate("Login") : scrollToNextItem(index+1)} />
       </TouchableOpacity>
     </View>
   );

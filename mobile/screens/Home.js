@@ -1,109 +1,143 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import img10 from '../assets/img10.jpg'
-import img from '../assets/img.jpg'
+import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native'
+import React, { useEffect } from 'react'
 import { Image } from 'react-native'
-import { useWindowDimensions } from 'react-native';
-import { TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { getProducts } from '../store/products'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
+import { SafeAreaView } from "react-native-safe-area-context";
+import imgp from '../assets/imgp.png'
+import { MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import { screendata } from '../constant/screenData'
+import { Button } from 'react-native-paper'
 
-import { FlatList } from 'react-native';
-import { ScrollView } from 'react-native';
+
+
 export default function Home() {
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
+  const productStore = useSelector((state) => state?.products.products)
+  const navigation = useNavigation()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [])
+
   return (
-    <View style={[styles.container, { marginTop: 30 }]}>
-      <Text style={{ fontSize: 18, fontWeight: "500", color: "#14366F" }}>Home</Text>
-      <View style={{ width, height: "25%" }}>
-        <Text style={styles.title}>Enjoy 30% off on select Items!</Text>
-        <FlatList 
+    <SafeAreaView style={{flex:1}}>
+
+      <View style={{ flexDirection: "row" }}>
+        <TouchableOpacity>
+          <Image source={imgp} style={{ width: 45, height: 45, margin: 5, marginVertical: 10 }} />
+        </TouchableOpacity>
+        <Text style={{ marginVertical: 20, color: "#00AFB9" }}> welcome!</Text>
+        
+        <MaterialIcons name="notifications-none" size={30} color="#00AFB9" style={{ left: 200, marginVertical: 15 }} />
+        < FontAwesome name="search" size={24} color="#00AFB9" style={{ marginVertical: 18, left: 130 }} />
+        
+      </View>
+      {/* <View style={{ flexDirection: "row", backgroundColor: 'white', borderRadius: 50, maxWidth: width, height: 50 }}>
+        <Feather name="search" size={24} color="#14366F" style={{ marginVertical: 15, marginHorizontal: 10 }} />
+        <TextInput placeholder='Search' placeholderTextColor={"#14366F"} style={{ backgroundColor: "white", maxWidth: width, paddingHorizontal: 110 }} />
+      </View> */}
+
+      <FlatList
         horizontal pagingEnabled
         data={screendata}
-        renderItem={({item}) => <Image source={item.url} style={[{width, objectFit: "cover",height:"100%"},styles.image]} />}
+        renderItem={({ item }) => <Image source={item.url} style={[{ width, objectFit: "cover", height: "100%", marginVertical: 15 }, styles.image]} />}
         keyExtractor={item => item.id}
       />
-       
-        <TouchableOpacity style={[styles.button, { justifyContent: "flex-end" }]}>
-          <Text style={styles.text}>Shop now</Text>
-          <Ionicons name="cart-outline" size={24} color="#14366F" style={styles.icon} />
-        </TouchableOpacity>
+
+      {/* ---body-- */}
+      <ScrollView >
+        <View >
+        <Text style={{ marginTop: 20, fontSize: 18, paddingLeft: 8, color: "#00AFB9", fontWeight: "700" }}>Categories :</Text>
+        <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        
+        >
+        
+        <View style={{ flexDirection: "row", marginVertical: 10, gap: 20, paddingHorizontal: 5 }}>
+        <View>
+        <Image source={require('../assets/photo.png')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 40 }} />
+        <TouchableOpacity>
+        <Text style={{ left: 8, color: "#14366F" }}>Single Brand</Text>
+                </TouchableOpacity>
+              </View>
+              <View>
+                <Image source={require('../assets/photo.png')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 40 }} />
+                <TouchableOpacity>
+                <Text style={{ left: 8, color: "#14366F" }}>Market Places</Text>
+                </TouchableOpacity>
+                </View>
+                <View>
+                <Image source={require('../assets/photo.png')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 40 }} />
+                <TouchableOpacity>
+                <Text style={{ left: 8, color: "#14366F" }}>Online retail shops</Text>
+                </TouchableOpacity>
+                </View>
+                <View>
+                <Image source={require('../assets/photo.png')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 40 }} />
+                <TouchableOpacity>
+                  <Text style={{ left: 8, color: "#14366F" }}>Transcational sites</Text>
+                  </TouchableOpacity>
+                  </View>
+                  <View>
+                  <Image source={require('../assets/photo.png')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 40 }} />
+                  <TouchableOpacity>
+                  <Text style={{ left: 8, color: "#14366F" }}>Auction websites</Text>
+                  </TouchableOpacity>
+                  </View>
+                  </View>
+                  </ScrollView>
+                </View> 
+
+      <View>
+          <Text style={{ marginTop: 20, fontSize: 18, paddingLeft: 8, color: "#00AFB9", fontWeight: "700" }}>
+          Our Products :
+        </Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} >
+
+      <View style={{flexDirection:"row"}}>
+      {productStore.map((product)=>{
+        <View key={product.id} style={styles.card}>
+          <Image source={{uri:product.url}} style={styles.cardImage}/>
+          <Text>{product.title}</Text>
+          <Text>${product.price}</Text>
+          <Button onPress={()=>navigation.navigate("Details",{product})} title="go to details"/>
+          </View>
+      })
+
+    }
+
+      </View>
+    </ScrollView>
+
+     
+  
+
+
+
+
       </View>
 
-      <Text style={{ flexDirection:"row",fontSize: 20, fontWeight: "500", color: "#14366F", marginVertical: 10, right: 100 }}>Recommended</Text>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-
-      >
-
-        <View style={{ flexDirection: "row", marginVertical: 10, gap: 20,paddingHorizontal:5 }}>
-          <Image source={require('../assets/img4.jpg')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 30 }} />
-          <Image source={require('../assets/img5.jpg')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 30 }} />
-          <Image source={require('../assets/img6.jpg')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 30 }} />
-          <Image source={require('../assets/img7.jpg')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 30 }} />
-          <Image source={require('../assets/img8.jpg')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 30 }} />
-          <Image source={require('../assets/img9.jpg')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 30 }} />
 
 
-        </View>
-      </ScrollView>
-      <Text style={{ flexDirection:"row",fontSize: 20, fontWeight: "500", color: "#14366F", marginVertical: 5, right: 115 }}>Best Sellers</Text>
 
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-     
-      >
+       </ScrollView> 
 
-        <View style={{  flexDirection:"row",gap: 20, marginBottom: 100 ,paddingHorizontal:5}}>
-          <View>
-            <Image source={require('../assets/img7.jpg')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 10 }} />
-            <Text style={{ color: "#2C7865", fontWeight: "600" }}>plante de serpent</Text>
-            <Text style={{ color: "#2C7865", fontWeight: "600" }}>15$</Text>
 
-          </View>
-          <View>
-            <Image source={require('../assets/img9.jpg')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 10 }} />
-            <Text style={{ color: "#2C7865", fontWeight: "600" }}>plante de serpent</Text>
-            <Text style={{ color: "#2C7865", fontWeight: "600" }}>20$</Text>
 
-          </View>
-          <View>
-            <Image source={require('../assets/img3.jpg')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 10 }} />
-            <Text style={{ color: "#2C7865", fontWeight: "600" }}>plante de serpent</Text>
-            <Text style={{ color: "#2C7865", fontWeight: "600" }}>30$</Text>
-
-          </View>
-          <View>
-            <Image source={require('../assets/img1.jpg')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 10 }} />
-            <Text style={{ color: "#2C7865", fontWeight: "600" }}>plante de serpent</Text>
-            <Text style={{ color: "#2C7865", fontWeight: "600" }}>20$</Text>
-
-          </View>
-          <View>
-            <Image source={require('../assets/img8.jpg')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 10 }} />
-            <Text style={{ color: "#2C7865", fontWeight: "600" }}>plante de serpent</Text>
-            <Text style={{ color: "#2C7865", fontWeight: "600" }}>20$</Text>
-
-          </View>
-          <View>
-            <Image source={require('../assets/img2.jpg')} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 10 }} />
-            <Text style={{ color: "#2C7865", fontWeight: "600" }}>plante de serpent</Text>
-            <Text style={{ color: "#2C7865", fontWeight: "600" }}>20$</Text>
-
-          </View>
-
-        </View>
-      </ScrollView>
-    
-          
 
     
-            
+
+</SafeAreaView>
 
 
-    </View>
+
+
+
 
 
   )
@@ -112,7 +146,6 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
@@ -120,38 +153,27 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     justifyContent: "center",
-   
-  },
-  button: {
-    position: "absolute",
-    width: 120,
-    height: 32,
-    borderRadius: 100,
-    backgroundColor: "#D9EDBF",
-    marginVertical: 100
-  },
-  text: {
-    textAlign: "center",
-    top: 19,
-    color: "#14366F",
-    fontWeight: "500",
-    marginHorizontal: 18,
-    left: 10
-  },
-  icon: {
-    marginHorizontal: 8,
 
   },
-  title: {
-    alignItems: "center",
-    textAlign: "center",
-    position: "absolute",
-    color: "#14366F",
-    fontWeight: "800",
-    // marginHorizontal:18,
-    zIndex: 2,
-    fontSize: 28,
-    marginVertical: 20
+  card: {
+    backgroundColor: "#fff",
+    marginBottom: 10,
+    marginLeft: '2%',
+    width: '96%',
+    shadowColor: '#000',
+    shadowOpacity: 1,
+    shadowOffset: {
+      width: 3,
+      height: 200,
 
+    }
+  },
+  cardImage: {
+    width: "100%",
+    height: 200,
+    resizeMode: "cover"
   }
-})
+
+
+}
+)
