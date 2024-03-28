@@ -10,6 +10,16 @@ export const getProducts=createAsyncThunk("getProducts",async()=>{
     }
 })
 
+export const getProduct=createAsyncThunk("getProduct",async(id)=>{
+    try{
+    const response=await axios.get(`http://${config}:5000/api/v1/products/${id}`)
+    return response.data
+    }catch(error){
+        console.log(error)
+    }
+})
+
+
 
 
 
@@ -17,16 +27,22 @@ export const getProducts=createAsyncThunk("getProducts",async()=>{
     name:'products',
     initialState:{
         product:null,
-        products:[]
+        products:{
+            items:[],
+            
+        }
     },
     reducers:{},
     extraReducers(builder){
         builder.addCase(getProducts.fulfilled,(state,action)=>{
-            state.products=action.payload
+            state.products.items=action.payload
         })
-
+        builder.addCase(getProduct.fulfilled,(state,action)=>{
+            state.product=action.payload
+    })
     }
 })
+
 
 
 export default productSlice.reducer;
