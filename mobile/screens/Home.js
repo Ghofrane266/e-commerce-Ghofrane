@@ -5,28 +5,33 @@ import { getProducts } from '../store/products'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView } from "react-native-safe-area-context";
-import imgp from '../assets/imgp.png'
+import imgp from '../assets/imgp.jpg'
 import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { screendata } from '../constant/screenData'
-
+import { AntDesign } from '@expo/vector-icons';
 import { TextInput } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
+import { logout } from '../store/auth'
+import { searchProduct } from '../store/data'
 
 
 export default function Home() {
   const { width, height } = useWindowDimensions();
-  const productStore = useSelector((state) => state.products.products)
-  const navigation = useNavigation()
-  const dispatch = useDispatch()
+  const productStore = useSelector((state) => state.products.products);
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState('');
-  const handleChange = (e) => {
-    setSearchValue(e.target.value);
-  }
+
+  const searchData = useSelector((state) => state.data.data);
+
+  useEffect(() => {
+    dispatch(searchProduct())
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(getProducts())
-  }, [])
+  }, [dispatch])
 
 
 
@@ -34,12 +39,17 @@ export default function Home() {
     <SafeAreaView style={{ flex: 1 }}>
 
       <View style={{ flexDirection: "row" }}>
-        <TouchableOpacity>
-          <Image source={imgp} style={{ width: 45, height: 45, margin: 5, marginVertical: 10 }} />
-        </TouchableOpacity>
-        <Text style={{ marginVertical: 20, color: "#00AFB9" }}> welcome!</Text>
 
-        <MaterialIcons name="notifications-none" size={30} color="#00AFB9" style={{ left: 200, marginVertical: 15 }} />
+        <TouchableOpacity onPress={() => navigation.navigate("ProfileStack")}>
+          <Image source={imgp} style={{ width: 50, height: 50, margin: 8, marginVertical: 10, borderRadius: 100 }} />
+        </TouchableOpacity>
+        <Text style={{ marginVertical: 22, color: "#00AFB9" }}> welcome!</Text>
+        <MaterialIcons name="notifications-none" size={30} color="#00AFB9" style={{ left: 140, marginVertical: 15 }} />
+
+        <TouchableOpacity onPressIn={() => dispatch(logout())}>
+          <AntDesign name="logout" color="#00AFB9" size={22} style={{ left: 160, marginVertical: 20 }} />
+        </TouchableOpacity>
+
       </View>
       <View style={{
         backgroundColor: "#fff", flexDirection: "row", paddingVertical: 9, borderRadius: 16
@@ -50,7 +60,7 @@ export default function Home() {
         left: 8
       }}>
         < FontAwesome name="search" size={20} color="#00AFB9" style={{ paddingLeft: 15, top: 4 }} />
-        <TextInput style={{ paddingLeft: 20, fontSize: 16 }} placeholder='search' onChange={(e) => { handleChange(e) }} />
+        <TextInput style={{ paddingLeft: 20, fontSize: 16 }} placeholder='search' onChange={dispatch(getProducts())} />
       </View>
 
 
@@ -60,8 +70,8 @@ export default function Home() {
 
           horizontal pagingEnabled
           data={screendata}
-          renderItem={({ item }) => <Image source={item.url} style={[{ width, objectFit: "cover", height: "100%", marginVertical: 15 }, styles.image]} />}
-          keyExtractor={item => item.id}
+          renderItem={({ item }) => <Image source={item.url} style={[{ width, objectFit: "cover", height: 210, marginVertical: 15, borderRadius: 30 }, styles.image]} />}
+          keyExtractor={(item) => item.id.toString()}
         />
 
         {/* */}

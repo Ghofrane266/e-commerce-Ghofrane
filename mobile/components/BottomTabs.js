@@ -13,6 +13,7 @@ const Tab = createMaterialBottomTabNavigator();
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Favoris from '../screens/Favoris';
 import HomeStack from './HomeStack';
+import ProfileStack from './ProfileStack';
 
 const Drawer = createDrawerNavigator();
 
@@ -43,15 +44,15 @@ export default function BottomTabs() {
           name="Notifications"
           component={Notification}
           options={{
-            tabBarLabel: 'Updates',
+            tabBarLabel: 'Notifications',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="bell" color={color} size={26} />
             ),
           }}
         />
         <Tab.Screen
-          name="Profile"
-          component={Profile}
+          name="ProfileStack"
+          component={ProfileStack}
           options={{
             tabBarLabel: 'Profile',
             tabBarIcon: ({ color }) => (

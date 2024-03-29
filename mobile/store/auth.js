@@ -39,10 +39,10 @@ export const login = createAsyncThunk("login", async (body, { dispatch }) => {
   }
 });
 
-// export const logout = createAsyncThunk('logout',async()=>{
-//     await AsyncStorage.removeItem("token")
-    
-// })
+export const logout = createAsyncThunk('logout',async()=>{
+    await AsyncStorage.removeItem("token")
+   console.log("logout")
+})
 
 const authSlice = createSlice({
   name: "auth",
@@ -56,9 +56,9 @@ const authSlice = createSlice({
     builder.addCase(me.fulfilled, (state, action) => {
       state.me = action.payload;
     });
-    // builder.addCase(logout.fulfilled, (state, action) => {
-    //   state.me =null
-    // });
+    builder.addCase(logout.fulfilled, (state, action) => {
+      state.me =null
+    });
   },
 });
 
