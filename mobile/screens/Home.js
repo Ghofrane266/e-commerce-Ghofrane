@@ -21,13 +21,13 @@ export default function Home() {
   const productStore = useSelector((state) => state.products.products);
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const [searchValue, setSearchValue] = useState('');
+  // const [searchValue, setSearchValue] = useState('');
 
-  const searchData = useSelector((state) => state.data.data);
+  // const searchData = useSelector((state) => state.data.data);
 
-  useEffect(() => {
-    dispatch(searchProduct())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(searchProduct())
+  // }, [dispatch])
 
   useEffect(() => {
     dispatch(getProducts())
@@ -60,7 +60,7 @@ export default function Home() {
         left: 8
       }}>
         < FontAwesome name="search" size={20} color="#00AFB9" style={{ paddingLeft: 15, top: 4 }} />
-        <TextInput style={{ paddingLeft: 20, fontSize: 16 }} placeholder='search' onChange={dispatch(getProducts())} />
+        <TextInput style={{ paddingLeft: 20, fontSize: 16 }} placeholder='search'  />
       </View>
 
 

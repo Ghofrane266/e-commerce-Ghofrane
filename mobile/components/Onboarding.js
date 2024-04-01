@@ -124,8 +124,8 @@ export default function Onboarding() {
         pagingEnabled
         contentContainerStyle={{ paddingRight: 0 }}
         renderItem={({ item, index }) => (
-          <View style={{ marginRight: 0, width }}>
-            <Image source={item.url} style={[styles.image, {width, borderRadius: 50 }]} />
+          <View style={{ marginRight: 0, width ,}} >
+            <Image source={item.url} style={[styles.image, {width, borderRadius: 40 ,objectFit:"fill"}]}  />
             <View style={{ flex: 0.3, justifyContent: "center", alignItems: "center" }}>
               <Text style={styles.title}>{item.name}</Text>
               <Text style={styles.description}>{item.description}</Text>

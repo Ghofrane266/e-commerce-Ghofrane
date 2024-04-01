@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { LoginDto } from './dto/create-auth.dto';
 import * as bcrypt from 'bcrypt';
+import { UpdateAuthDto } from './dto/update-auth.dto';
 @Injectable()
 export class AuthService {
     constructor(private readonly prisma: PrismaService, private readonly jwtService: JwtService,) { }
@@ -32,4 +33,26 @@ export class AuthService {
         const myInfo = this.jwtService.decode(token);
         return myInfo
     }
+    async updateMe(dto: UpdateAuthDto, id: number) {
+        if (dto.password) {
+          throw new HttpException("u can't touch password", HttpStatus.BAD_REQUEST);
+        }
+        if (dto.email) {
+          const user = await this.prisma.user.findUnique({
+            where: {
+              email: dto.email,
+            },
+          });
+          if (user) {
+            throw new HttpException('invalid email', HttpStatus.BAD_REQUEST);
+          }
+        }
+        const user = await this.prisma.user.update({
+          where: { id: id },
+          data: dto,
+        });
+        const { password, ...rest } = user;
+        const token = this.jwtService.sign(rest);
+        return token
+      }
 }

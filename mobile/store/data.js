@@ -4,7 +4,7 @@ const config="192.168.1.103"
 
 export const searchProduct=createAsyncThunk("data/searchProduct",async(body)=>{
     try{
-        const response=await axios.post(`http://${config}:4000/api/v1/products/search`,body)
+        const response=await axios.post(`http://${config}:5000/api/v1/products/search`,body)
         return response.data
         }catch(error){
             console.log(error)

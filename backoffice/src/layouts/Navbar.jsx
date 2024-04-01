@@ -32,7 +32,7 @@ export default function Navbar({ isOpen, setIsOpen }) {
                 <i> <LuMessageSquarePlus className='mt-1' size={28} style={{ color: '#068DA9' }} /></i>
                 <i><MdOutlineNotificationAdd className='m-3' size={30} style={{ color: '#068DA9' }} /></i>
                 <p className="m-0 " style={{ color: "#068DA9" }}><i>Welcome {user.fullName}</i></p>
-                <img src={user.avatarUrl} alt="emilyphoto" className='rounded-circle  m-2 ' style={{ width: 60, height: 60, objectFit: "cover" }} />
+                <img src={user.avatarUrl} alt="userphoto" className='rounded-circle  m-2 ' style={{ width: 60, height: 60, objectFit: "cover" }} />
             </div>
         </div>
 

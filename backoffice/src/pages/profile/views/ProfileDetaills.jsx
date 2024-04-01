@@ -16,11 +16,11 @@ export default function ProfileDetaills({ isOpen }) {
     <section className='upc ml-5 mt-5'>
       <div className="gradiant"></div>
       <div className="profile-down">
-        <img src={user.imageUrl} alt="user image" />
-        <div className="profile-title">{user.userName} </div>
+        <img src={user.avatarUrl} alt="user image" />
+        <div className="profile-title">{user.fullName} </div>
         <div className="profile-description">
-          <div><strong>Job: </strong>{user.job}</div>
-          <div><strong>E-mail: </strong>{user.Email}</div>
+          <div><strong>Address: </strong>{user.address}</div>
+          <div><strong>E-mail: </strong>{user.email}</div>
           <div><strong>Phone: </strong>{user.phone}</div>
         </div>
         <div className='icons d-flex justify-content-center gap-2 ' >

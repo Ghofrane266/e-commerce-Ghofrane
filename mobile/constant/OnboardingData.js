@@ -1,24 +1,24 @@
 export const data=[
     {
         id:1,
-        name:"img1",
-        url:require('../assets/img1.jpg'),
-        description:"image1"
+        name:"Welcome To My App",
+        url:require('../assets/i1.jpg'),
+        description:"Explore our website"
 
     }
 ,
 {
     id:2,
-    name:"img2",
-    url:require('../assets/img2.jpg'),
-    description:"image2"
+    name:" Discover the perfect template",
+    url:require('../assets/g1.jpg'),
+    description:""
 
 },
 {
     id:3,
-    name:"img3",
-    url:require('../assets/img3.jpg'),
-    description:"image3"
+    name:"Get Started",
+    url:require('../assets/g3.jpg'),
+    description:"welcome in my app"
 
 }
 
