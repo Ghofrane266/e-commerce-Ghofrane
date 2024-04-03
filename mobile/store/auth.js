@@ -44,6 +44,26 @@ export const logout = createAsyncThunk('logout',async()=>{
    console.log("logout")
 })
 
+
+
+export const updateProfile = createAsyncThunk("auth/update-me",async (body,{dispatch})=>{
+  try {
+    
+    const tokenn = await AsyncStorage.getItem("token");
+    const token = JSON.parse(tokenn);
+
+    const response = await axios.post('http://192.168.1.103:5000/api/v1/auth/update-me',body,{
+      headers:{
+        Authorization:'Bearer '+token
+      }})
+      await AsyncStorage.setItem('token', JSON.stringify(response.data))
+      dispatch(me())
+      return response.data
+    } catch (error) {
+      console.log("error")
+    }
+    })
+
 const authSlice = createSlice({
   name: "auth",
   initialState: {

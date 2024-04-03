@@ -7,8 +7,12 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import {useSelector } from 'react-redux'
+
 
 export default function Profile() {
+  const userProfile=useSelector((state)=>state.auth.me)
+
   const navigation = useNavigation()
 
   return (
@@ -17,19 +21,19 @@ export default function Profile() {
       </View>
       <View style={{ flex: 1, alignItems: "center" }}>
         <Image source={imgp} resizeMode='contain' style={{ height: 155, width: 155, borderRadius: 999, borderColor: "#fff", borderWidth: 2, marginTop: -90 }} />
-        <Text style={{ fontSize: 20, marginVertical: 15, fontWeight: "800" }}>Ghofrane Cherni</Text>
-        <Text style={{ fontSize: 17, fontWeight: "400" }}>Web Developper</Text>
+        <Text style={{ fontSize: 20, marginVertical: 15, fontWeight: "800" }}>{userProfile.fullName}</Text>
+        {/* <Text style={{ fontSize: 17, fontWeight: "400" }}>{userProfile.Occupation}</Text> */}
         <View style={{ flexDirection: "row", marginVertical: 6, alignItems: "center", paddingRight: 5 }}>
           <MaterialIcons name="location-on" size={24} color="black" />
-          <Text style={{ fontWeight: "400", fontSize: 17 }}>El Kef,Tunisia</Text>
+          <Text style={{ fontWeight: "400", fontSize: 17 }}>{userProfile.address}</Text>
         </View>
         <View style={{ flexDirection: "row", alignItems: "center", paddingRight: 5 }}>
           <Feather name="phone" size={24} color="black" />
-          <Text style={{ fontWeight: "400", fontSize: 17 }}>+21690359534</Text>
+          <Text style={{ fontWeight: "400", fontSize: 17 }}>{userProfile.phone}</Text>
         </View>
         <View style={{ flexDirection: "row", marginVertical: 2, alignItems: "center", paddingLeft: 8 }}>
           <Entypo name="email" size={24} color="black" />
-          <Text style={{ fontWeight: "500", marginLeft: 5 }}>ghofrane.cherni99@gmail.com</Text>
+          <Text style={{ fontWeight: "500", marginLeft: 5 }}>{userProfile.email}</Text>
         </View>
         <View style={{ flex: 1, paddingVertical: 8, flexDirection: "row", gap: 15 }}>
 
