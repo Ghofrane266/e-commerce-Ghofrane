@@ -48,9 +48,9 @@ export default function Navb(props) {
                         <Nav.Link to="/" as={NavLink} className='link' style={{color:"white",fontSize:"18px",fontWeight:500,marginRight:'24px'}}  >Home</Nav.Link>
                         
                         <Nav.Link to="/about" as={NavLink} className='link' style={{color:"white" ,fontSize:"18px",fontWeight:500,marginRight:'24px'}} >About</Nav.Link>
-                        <Nav.Link to="/contact" as={NavLink} className='link' style={{color:"white" ,fontSize:"18px",fontWeight:500,marginRight:'24px'}} >template</Nav.Link>
-                        <Nav.Link to="/products" as={NavLink} className='link' style={{color:"white" ,fontSize:"18px",fontWeight:500,marginRight:'24px'}} >Pricing</Nav.Link>
-                        <Nav.Link to="/Blog" as={NavLink} className='link' style={{color:"white" ,fontSize:"18px",fontWeight:500,marginRight:'24px'}} >Blog</Nav.Link>
+                        <Nav.Link to="/template" as={NavLink} className='link' style={{color:"white" ,fontSize:"18px",fontWeight:500,marginRight:'24px'}} >template</Nav.Link>
+                        <Nav.Link to="/pricing" as={NavLink} className='link' style={{color:"white" ,fontSize:"18px",fontWeight:500,marginRight:'24px'}} >Pricing</Nav.Link>
+                        <Nav.Link to="/blog" as={NavLink} className='link' style={{color:"white" ,fontSize:"18px",fontWeight:500,marginRight:'24px'}} >Blog</Nav.Link>
                           
                         <Nav.Link to="/login" as={NavLink} className='link' style={{color:"white",marginRight:'24px'}} ><IoMdLogIn size={25}/></Nav.Link>
                         

@@ -3,7 +3,7 @@ import React from 'react'
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import './style/signup.css'
+import '../style/signup.css'
 
 function Signup() {
   return (

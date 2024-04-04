@@ -60,7 +60,7 @@ export default function Router() {
                 ) : (
                     <Route path="/" element={<Auth />} >
                         <Route index element={<Login />} />
-                        {/* <Route path='register' element={<SignOut />} /> */}
+                        <Route path='register' element={<SignOut />} />
 
                     </Route>
                 )}

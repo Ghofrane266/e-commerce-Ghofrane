@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './style/log.css'
+import '../style/log.css'
 import { useNavigate } from 'react-router-dom';
 
 import { FaLock } from "react-icons/fa";
@@ -46,7 +46,7 @@ function Login() {
           }}
           >Submit</button>
           <div className="register-link">
-            <p ><a style={{ cursor: 'pointer' }} onClick={() => navigate("register")}>Register</a></p>
+            <p ><a style={{ cursor: 'pointer' }} onClick={() => navigate("signup")}>Register</a></p>
           </div>
 
 

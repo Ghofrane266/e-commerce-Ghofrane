@@ -1,6 +1,6 @@
 import React from 'react'
 import "./header.css"
-import dah from "../pages/images/dah.jpg"
+import dah from "../assets/images/dah.jpg"
 function Header() {
     return (
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { BsTwitterX } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { FiLinkedin } from "react-icons/fi";
-import '../pages/style/home.css';
+import '../style/home.css';
 
 function Footer() {
   return (
