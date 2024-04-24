@@ -1,70 +1,139 @@
+import React, { useState, useEffect } from "react";
 
-import Navb from "../components/Navb"
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import Product from "./components/Product";
-import { useState } from "react";
-import { Routes,Route} from "react-router-dom";
-import Blog from '../pages/Blog'
-import OneProduct from "../pages/OneProduct";
-import NotFound from "../pages/NotFound";
-import Contact from "../pages/Contact";
-import Home from '../pages/Home'
-import '../apps/App.css'
 
-import Login from "../pages/Login";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Header from "../components/Header";
+import Navb from "../components/Navb";
+import Banner from "../components/Banner";
+import Product from "../components/Product";
+import Features from "../components/Features";
+import Footer from "../components/Footer";
+import Services from "../components/Services";
+import Testimonial from "../components/Testimonial";
+import OrderPopup from "../components/OrderPopup";
 import Products from "../pages/Products";
-import About from "../pages/About";
-import Pricing from "../pages/Pricing";
 
-export default function App() {
-
-  const [itemList, setItemList] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
-// add to cart
-  const addToCart = (product) => {
-    setItemList(prevItemList => [...prevItemList, product])
-  }
-  //remove product
-  const removeFromCart = (productToRemove) => {
-    setItemList(prevItemList => prevItemList.filter(product => product !== productToRemove));
-  }
-  //change value
-  const handleChange = (e) => {
-    setSearchValue(e.target.value);
-  }
+const App = () => {
   
+    const [orderPopup, setOrderPopup] = React.useState(false);
+  
+    const handleOrderPopup = () => {
+      setOrderPopup(!orderPopup);
+    };
+
+
+  const [isPlay, setIsPlay] = useState(false);
+
+  const togglePlay = () => {
+    setIsPlay(!isPlay);
+  };
+
+  useEffect(() => {
+    AOS.init({
+      offset: 100,
+      duration: 800,
+      easing: "ease-in-sine",
+      delay: 100,
+    });
+    AOS.refresh();
+  }, []);
+
   return (
+    <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
+      <Navb  handleOrderPopup={handleOrderPopup}/>
+      {/* 
+      <Header togglePlay={togglePlay} />
+      <Services  handleOrderPopup={handleOrderPopup}/>
+      <Banner togglePlay={togglePlay} />
+      <Features />
+      <Testimonial/> */}
 
-    <>
-    <Navb itemList={itemList} addToCart={addToCart} handleChange={handleChange}   removeFromCart={removeFromCart}/>
+      {/* <Product togglePlay={togglePlay} /> */}
+      {/* <Footer /> 
+      <OrderPopup orderPopup={orderPopup} setOrderPopup={setOrderPopup} /> */}
+      {/* <Quotes />
       
-      <Routes>
-        {/* <Route index element={<Product addToCart={addToCart} itemList={itemList}   searchValue={searchValue}/>}/> */}
-        <Route path="/" element={<Home/>}/>
+      
+      <Banner2 togglePlay={togglePlay} />
+     
+      <AppStore />
+      */}
 
-        <Route path="/Blog" element={<Blog/>}/>
-        {/* <Route path="/OneProduct/:id" element={<OneProduct/>}/> */}
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/contact" element={<Contact/>}/>
-        <Route path="/products" element={<Products/>}/>
-        <Route path="/about" element={<About/>}/>
-        <Route path="/pricing" element={<Pricing/>}/>
+      {/* Video Player */}
+      {/* <PopupPlayer isPlay={isPlay} togglePlay={togglePlay} /> */}
+      <Products/>
+    </main>
+  );
+};
+
+export default App;
+
+
+
+
+
+
+// import Navb from "../components/Navb"
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
+// import { useState } from "react";
+
+// import '../index.css'
+// import { Outlet } from "react-router-dom";
+// import Header from "../components/Header";
+
+
+
+// export default function App() {
+
+//   const [itemList, setItemList] = useState([]);
+//   const [searchValue, setSearchValue] = useState('');
+// // add to cart
+//   const addToCart = (product) => {
+//     setItemList(prevItemList => [...prevItemList, product])
+//   }
+//   //remove product
+//   const removeFromCart = (productToRemove) => {
+//     setItemList(prevItemList => prevItemList.filter(product => product !== productToRemove));
+//   }
+//   //change value
+//   const handleChange = (e) => {
+//     setSearchValue(e.target.value);
+//   }
+  
+//   return (
+
+//     <>
+//     <Navb itemList={itemList} addToCart={addToCart} handleChange={handleChange}   removeFromCart={removeFromCart}/>
+// {/*       
+//       <Routes> */}
+//         {/* <Route index element={<Product addToCart={addToCart} itemList={itemList}   searchValue={searchValue}/>}/> */}
+//         {/* <Route path="/" element={<Home/>}/>
+
+//         <Route path="/Blog" element={<Blog/>}/> */}
+//         {/* <Route path="/OneProduct/:id" element={<OneProduct/>}/> */}
+//         {/* <Route path="/login" element={<Login/>}/>
+//         <Route path="/contact" element={<Contact/>}/>
+//         <Route path="/products" element={<Products/>}/>
+//         <Route path="/about" element={<About/>}/>
+//         <Route path="/pricing" element={<Pricing/>}/>
 
         
         
-        <Route path="*" element={<NotFound/>}/>
-      </Routes>
+//         <Route path="*" element={<NotFound/>}/>
+//       </Routes> */}
      
     
-      
+//       {/* <Outlet/> */}
+//       <Header/>
     
-    </>
+//     </>
       
   
       
 
-  )
-}
+ 
 
 
 

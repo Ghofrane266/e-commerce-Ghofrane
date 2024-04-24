@@ -14,49 +14,47 @@ import Signup from '../pages/Signup';
 import Pricing from '../pages/Pricing';
 
 function Router() {
-    // const user = useSelector((state) => state.auth.me);
-    // const dispatch = useDispatch();
-    // useEffect(() => {
-    //     let token = localStorage.getItem("token");
-    //     if (token) dispatch(getMe());
-    // }, [dispatch]);
+  const user = useSelector((state) => state.auth.me);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token) dispatch(getMe());
+  }, [dispatch]);
   return (
-  <BrowserRouter>
-  
-  <Routes>
-{/* {user ? ( */}
-    <Route path='/' element={<App/>}>
-    <Route index element={<Home/>}/>
-    <Route path="about" element={<About/>}/>
-    <Route path='blog' element={<Blog/>}/>
-    <Route path="template" element={<Product/>}/>
-    <Route path='pricing' element={<Pricing/>}/>
-   
+    <BrowserRouter>
+
+      <Routes>
+        {/* {user ? */}
+        <Route path='/' element={<App />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path='blog' element={<Blog />} />
+          <Route path="template" element={<Product />} />
+          <Route path='pricing' element={<Pricing />} />
+          <Route path='auth' element={<Auth />}>
+            <Route index element={<Login />} />
+            <Route path='signup' element={<Signup />} />
+          </Route>
+        </Route>
+
+        {/* : ( */}
+        {/* <Route path='/' element={<Auth />}>
+              <Route index element={<Login />} />
+              <Route path='signup' element={<Signup />} /> */}
 
 
-    </Route>
-{/* // ):( */}
-    
-   {/* <Route path='/' element={<App/>}>
-     <Route index element={<Home/>}/>
-    <Route path="about" element={<About/>}/>
-     <Route path='/' element={<Auth/>}>
-     <Route path='login' element={<Login/>}/>
-    <Route path='signup' element={<Signup/>}/>
-    <Route path='pricing' element={<Pricing/>}/>
-   
-     </Route>
-   </Route> */}
+
+        {/* </Route> */}
+        {/* )} */}
+
+      </Routes>
 
 
-{/* <Route path="*" element={<NotFound />} /> */}
+    </BrowserRouter>
 
-
-  </Routes>
-   
-  
-  </BrowserRouter>
   )
 }
+
+
 
 export default Router

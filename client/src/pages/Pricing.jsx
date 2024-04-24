@@ -1,5 +1,5 @@
 import React from 'react'
-import '../style/pricing.css'
+
 import Card from 'react-bootstrap/Card';
 import Footer from '../components/Footer'
 

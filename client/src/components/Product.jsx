@@ -79,4 +79,58 @@
 //   );
 // }
 
+import React from 'react'
+import '../style/product.css'
+import img1 from '../assets/images/img1.jpg'
+import img2  from '../assets/images/img2.webp'
+import img3  from '../assets/images/img3.avif'
 
+function Product() {
+    return (
+        <>
+            <div className="py-12 sm:py-0 dark:bg-black dark:text-white duration-300 overflow-hidden">
+                
+
+            <h1
+            data-aos="fade-up"
+            className="text-3xl  text-center sm:text-4xl mb-12 font-normal"
+          >
+            Top Product{" "}
+          </h1>
+                    <div className='flex flex-wrap justify-evenly ' >
+                        <div className='box order-1 sm:order-2' data-aos="fade-up"
+                            data-aos-offset="0">
+                            <img src={img1} alt="" />
+                            <div className='content grid place-items-center'>
+                                <h2 className="text-2xl font-semibold">project 1</h2>
+                                <p><a href="" className="text-xl font-serif">view more</a> </p>
+                            </div>
+                        </div>
+                        <div className='box order-1 sm:order-2' data-aos="fade-up"
+                            data-aos-offset="0">
+                            <img src={img2} alt="" />
+                            <div className='content grid place-items-center'>
+                                <h2 className="text-2xl font-semibold">project 2</h2>
+                                <p><a href="" className="text-xl font-serif">view more</a> </p>
+                            </div>
+                        </div>
+                        <div className='box order-1 sm:order-2' data-aos="fade-up"
+                            data-aos-offset="0"
+                        >
+                            <img src={img3} alt="" />
+                            <div className='content grid place-items-center'>
+                                <h2 className="text-2xl font-semibold">project 3</h2>
+                                <p><a href="" className="text-xl font-serif">view more</a> </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                   
+            </div>
+        </>
+    )
+}
+
+export default Product

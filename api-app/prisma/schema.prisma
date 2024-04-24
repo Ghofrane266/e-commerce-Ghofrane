@@ -14,32 +14,48 @@ datasource db {
 }
 
 model Product {
-  id           Int            @id @default(autoincrement())
-  title        String         @unique
-  description  String?
-  image        String
-  url          String         @db.LongText
-  price        Float
-  productorder ProductOrder[]
+  id             Int              @id @default(autoincrement())
+  title          String           @unique
+  description    String?
+  image          String
+  url            String           @db.LongText
+  price          Float
+  productorder   ProductOrder[]
+  Productcontent Productcontent[]
+  PaymentUser    PaymentUser[]
+  CommentaireP   CommentaireP[]
+  LikesP         LikesP[]
 }
 
 model ProductOrder {
-  id        Int     @id @default(autoincrement())
-  Product   Product? @relation(fields: [productId], references: [id])
-  productId Int?
-  Order     Order?   @relation(fields: [orderId], references: [id])
-  orderId   Int?
-  @@unique(fields:[productId,orderId],name: "productorder")
+  id          Int        @id @default(autoincrement())
+  Product     Product?   @relation(fields: [productId], references: [id])
+  productId   Int?
+  Order       Order?     @relation(fields: [orderId], references: [id])
+  orderId     Int?
+  Categorie   Categorie? @relation(fields: [categorieId], references: [id])
+  categorieId Int?
+  User        User?      @relation(fields: [userId], references: [id])
+  userId      Int?
+
+  @@unique(fields: [productId, orderId, categorieId], name: "productorder")
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique
-  fullName  String
-  password  String
-  avatarUrl String?
-  phone     String?
-  address   String?
+  id             Int              @id @default(autoincrement())
+  email          String           @unique
+  fullName       String
+  password       String
+  avatarUrl      String?
+  phone          String?
+  address        String?
+  PaymentUser    PaymentUser[]
+  AbonnementUser AbonnementUser[]
+  CommentaireP   CommentaireP[]
+  ProductOrder   ProductOrder[]
+  VueProduct     VueProduct[]
+  ReviewClient   ReviewClient[]
+  LikesP         LikesP[]
 }
 
 model Order {
@@ -52,49 +68,146 @@ model Order {
 }
 
 model Vues {
-  id         Int      @id @default(autoincrement())
+  id         Int          @id @default(autoincrement())
   dateVisite DateTime
   url        String
+  VueProduct VueProduct[]
+}
+
+model VueProduct {
+  id      Int    @id @default(autoincrement())
+  Vues    Vues?  @relation(fields: [vuesId], references: [id])
+  vuesId  Int?
+  Blogs   Blogs? @relation(fields: [blogsId], references: [id])
+  blogsId Int?
+  User    User?  @relation(fields: [userId], references: [id])
+  userId  Int?
 }
 
 model Categorie {
-  id          Int    @id @default(autoincrement())
-  name        String
-  description String
+  id           Int            @id @default(autoincrement())
+  name         String
+  description  String
+  ProductOrder ProductOrder[]
 }
 
 model Commentaire {
-  id          Int      @id @default(autoincrement())
-  note        Int
-  commentaire String
-  date        DateTime
+  id           Int            @id @default(autoincrement())
+  note         Int
+  commentaire  String
+  date         DateTime
+  CommentaireP CommentaireP[]
+}
+
+model CommentaireP {
+  id            Int          @id @default(autoincrement())
+  Commentaire   Commentaire? @relation(fields: [commentaireId], references: [id])
+  Product       Product?     @relation(fields: [productId], references: [id])
+  productId     Int?
+  User          User?        @relation(fields: [userId], references: [id])
+  userId        Int?
+  commentaireId Int?
 }
 
 model Likes {
   id     Int      @id @default(autoincrement())
   nombre Int
   date   DateTime
+  LikesP LikesP[]
+}
+
+model LikesP {
+  id        Int      @id @default(autoincrement())
+  Likes     Likes?   @relation(fields: [likesId], references: [id])
+  likesId   Int?
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId Int?
 }
 
 model Payement {
-  id             Int      @id @default(autoincrement())
+  id             Int           @id @default(autoincrement())
   montantPaye    Float
   date           DateTime
   statutPayement String
+  PaymentUser    PaymentUser[]
 }
 
-model type {
-  id Int @id @default(autoincrement())
-  // methode      
+model PaymentUser {
+  id         Int       @id @default(autoincrement())
+  Payement   Payement? @relation(fields: [payementId], references: [id])
+  payementId Int?
+  User       User?     @relation(fields: [userId], references: [id])
+  userId     Int?
+  Product    Product?  @relation(fields: [productId], references: [id])
+  productId  Int?
+  Type       Type?     @relation(fields: [typeId], references: [id])
+  typeId     Int?
+}
+
+model Type {
+  id          Int           @id @default(autoincrement())
+  PaymentUser PaymentUser[]
 }
 
 model Abonnement {
-  id          Int    @id @default(autoincrement())
-  name        String
-  description String
-  price       Float
+  id             Int              @id @default(autoincrement())
+  name           String
+  description    String
+  price          Float
+  AbonnementUser AbonnementUser[]
+}
+
+model AbonnementUser {
+  id           Int         @id @default(autoincrement())
+  Abonnement   Abonnement? @relation(fields: [abonnementId], references: [id])
+  User         User?       @relation(fields: [userId], references: [id])
+  userId       Int?
+  abonnementId Int?
 }
 
 model Content {
+  id             Int              @id @default(autoincrement())
+  productcontent Productcontent[]
+}
+
+model Productcontent {
+  id        Int      @id @default(autoincrement())
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId Int?
+  Content   Content? @relation(fields: [contentId], references: [id])
+  contentId Int?
+
+  @@unique(fields: [productId], name: "productcontent")
+}
+
+model Client {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  fullName  String
+  password  String
+  avatarUrl String?
+  phone     String?
+  address   String?
+}
+
+model Blogs {
   id Int @id @default(autoincrement())
+
+  VueProduct VueProduct[]
+}
+
+model Review {
+  id Int @id @default(autoincrement())
+
+  ReviewClient ReviewClient[]
+}
+
+model ReviewClient {
+  id       Int     @id @default(autoincrement())
+  Review   Review? @relation(fields: [reviewId], references: [id])
+  reviewId Int?
+  User     User?   @relation(fields: [userId], references: [id])
+  userId   Int?
 }

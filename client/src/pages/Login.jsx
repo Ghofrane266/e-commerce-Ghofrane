@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../style/log.css'
+
 import { useNavigate } from 'react-router-dom';
 
 import { FaLock } from "react-icons/fa";
@@ -14,12 +14,12 @@ function Login() {
   const navigate = useNavigate()
   return (
     <div className='d-flex justify-content-center align-items-center' style={{ height: '100vh' }}>
-      <div className='Auth'>
+      <div className='Auth mt-5'>
         <form onSubmit={(e) => {
           e.preventDefault()
           dispatch(login({ email, password }))
         }}>
-          <h1>Login</h1>
+          <h1 className='mt-2'>Login</h1>
           <div className='input-box'>
             <input type="email" placeholder='email' required onChange={(e) => {
               setEmail(e.target.value)

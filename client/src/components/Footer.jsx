@@ -1,63 +1,142 @@
-import React from 'react'
-import { BsTwitterX } from "react-icons/bs";
-import { BsInstagram } from "react-icons/bs";
-import { FiLinkedin } from "react-icons/fi";
-import '../style/home.css';
 
-function Footer() {
+import React from "react";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaLocationArrow,
+  FaMobileAlt,
+} from "react-icons/fa";
+
+const FooterLinks = [
+  { id: 1, title: "Home", link: "/#" },
+  {
+    id: 2,
+    title: "Products",
+    link: "/#products",
+  },
+  {
+    id: 3,
+    title: "Pricing",
+    link: "/#pricing",
+  },
+  {
+    id: 4,
+    title: "Contact",
+    link: "/#contact",
+  },
+];
+const Footer = () => {
   return (
     <>
-      <div className="footer mt-5">
+      <div className="bg-gray-100 dark:bg-dark mt-14 rounded-t-3xl">
+        <div data-aos="fade" className="container">
+          <div className="grid md:grid-cols-3 py-4">
+            {/* company Details */}
+            <div className="py-8 px-4">
+              <h1 className="sm:text-3xl text-xl  sm:text-left text-justify mb-3 flex items-center gap-3 font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+              SaaS e-commerce
+              </h1>
+              <p className="text-sm">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Repellat dolor illum a aut iste expedita.
+              </p>
+              <br />
 
-        <div style={{ color: "#052b57", marginTop: 80 }} className='d-flex justify-content-around'>
-          <div className='col-12 col-lg-4 '  >
-            <h1 style={{color:"#fff"}}>Logo</h1>
-            <p style={{color:"#fff"}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea nemo quaerat quam nam sed dignissimos.</p>
-          </div>
-          <div>
-            <h4 style={{color:"#fff"}}>Learn</h4>
-            <a href="" style={{ color: "#fff", textDecoration: "none", fontSize: 16 }}>About Us</a>
-            <div>
-              <a href="" style={{ color: "#fff", textDecoration: "none", fontSize: 16 }}>Blog</a>
+              {/* contact section */}
+              <div>
+                <div className="flex items-center gap-3">
+                  <FaLocationArrow />
+                  <p>Noida, Uttar Pradesh</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <FaMobileAlt />
+                  <p>+91 123456789</p>
+                </div>
+              </div>
+
+              {/* social handle */}
+              <div className="flex items-center gap-3 mt-6">
+                <a href="#">
+                  <FaFacebook className="text-3xl hover:text-primary duration-300" />
+                </a>
+                <a href="#">
+                  <FaInstagram className="text-3xl hover:text-primary duration-300" />
+                </a>
+                <a href="#">
+                  <FaLinkedin className="text-3xl hover:text-primary duration-300" />
+                </a>
+              </div>
             </div>
 
-          </div>
-          <div className='mx-2'>
-            <h4 style={{color:"#fff"}}>Products</h4>
-            <a href="" style={{ color: "#fff", textDecoration: "none", fontSize: 16 }}>E-commerce Websites</a>
-          </div>
-          <div>
-            <h4 style={{color:"#fff"}}>Contact</h4>
-            <div style={{color:"#fff"}}>
-              <BsTwitterX style={{ marginLeftleft: 10 }} />
-              Twitter
+            {/* Footer Links section */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 col-span-2 md:pl-10">
+              <div>
+                <div className="py-8 px-4">
+                  <h1 className="text-xl  mb-3 font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Quick Links</h1>
+                  <ul className="space-y-3">
+                    {FooterLinks.map((link) => (
+                      <li
+                        key={link.id}
+                        className="hover:translate-x-1 duration-300 "
+                      >
+                        <a
+                          href={link.link}
+                          className="cursor-pointer hover:text-primary"
+                        >
+                          {link.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div className="py-8 px-4">
+                  <h1 className="text-xl  mb-3 font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Quick Links</h1>
+                  <ul className="space-y-3">
+                    {FooterLinks.map((link) => (
+                      <li
+                        key={link.id}
+                        className="hover:translate-x-1 duration-300 "
+                      >
+                        <a
+                          href={link.link}
+                          className="cursor-pointer hover:text-primary"
+                        >
+                          {link.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div className="py-8 px-4">
+                  <h1 className="text-xl  mb-3 font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Location</h1>
+                  <ul className="space-y-3">
+                    {FooterLinks.map((link) => (
+                      <li
+                        key={link.id}
+                        className="hover:translate-x-1 duration-300 "
+                      >
+                        <a
+                          href={link.link}
+                          className="cursor-pointer hover:text-primary"
+                        >
+                          {link.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div style={{color:"#fff"}}>
-              <BsInstagram />
-              Instagram
-            </div>
-            <div style={{color:"#fff"}}>
-              <FiLinkedin />
-              Linkedin
-
-            </div>
           </div>
-
-
-
         </div>
-        <div className='line m-5 m-auto mt-4 ' >
-
-        </div>
-
-        <div className='d-flex justify-content-between mt-4 '>
-          <p style={{ marginLeft: 70 ,color:"#fff"}}>2024 Logo.All rights reserved</p>
-          <p style={{ marginRight: 70,color:"#fff" }}>Privacy Notice</p>
-        </div>
-
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
