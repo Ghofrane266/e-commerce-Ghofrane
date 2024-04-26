@@ -1,92 +1,97 @@
 import React from 'react'
 
-import Card from 'react-bootstrap/Card';
-import Footer from '../components/Footer'
+
+import Footer from '../components/Footer';
 
 
-export default function Pricing() {
+
+export default function Pricing( 
+  
+ ) {
+  
+  const ServicesData = [
+    {
+      id: 1,
+     
+      title: "Free Plan",
+      description:
+        " Some quick example text to build on the card title and make up the bulk of the card's content.",
+        price:"£0",
+        link:"#"
+    },
+    {
+      id: 2,
+     
+      title: "Premium Plan",
+      description:
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        price:"£100",
+        link:"#"
+    },
+    {
+      id: 3,
+     
+      title: "Advanced Plan",
+      description:
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        price:"£200",
+        link:"#"
+    },
+  ];
   return (
-    <div style={{ height: '100%' }} >
-      <div style={{ paddingTop: 100, color: "#fff" }} >
-        <h1 className='d-flex justify-content-center align-items-center '  >Pay only for what you need</h1>
-        <p className='d-flex justify-content-center align-items-center fs-4 '  >Join dozens of high-growth startups</p>
-      </div>
-      <div className='d-flex justify-content-evenly px-5 mx-5 py-5'>
-        <div>
-          <Card style={{ width: '18rem', height: '28rem' }}>
-            <Card.Body>
-              <Card.Title className='px-5 mx-4' style={{ fontWeight: "bold", fontSize: 24 }}>Free plan</Card.Title>
-              <Card.Subtitle className="mb-2 mt-4" style={{ color: "#fff", fontWeight: "bold", fontSize: 24 }}>$0</Card.Subtitle>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-              </Card.Text>
-              <button className='btn btnn mx-5' style={{ width: "50%" }}>Get Started</button>
-
-            </Card.Body>
-          </Card>
-        </div>
-        <div>
-          <Card style={{ width: '18rem', height: '28rem' }}>
-            <Card.Body>
-              <Card.Title className='px-4 mx-4' style={{ fontWeight: "bold", fontSize: 24 }}>Advanced</Card.Title>
-              <Card.Subtitle className="mb-2 mt-4" style={{ color: "#fff", fontWeight: "bold", fontSize: 24 }}>$200</Card.Subtitle>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-              </Card.Text>
-              <button className='btn btnn mx-5' style={{ width: "50%" }}>Get Started</button>
-
-            </Card.Body>
-          </Card>
-        </div>
-        <div className='card'>
-          <Card style={{ width: '18rem', height: '28rem' }}>
-            <Card.Body>
-              <Card.Title className='px-5 mx-4' style={{ fontWeight: "bold", fontSize: 24 }}>Premium</Card.Title>
-              <Card.Subtitle className="mb-2 mt-4" style={{ color: "#fff", fontWeight: "bold", fontSize: 24 }}>$100</Card.Subtitle>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-              </Card.Text>
-              <button className='btn btnn mx-5' style={{ width: "50%" }}>Get Started</button>
-
-            </Card.Body>
-          </Card></div>
-      </div>
-      <div>
-        <h2 className='d-flex justify-content-center' style={{ color: "#fff", fontSize: 40 }}>F.A.Q</h2>
-        <div className='mt-4'  style={{paddingLeft:480}}>
-          <ul className="question">
-            <li><input type="radio" name="question" id="first" />
-              <label for="first">What is Advanced Plan? </label>
-              <div className="guess">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit officiis quo expedita nemo
-                  deleniti tenetur aperiam sit, similique corrupti. Excepturi modi perferendis in veritatis
-                  eveniet nostrum cum rerum similique doloremque.</p>
+    <>
+    <div className=" overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300"  >
+    <span id="services"></span>
+      <div className="py-10">
+        <div className="container">
+           <div className="text-center mb-20 max-w-[400px] mx-auto ">
+           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Pay only for what you need</h1>
+           </div>
+          {/* <div className="text-center mb-20 max-w-[400px] mx-auto"> 
+             <p className="text-sm bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary ">
+              Trending Products
+            </p>
+            
+          </div> */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 md:gap-5 place-items-center ">
+            {ServicesData.map((service) => (
+              <div
+                data-aos="zoom-in"
+                className="rounded-2xl  bg-dark hover:bg-gradient-to-r from-primary to-secondary hover:text-white relative shadow-xl duration-high group max-w-[280px] h-[300px]"
+              >
+                
+                <div className="py-5 text-center">
+                  
+                  <h1 className="text-xl font-bold mb-5 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:text-white">{service.title}</h1>
+                  <h2 className="text-xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:text-white" >{service.price}</h2>
+                  <p className="mb-3 text-white group-hover:text-white duration-high text-sm line-clamp-2 font-semibold px-3">
+                    {service.description}
+                     
+                  </p>
+                  {/* <a
+                  href={service.link}
+                  className="inline-block  font-semibold mb-1 text-primary group-hover:text-white duration-300"
+                >
+                  Learn More
+                </a> */}
+                 
+                  <button
+                    className=" bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-300 text-white py-1 px-4 rounded-full mt-10 group-hover:bg-white group-hover:text-white"
+                   
+                  >
+                    Get Started
+                  </button>
+                </div>
               </div>
-            </li>
-            <li><input type="radio" name="question" id="second" />
-              <label for="second">What is Premium Plan ?</label>
-              <div className="guess">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit officiis quo expedita nemo
-                  deleniti tenetur aperiam sit, similique corrupti. Excepturi modi perferendis in veritatis
-                  eveniet nostrum cum rerum similique doloremque.</p>
-              </div>
-            </li>
-            <li><input type="radio" name="question" id="third" />
-              <label for="third">What about my privacy?</label>
-              <div className="guess">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit officiis quo expedita nemo
-                  deleniti tenetur aperiam sit, similique corrupti. Excepturi modi perferendis in veritatis
-                  eveniet nostrum cum rerum similique doloremque.</p>
-              </div>
-            </li>
-          </ul>
+            ))}
+          </div>
         </div>
-      </div>
+        <div className="h-[200px] w-[200px] bg-gradient-to-r from-primary to-secondary rounded-full absolute top-0 left-0 blur-3xl animated-wrapper"></div>
 
-      <Footer />
-    </div>
+      </div>
+      <Footer/>
+     </div>
+       
+    </>
   )
 }

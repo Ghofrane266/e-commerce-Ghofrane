@@ -6,13 +6,13 @@ import "aos/dist/aos.css";
 import Header from "../components/Header";
 import Navb from "../components/Navb";
 import Banner from "../components/Banner";
-import Product from "../components/Product";
+
 import Features from "../components/Features";
 import Footer from "../components/Footer";
 import Services from "../components/Services";
 import Testimonial from "../components/Testimonial";
 import OrderPopup from "../components/OrderPopup";
-import Products from "../pages/Products";
+
 
 const App = () => {
   
@@ -42,27 +42,18 @@ const App = () => {
   return (
     <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
       <Navb  handleOrderPopup={handleOrderPopup}/>
-      {/* 
+      
       <Header togglePlay={togglePlay} />
       <Services  handleOrderPopup={handleOrderPopup}/>
       <Banner togglePlay={togglePlay} />
       <Features />
-      <Testimonial/> */}
+      <Testimonial/>
 
+      <Footer />  
+      <OrderPopup orderPopup={orderPopup} setOrderPopup={setOrderPopup} />
+    
       {/* <Product togglePlay={togglePlay} /> */}
-      {/* <Footer /> 
-      <OrderPopup orderPopup={orderPopup} setOrderPopup={setOrderPopup} /> */}
-      {/* <Quotes />
-      
-      
-      <Banner2 togglePlay={togglePlay} />
-     
-      <AppStore />
-      */}
-
-      {/* Video Player */}
-      {/* <PopupPlayer isPlay={isPlay} togglePlay={togglePlay} /> */}
-      <Products/>
+      {/* <Products/> */}
     </main>
   );
 };

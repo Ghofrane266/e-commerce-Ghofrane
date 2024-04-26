@@ -4,6 +4,7 @@ import logo from "../assets/images/logo.png";
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
 import DarkMode from "./DarkMode";
 import { FaCartShopping } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const NavLinks = [
   {
@@ -14,20 +15,26 @@ const NavLinks = [
   {
     id: 2,
     name: "Products",
-    link: "#",
+    link: "products",
   },
   {
     id: 3,
     name: "Pricing",
-    link: "#",
+    link: "pricing",
   },
   {
     id: 4,
     name: "Contact",
-    link: "#",
+    link: "contact",
+  },
+  {
+    id: 5,
+    name: "Login",
+    link: "/auth",
   },
 ];
 const Navb = ({ handleOrderPopup }) => {
+  const navigate=useNavigate()
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
   return (
@@ -48,7 +55,7 @@ const Navb = ({ handleOrderPopup }) => {
                 return (
                   <li key={id} className="py-4">
                     <a
-                      href={link}
+onClick={()=>navigate(`${link}`)}                   
                       className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500"
                     >
                       {name}

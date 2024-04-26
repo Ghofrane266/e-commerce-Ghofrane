@@ -3,12 +3,14 @@ import React from 'react'
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import '../style/login.css'
 
 
 function Signup() {
   return (
-    <div className='d-flex justify-content-center align-items-center' style={{ height: '100vh' }}>
-        <div className='Auth mt-5'>
+    <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300" >
+        <div  className='text-white h-[100vh] flex justify-center items-center bg-cover'>
+        <div className='Auth rounded-2xl  bg-gradient-to-r from-primary to-secondary hover:text-white relative shadow-xl duration-high group'>
             <form action=''>
                 <h1>Register</h1>
                 <div className='input-box'>
@@ -36,7 +38,10 @@ function Signup() {
             </form>
 
         </div>
+        <div className="h-[200px] w-[200px] bg-gradient-to-r from-primary to-secondary rounded-full absolute top-0 left-0 blur-3xl animated-wrapper"></div>
+
     </div>
+    </main>
   )
 }
 

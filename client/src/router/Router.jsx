@@ -1,51 +1,63 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from '../apps/App';
-import Home from '../pages/Home'
-import Login from '../pages/Login';
-import NotFound from '../pages/NotFound';
-import Blog from '../pages/Blog';
-import About from '../pages/About';
-import Product from '../pages/Products';
-import { getMe } from '../store/auth';
-import Auth from '../apps/Auth';
-import Signup from '../pages/Signup';
-import Pricing from '../pages/Pricing';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
+
+import Pricing from '../pages/Pricing';
+import Products from '../pages/Products';
+import Contact from '../pages/Contact';
+import Login from '../pages/Login';
+import Signup from '../pages/Signup';
+import Auth from '../apps/Auth';
 function Router() {
-  const user = useSelector((state) => state.auth.me);
-  const dispatch = useDispatch();
+  const [isPlay, setIsPlay] = useState(false);
+
+  const togglePlay = () => {
+    setIsPlay(!isPlay);
+  };
   useEffect(() => {
-    let token = localStorage.getItem("token");
-    if (token) dispatch(getMe());
-  }, [dispatch]);
+    AOS.init({
+      offset: 100,
+      duration: 800,
+      easing: "ease-in-sine",
+      delay: 100,
+    });
+    AOS.refresh();
+  }, []);
+
   return (
     <BrowserRouter>
 
       <Routes>
-        {/* {user ? */}
-        <Route path='/' element={<App />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path='blog' element={<Blog />} />
-          <Route path="template" element={<Product />} />
-          <Route path='pricing' element={<Pricing />} />
-          <Route path='auth' element={<Auth />}>
+       
+        <Route path='/' element={<App />}/>
+       
+          
+        
+          
+          <Route path='products' element={<Products />} />
+          <Route path='pricing' element={<Pricing  togglePlay={togglePlay}/>} />
+          
+          
+        
+            <Route path='contact' element={<Contact />} />
+            <Route path='auth' element={<Auth/>} >
+
             <Route index element={<Login />} />
             <Route path='signup' element={<Signup />} />
-          </Route>
-        </Route>
 
-        {/* : ( */}
-        {/* <Route path='/' element={<Auth />}>
-              <Route index element={<Login />} />
-              <Route path='signup' element={<Signup />} /> */}
+            </Route>
+
+         
+     
+
+       
 
 
-
-        {/* </Route> */}
-        {/* )} */}
+        
 
       </Routes>
 
