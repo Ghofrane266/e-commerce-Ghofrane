@@ -6,10 +6,12 @@ import pr3 from "../assets/images/pr3.png";
 import '../style/product.css'
 
 ;
+import Navb from "../components/Navb";
 
 const Products = () => {
   return (
     <div className=" overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
+      <Navb/>
       <section  >
         <div className="container ">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">

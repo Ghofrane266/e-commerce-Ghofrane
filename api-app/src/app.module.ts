@@ -18,7 +18,7 @@ import { ContentsModule } from './contents/contents.module';
 import { ClientsModule } from './clients/clients.module';
 import { BlogsModule } from './blogs/blogs.module';
 import { ReviewsModule } from './reviews/reviews.module';
-import { CategoriesModule } from './categories/categories.module';
+// import { CategoriesModule } from './categories/categories.module';
 
 
 

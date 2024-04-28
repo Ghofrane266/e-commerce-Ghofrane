@@ -2,6 +2,7 @@ import React from 'react'
 
 
 import Footer from '../components/Footer';
+import Navb from '../components/Navb';
 
 
 
@@ -41,6 +42,7 @@ export default function Pricing(
   return (
     <>
     <div className=" overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300"  >
+      <Navb/>
     <span id="services"></span>
       <div className="py-10">
         <div className="container">

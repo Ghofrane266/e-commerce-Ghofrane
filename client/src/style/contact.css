@@ -42,11 +42,9 @@
     padding-top: 15px;
     border-radius: 20px;
 
-}
-/* .contact-inputs:focus{
-border: 2px solid ;
-}  */
-.contact-inputs::placeholder{
+} 
+
+ .contact-inputs::placeholder{
     color: #a19a9a;
 }
 .contact-left button{
@@ -72,3 +70,7 @@ border: 2px solid ;
         display: none;
     }
 }
+
+
+
+
