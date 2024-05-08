@@ -10,11 +10,11 @@ export class ProductsService {
   async create(dto: CreateProductDto) {
 
 
-  //   return await this.prisma.product.create({
-  //     data: {
+    return await this.prisma.product.create({
+      data: dto
         
-  //       }
-  //     }),
+        
+      }),
       
 
    }

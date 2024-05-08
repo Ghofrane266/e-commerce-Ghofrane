@@ -7,16 +7,9 @@ export class CreateProductDto {
     @ApiProperty()
     @IsNotEmpty()
     description?: string;
-    @ApiProperty()
-    @IsArray()
-    @IsNotEmpty()
-    images: { url: string, alt: string }[];
-    @ApiProperty()
-    @IsNotEmpty()
-    url: string;
-    @ApiProperty()
-    @IsNotEmpty()
-    alt: string;
+  
+   
+   
     @ApiProperty()
     @IsNumber()
     price: number;

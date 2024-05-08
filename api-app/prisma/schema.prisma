@@ -19,8 +19,8 @@ model Product {
   description    String?
 
   Images          Image[]
-  url            String
-  alt            String
+ 
+  
   price          Float
   productorder   ProductOrder[]
   Productcontent Productcontent[]

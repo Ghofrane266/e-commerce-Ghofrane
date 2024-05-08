@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { dataProducts } from "../data/data";
+import { dataProducts, imageData } from "../data/data";
 import *  as bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
@@ -20,14 +20,14 @@ async function main() {
 
 
    
-    // const products = await prisma.product.createMany({
-    //     data:
-    //   })
+    const products = await prisma.product.createMany({
+        data:dataProducts
+      })
       
-    // console.log('seeded')
-    const images=await prisma.image.createMany({
-      data:
-    })
+    console.log('seeded')
+    // const images=await prisma.image.createMany({
+    //   data:imageData
+    // })
 }
 
 
