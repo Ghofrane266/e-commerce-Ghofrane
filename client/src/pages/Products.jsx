@@ -7,6 +7,7 @@ import '../style/product.css'
 
 ;
 import Navb from "../components/Navb";
+import OneProduct from "./OneProduct";
 
 const Products = () => {
   return (
@@ -127,8 +128,10 @@ const Products = () => {
           </div>
         </div>
       </section>
+      {/* <OneProduct/> */}
     
     </div>
+    
   );
 };
 

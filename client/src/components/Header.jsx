@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import saas from "../assets/images/saas.png";
 import { BiPlayCircle } from "react-icons/bi";
+import Login from "../pages/Login";
+import Signup from "../pages/Signup";
 
 const Header = ({ togglePlay }) => {
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+
+  const openSignup = () => {
+    setShowSignup(true);
+    setShowLogin(false); // Fermer le popup de connexion
+  };
   return (
     <>
       <div className="py-12 sm:py-0 dark:bg-black dark:text-white duration-300 overflow-hidden">
@@ -22,6 +31,7 @@ const Header = ({ togglePlay }) => {
               </p> */}
               <div className="flex gap-6">
                 <button
+                    onClick={() => setShowLogin(true)}
                   data-aos="fade-up"
                   data-aos-delay="500"
                   className="primary-btn"
@@ -53,6 +63,8 @@ const Header = ({ togglePlay }) => {
           {/* Animated Blob */}
           <div className="h-[300px] w-[300px] bg-gradient-to-r from-primary to-secondary rounded-full absolute top-0 left-0 blur-3xl animated-wrapper"></div>
         </div>
+        {showLogin && <Login openSignup={openSignup} onClose={()=>setShowLogin(false)}/>}
+      {showSignup && <Signup onClose={() => setShowSignup(false)} />}
       </div>
     </>
   );

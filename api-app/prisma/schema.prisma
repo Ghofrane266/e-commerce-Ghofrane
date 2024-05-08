@@ -17,14 +17,24 @@ model Product {
   id             Int              @id @default(autoincrement())
   title          String           @unique
   description    String?
-  image          String
-  url            String           @db.LongText
+
+  Images          Image[]
+  url            String
+  alt            String
   price          Float
   productorder   ProductOrder[]
   Productcontent Productcontent[]
   PaymentUser    PaymentUser[]
   CommentaireP   CommentaireP[]
   LikesP         LikesP[]
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+  url       String
+  alt       String
+  product   Product? @relation(fields: [productId], references: [id])
+  productId Int?
 }
 
 model ProductOrder {

@@ -19,12 +19,15 @@ async function main() {
     console.log('seeded')
 
 
-
-    const products = await prisma.product.createMany({
-        data:dataProducts
-    })
+   
+    // const products = await prisma.product.createMany({
+    //     data:
+    //   })
       
-    console.log('seeded')
+    // console.log('seeded')
+    const images=await prisma.image.createMany({
+      data:
+    })
 }
 
 

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import pr from "../assets/images/pr.png";
 import pr2 from "../assets/images/pr2.png";
 import pr3 from "../assets/images/pr3.png";
 import { FaStar } from "react-icons/fa";
+import Login from "../pages/Login";
+import Signup from "../pages/Signup";
 
 const ServicesData = [
   {
@@ -35,6 +37,13 @@ const ServicesData = [
 ];
 
 const Services = ({ handleOrderPopup }) => {
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+
+  const openSignup = () => {
+    setShowSignup(true);
+    setShowLogin(false); // Fermer le popup de connexion
+  };
   return (
     <>
       <span id="services"></span>
@@ -88,7 +97,7 @@ const Services = ({ handleOrderPopup }) => {
                  
                   <button
                     className=" bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-300 text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white group-hover:text-white"
-                    onClick={handleOrderPopup}
+                    onClick={() => setShowLogin(true)}
                   >
                     Order Now
                   </button>
@@ -97,6 +106,8 @@ const Services = ({ handleOrderPopup }) => {
             ))}
           </div>
         </div>
+        {showLogin && <Login openSignup={openSignup} onClose={()=>setShowLogin(false)}/>}
+      {showSignup && <Signup onClose={() => setShowSignup(false)} />}
       </div>
     </>
   );

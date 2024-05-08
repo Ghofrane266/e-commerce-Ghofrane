@@ -1,11 +1,13 @@
 
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/images/logo.png";
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
 import DarkMode from "./DarkMode";
 import { FaCartShopping } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-
+import Login from "../pages/Login";
+import Signup from "../pages/Signup";
+import { FaRegUser } from "react-icons/fa";
 const NavLinks = [
   {
     id: 1,
@@ -27,19 +29,22 @@ const NavLinks = [
     name: "Contact",
     link: "contact",
   },
-  {
-    id: 5,
-    name: "Login",
-    link: "/auth",
-  },
+  
 ];
 const Navb = ({ handleOrderPopup }) => {
   const navigate=useNavigate()
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+
+  const openSignup = () => {
+    setShowSignup(true);
+    setShowLogin(false); // Fermer le popup de connexion
+  };
   return (
     <div className="relative z-[9999] text-black dark:text-white duration-300">
-      <div className="container py-2 md:py-0">
+      <div className="container py-2 md:py-0  " >
         <div className="flex justify-between items-center">
           {/* logo section */}
           <div className="flex items-center gap-2">
@@ -55,7 +60,7 @@ const Navb = ({ handleOrderPopup }) => {
                 return (
                   <li key={id} className="py-4">
                     <a
-onClick={()=>navigate(`${link}`)}                   
+                     onClick={()=>navigate(`${link}`)}                   
                       className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500"
                     >
                       {name}
@@ -64,13 +69,17 @@ onClick={()=>navigate(`${link}`)}
                 );
               })}
               {/* Darkmode feature */}
+              <FaRegUser  onClick={() => setShowLogin(true)} size={20} style={{cursor:"pointer"}}/>
+                    
+               
+                 
               <button
                    onClick={() => handleOrderPopup()}
-                  className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3"
-                >
-                  Order
-                  <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
-                </button> 
+                   className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3"
+                   >
+                   Order
+                   <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
+                  </button>
               <DarkMode />
             </ul>
           </nav>
@@ -96,6 +105,8 @@ onClick={()=>navigate(`${link}`)}
           </div>
         </div>
       </div>
+      {showLogin && <Login openSignup={openSignup} onClose={()=>setShowLogin(false)}/>}
+      {showSignup && <Signup onClose={() => setShowSignup(false)} />}
     </div>
   );
 };
