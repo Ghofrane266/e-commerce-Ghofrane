@@ -21,8 +21,7 @@ export default function AddProduct() {
             <th></th>
             <th>title</th>
             <th>description</th>
-            <th>image</th>
-            <th>url</th>
+            
             <th>price</th>
           </tr>
         </thead>
@@ -31,8 +30,7 @@ export default function AddProduct() {
             <td>#</td>
             <td><input name='title' className='form-control'  placeholder="title"  onChange={handleChange}/></td>
             <td><input  name='description' className='form-control' placeholder="description" onChange={handleChange}/></td>
-            <td><input  name='image' className='form-control' placeholder="image" onChange={handleChange}/></td>
-            <td><input  name='url' className='form-control' placeholder="url" onChange={handleChange}/></td>
+           
             <td><input min={0} name='price' className='form-control' placeholder="price" type='number'onChange={handleChange}/></td>
 
           </tr>

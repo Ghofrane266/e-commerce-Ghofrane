@@ -13,7 +13,28 @@ import Sidebar from '../components/Sidebar';
 import ThemeSettings from '../components/ThemeSettings';
 import Footer from '../components/Footer';
 import Ecommerce from '../pages/Ecommerce';
-
+import Editor from '../pages/Editor';
+import Customers from '../pages/Customers';
+import Employees from '../pages/Employees';
+import Orders from '../pages/Orders';
+import Kanban from '../pages/Kanban';
+import Calendar from '../pages/Calendar';
+import ColorPicker from '../pages/ColorPicker';
+import Line from '../pages/Charts/Line';
+import Area from '../pages/Charts/Area';
+import Bar from '../pages/Charts/Bar';
+import Pie from '../pages/Charts/Pie';
+import Financial from '../pages/Charts/Financial';
+import ColorMapping from '../pages/Charts/ColorMapping';
+import Pyramid from '../pages/Charts/Pyramid';
+import Stacked from '../pages/Charts/Stacked';
+import Profile from '../pages/profile/Profile';
+import EditProfile from '../pages/profile/views/EditProfile';
+import ProfileDetaills from '../pages/profile/views/ProfileDetaills';
+import Product from '../pages/products/Product'
+import ProductDetaills from '../pages/products/views/ProductDetaills'
+import ProductList from '../pages/products/views/ProductList'
+import AddProduct from '../pages/products/views/AddProduct'
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
@@ -69,30 +90,43 @@ const App = () => {
             <div>
               {themeSettings && (<ThemeSettings />)}
                 <Routes>
+                 
                 {/* dashboard  */}
                 <Route path="/" element={(<Ecommerce />)} />
                 <Route path="/ecommerce" element={(<Ecommerce />)} />
 
                 {/* pages  */}
-                {/* <Route path="/orders" element={<Orders />} />
+                  <Route path="/orders" element={<Orders />} /> 
                 <Route path="/employees" element={<Employees />} />
-                <Route path="/customers" element={<Customers />} /> */}
+                <Route path="/customers" element={<Customers />} /> 
+                <Route path='/profile' element={<Profile />} > 
+                <Route index element={<ProfileDetaills />} /> 
+                <Route path='edit' element={<EditProfile />} /> 
+
+                </Route>
+                <Route path='/products' element={<Product />} > 
+                <Route index element={<ProductList />} /> 
+                <Route path='add' element={<AddProduct />} /> 
+                <Route path='detaills' element={<ProductDetaills />} /> 
+
+
+                </Route>
 
                 {/* apps  */}
-                {/* <Route path="/kanban" element={<Kanban />} />
+                <Route path="/kanban" element={<Kanban />} />
                 <Route path="/editor" element={<Editor />} />
                 <Route path="/calendar" element={<Calendar />} />
-                <Route path="/color-picker" element={<ColorPicker />} /> */}
+                <Route path="/color-picker" element={<ColorPicker />} /> 
 
                 {/* charts  */}
-                {/* <Route path="/line" element={<Line />} />
+                 <Route path="/line" element={<Line />} />
                 <Route path="/area" element={<Area />} />
                 <Route path="/bar" element={<Bar />} />
                 <Route path="/pie" element={<Pie />} />
                 <Route path="/financial" element={<Financial />} />
                 <Route path="/color-mapping" element={<ColorMapping />} />
                 <Route path="/pyramid" element={<Pyramid />} />
-                <Route path="/stacked" element={<Stacked />} /> */}
+                <Route path="/stacked" element={<Stacked />} /> 
 
               </Routes>
               </div>

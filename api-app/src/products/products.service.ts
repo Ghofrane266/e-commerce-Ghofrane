@@ -14,10 +14,10 @@ export class ProductsService {
       data: dto
         
         
-      }),
+      })
       
 
-   }
+    }
 
   findAll() {
     return this.prisma.product.findMany({})

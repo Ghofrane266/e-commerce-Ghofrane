@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
 import { BsChatLeft } from 'react-icons/bs';
@@ -32,6 +32,11 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
+  };
   const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
 
   useEffect(() => {
@@ -62,7 +67,7 @@ const Navbar = () => {
         <NavButton title="Cart" customFunc={() => handleClick('cart')} color={currentColor} icon={<FiShoppingCart />} />
         <NavButton title="Chat" dotColor="#03C9D7" customFunc={() => handleClick('chat')} color={currentColor} icon={<BsChatLeft />} />
         <NavButton title="Notification" dotColor="rgb(254, 201, 15)" customFunc={() => handleClick('notification')} color={currentColor} icon={<RiNotification3Line />} />
-        <TooltipComponent content="Profile" position="BottomCenter">
+        <TooltipComponent content="Profile" position="BottomCenter"  >
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
             onClick={() => handleClick('userProfile')}
@@ -85,7 +90,7 @@ const Navbar = () => {
         {isClicked.cart && (<Cart />)}
         {isClicked.chat && (<Chat />)}
         {isClicked.notification && (<Notification />)}
-        {isClicked.userProfile && (<UserProfile />)}
+        {isClicked.userProfile && (<UserProfile closeDropdown={closeDropdown}/>)}
       </div>
     </div>
   );

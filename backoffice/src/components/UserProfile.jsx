@@ -6,8 +6,14 @@ import  Button  from './Button';
 import { userProfileData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import avatar from '../data/avatar.jpg';
+import { useNavigate } from 'react-router-dom';
 
-const UserProfile = () => {
+const UserProfile = ({ closeDropdown }) => {
+  const navigate =useNavigate()
+  const handleProfileClick = () => {
+    navigate("profile");
+    closeDropdown();
+  };
   const { currentColor } = useStateContext();
 
   return (
@@ -46,7 +52,7 @@ const UserProfile = () => {
             </button>
 
             <div>
-              <p className="font-semibold dark:text-gray-200 ">{item.title}</p>
+              <p className="font-semibold dark:text-gray-200 " onClick={handleProfileClick}>{item.title}</p>
               <p className="text-gray-500 text-sm dark:text-gray-400"> {item.desc} </p>
             </div>
           </div>

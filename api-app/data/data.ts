@@ -79,23 +79,23 @@ export const imageData=[
             alt:"restaurant image",
             productId:1
         },
-        {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (49).png",alt:"Restaurant image",productId:3},
+        {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (49).png",alt:"xbeat image",productId:2},
 
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (50).png",alt:"Restaurant image",productId:3},
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (51).png",alt:"Restaurant image",productId:3},
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (52).png",alt:"Restaurant image",productId:3},
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (53).png",alt:"Restaurant image",productId:3},
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (54).png",alt:"Restaurant image",productId:3},
-
-            ,
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (55).png",alt:'coffee shop image',productId:2},
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (56).png",alt:'coffee shop image',productId:2},
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (57).png",alt:'coffee shop image',productId:2},
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (58).png",alt:'coffee shop image',productId:2},
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (59).png",alt:'coffee shop image',productId:2},
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (60).png",alt:'coffee shop image',productId:2},
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (61).png",alt:'coffee shop image',productId:2},
-            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (62).png",alt:'coffee shop image',productId:2},
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (50).png",alt:"xbeat image",productId:2},
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (51).png",alt:"xbeat image",productId:2},
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (52).png",alt:"xbeat image",productId:2},
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (53).png",alt:"xbeat image",productId:2},
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (54).png",alt:"xbeat image",productId:2},
 
             ,
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (55).png",alt:'coffee shop image',productId:3},
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (56).png",alt:'coffee shop image',productId:3},
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (57).png",alt:'coffee shop image',productId:3},
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (58).png",alt:'coffee shop image',productId:3},
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (59).png",alt:'coffee shop image',productId:3},
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (60).png",alt:'coffee shop image',productId:3},
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (61).png",alt:'coffee shop image',productId:3},
+            {url:"C:\Users\Ghofrane\Pictures\Screenshots\Capture d’écran (62).png",alt:'coffee shop image',productId:3},
+
+            
     ]

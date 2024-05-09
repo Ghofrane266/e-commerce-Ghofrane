@@ -7,9 +7,11 @@ import { IoMdContacts } from 'react-icons/io';
 import { RiContactsLine, RiStockLine } from 'react-icons/ri';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import { HiOutlineRefresh } from 'react-icons/hi';
+import { HiOutlineUserCircle } from "react-icons/hi2";
 import { TiTick } from 'react-icons/ti';
 import { GiLouvrePyramid } from 'react-icons/gi';
 import { GrLocation } from 'react-icons/gr';
+import { GrUnorderedList } from "react-icons/gr";
 import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
 import avatar3 from './avatar3.png';
@@ -22,6 +24,7 @@ import product5 from './product5.jpg';
 import product6 from './product6.jpg';
 import product7 from './product7.jpg';
 import product8 from './product8.jpg';
+import welcome from './welcome.png'
 
 export const gridOrderImage = (props) => (
   <div>
@@ -484,8 +487,12 @@ export const links = [
     title: 'Pages',
     links: [
       {
-        name: 'orders',
+        name: 'products',
         icon: <AiOutlineShoppingCart />,
+      },
+      {
+        name: 'orders',
+        icon: <GrUnorderedList />,
       },
       {
         name: 'employees',
@@ -495,6 +502,11 @@ export const links = [
         name: 'customers',
         icon: <RiContactsLine />,
       },
+      {
+        name: 'profile',
+        icon: <HiOutlineUserCircle />,
+      },
+      
     ],
   },
   {
@@ -914,6 +926,54 @@ export const ordersGrid = [
   {
     field: 'Location',
     headerText: 'Location',
+    width: '150',
+    textAlign: 'Center',
+  },
+];
+export const productsGrid = [
+  {
+    headerText: 'Image',
+    template: gridOrderImage,
+    textAlign: 'Center',
+    width: '120',
+  },
+  {
+    field: 'ProductItems',
+    headerText: 'Item',
+    width: '150',
+    editType: 'dropdownedit',
+    textAlign: 'Center',
+  },
+  { field: 'CustomerName',
+    headerText: 'Customer Name',
+    width: '150',
+    textAlign: 'Center',
+  },
+  {
+    field: 'TotalAmount',
+    headerText: 'Total Amount',
+    format: 'C2',
+    textAlign: 'Center',
+    editType: 'numericedit',
+    width: '150',
+  },
+  {
+    headerText: 'Status',
+    template: gridOrderStatus,
+    field: 'Product Items',
+    textAlign: 'Center',
+    width: '120',
+  },
+  {
+    field: 'ProductID',
+    headerText: 'Product ID',
+    width: '120',
+    textAlign: 'Center',
+  },
+
+  {
+    field: 'Detaills',
+    headerText: 'detaills',
     width: '150',
     textAlign: 'Center',
   },
