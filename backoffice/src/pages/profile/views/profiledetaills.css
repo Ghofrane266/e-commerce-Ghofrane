@@ -62,12 +62,14 @@
     color: black
 }  */
 
-.single {
+/* .single {
   display: flex;
   width: 100%;
-}
+  justify-content: center;
+} */
 
 .singleContainer {
+
   flex: 6;
 }
 

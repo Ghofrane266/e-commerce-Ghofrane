@@ -12,6 +12,7 @@ async function main() {
         email: 'ghofrane.cherni99@gmail.com',
         fullName: 'ghofrane',
         password: await bcrypt.hash('cherni', salt),
+       
       },
       
     });
@@ -25,9 +26,11 @@ async function main() {
       })
       
     console.log('seeded')
-    // const images=await prisma.image.createMany({
-    //   data:imageData
-    // })
+    
+    const filteredImages = imageData.filter(image => image !== undefined)
+    const images=await prisma.image.createMany({
+      data:filteredImages
+    })
 }
 
 

@@ -12,6 +12,7 @@ import Contact from '../pages/Contact';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import Auth from '../apps/Auth';
+import OneProduct from '../pages/OneProduct';
 function Router() {
   const [isPlay, setIsPlay] = useState(false);
 
@@ -32,32 +33,34 @@ function Router() {
     <BrowserRouter>
 
       <Routes>
-       
-        <Route path='/' element={<App />}/>
-       
-          
-        
-          
-          <Route path='products' element={<Products />} />
-          <Route path='pricing' element={<Pricing  togglePlay={togglePlay}/>} />
-          
-          
-        
-            <Route path='contact' element={<Contact />} />
-            <Route path='auth' element={<Auth/>} >
 
-            <Route index element={<Login />} />
-            <Route path='signup' element={<Signup />} />
-
-            </Route>
-
-         
-     
-
-       
+        <Route path='/' element={<App />} />
 
 
-        
+
+
+        <Route path='/products' element={<Products />} />
+        <Route path='/OneProduct/:id' element={<OneProduct />} />
+
+        <Route path='pricing' element={<Pricing togglePlay={togglePlay} />} />
+
+
+
+        <Route path='contact' element={<Contact />} />
+        <Route path='auth' element={<Auth />} >
+
+          <Route index element={<Login />} />
+          <Route path='signup' element={<Signup />} />
+
+        </Route>
+
+
+
+
+
+
+
+
 
       </Routes>
 

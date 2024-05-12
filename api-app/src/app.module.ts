@@ -19,12 +19,13 @@ import { ClientsModule } from './clients/clients.module';
 import { BlogsModule } from './blogs/blogs.module';
 import { ReviewsModule } from './reviews/reviews.module';
 // import { CategoriesModule } from './categories/categories.module';
+import { ImagesModule } from './images/images.module';
 
 
 
 
 @Module({
-  imports: [UsersModule, PrismaModule, ProductsModule, AuthModule, OrdersModule, VuesModule, CategoriesModule, CommentairesModule, LikesModule, PayementsModule, TypesModule, AbonnementsModule, ContentsModule, ClientsModule, BlogsModule, ReviewsModule],
+  imports: [UsersModule, PrismaModule, ProductsModule, AuthModule, OrdersModule, VuesModule, CategoriesModule, CommentairesModule, LikesModule, PayementsModule, TypesModule, AbonnementsModule, ContentsModule, ClientsModule, BlogsModule, ReviewsModule, ImagesModule],
   controllers: [AppController],
   providers: [AppService],
 })

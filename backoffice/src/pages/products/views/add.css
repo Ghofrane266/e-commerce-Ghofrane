@@ -1,0 +1,11 @@
+.labIcon{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.files{
+    width: 100%;
+    padding: 5px;
+    border: none;
+
+}

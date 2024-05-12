@@ -7,9 +7,6 @@ export class CreateProductDto {
     @ApiProperty()
     @IsNotEmpty()
     description?: string;
-  
-   
-   
     @ApiProperty()
     @IsNumber()
     price: number;

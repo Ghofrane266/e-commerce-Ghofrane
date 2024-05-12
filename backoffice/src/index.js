@@ -12,7 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
     <ContextProvider>
-      <App />
+      <Router />
     </ContextProvider>
     </Provider>
   </React.StrictMode>,

@@ -1,4 +1,4 @@
-import React, {  useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -30,6 +30,10 @@ import Financial from '../pages/Charts/Financial';
 import ColorMapping from '../pages/Charts/ColorMapping';
 import Pyramid from '../pages/Charts/Pyramid';
 import Stacked from '../pages/Charts/Stacked';
+import Product from '../pages/products/Product'
+import ProductList from '../pages/products/views/ProductList'
+import AddProduct from '../pages/products/views/AddProduct'
+import ProductDetaills from '../pages/products/views/ProductDetaills'
 
 
 
@@ -38,15 +42,15 @@ import Stacked from '../pages/Charts/Stacked';
 
 
 export default function Router() {
-   
+
     const user = useSelector((store) => store.auth.me);
-   
+
     const dispatch = useDispatch();
     useEffect(() => {
         let token = localStorage.getItem("token");
         if (token) dispatch(getMe());
     }, [dispatch]);
-   
+
     return (
 
 
@@ -57,10 +61,15 @@ export default function Router() {
                     {user ? (
                         <Route path='/' element={<App />}>
                             {/* dashboard  */}
-                           
+
                             <Route path="/ecommerce" element={(<Ecommerce />)} />
 
                             {/* pages  */}
+                            <Route path='/products' element={<Product />} >
+                                <Route index element={<ProductList />} />
+                                <Route path='add' element={<AddProduct />} />
+                                <Route path='detaills' element={<ProductDetaills />} />
+                            </Route>
                             <Route path="orders" element={<Orders />} />
                             <Route path="employees" element={<Employees />} />
                             <Route path="customers" element={<Customers />} />
@@ -96,7 +105,7 @@ export default function Router() {
 
                     <Route path="*" element={<NotFound />} />
                 </Routes>
-                
+
             </div>
         </BrowserRouter>
 
