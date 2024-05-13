@@ -52,7 +52,7 @@ export class AppController {
       }),
     }),
   )
-  uploadFile(@UploadedFile() file:Multer.File, @Body() dto: any) {
+  uploadFile(@UploadedFile() file:Express.Multer.File, @Body() dto: any) {
     console.log(file, "file");
     let data = {
            description: dto.description,

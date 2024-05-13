@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-import { dataProducts, imageData } from "../data/data";
+import { dataProducts, imageData } from "./data"
 import *  as bcrypt from 'bcrypt';
+
 
 const prisma = new PrismaClient();
 

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { dataProducts } from 'data/data';
+import { dataProducts } from 'prisma/data';
 
 @Injectable()
 export class ProductsService {
@@ -20,7 +20,11 @@ export class ProductsService {
     }
 
   findAll() {
-    return this.prisma.product.findMany({})
+    return this.prisma.product.findMany({
+      include : {
+        Images : true
+      }
+    })
   }
 
   findOne(id: number) {

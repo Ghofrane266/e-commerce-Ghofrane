@@ -19,25 +19,25 @@ export default function AddProduct() {
   }
   return (
     <>
-      <div className="m-5 mt-12 max-h-96   w-full max-w-80 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="m-5 mt-12 max-h-96   w-full max-w-80 bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700">
         <div className='p-8 grow flex justify-center items-center '>
 
           <label htmlFor="file" className='labIcon'> <MdOutlineCloudUpload size={45} /></label>
-          <input type="file" id='file' className='files'/>
+          <input type="file" id='file' className='files' name=''/>
 
         </div>
         <div className="px-5 pb-5">
 
           <div className="flex items-center mt-2.5 mb-5">
             <span className="text-sm font-bold tracking-tight text-gray-900 dark:text-white"> Title :</span>
-            <input type="text" placeholder=' title'  />
+            <input type="text" placeholder=' title'  name='title' onChange={handleChange}/>
           </div>
 
           <div className="flex items-center mt-2.5 mb-5">
             <div className="flex items-center space-x-1 rtl:space-x-reverse">
 
               <span className="text-sm font-bold text-gray-900 dark:text-white"> description :</span>
-              <input type="text" placeholder='description' className=' max-h-8' />
+              <input type="text" placeholder='description' className=' max-h-8' name='description' onChange={handleChange}/>
             </div>
             {/* <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span> */}
           </div>
@@ -45,7 +45,7 @@ export default function AddProduct() {
             <div className="flex items-center space-x-1 rtl:space-x-reverse">
 
               <span className="text-sm font-bold text-gray-900 dark:text-white"> price :</span>
-              <input type="number" placeholder='price'/>
+              <input type="number" placeholder='price' name='price' onChange={handleChange} min={0}/>
             </div>
             {/* <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span> */}
           </div>

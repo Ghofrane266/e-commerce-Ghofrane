@@ -59,11 +59,13 @@ export default function Router() {
 
                 <Routes>
                     {user ? (
+                        
                         <Route path='/' element={<App />}>
-                            {/* dashboard  */}
+                            <Route path="*" element={<NotFound />} />
+                            
+                            {/* dashboard  */} 
 
                             <Route path="/ecommerce" element={(<Ecommerce />)} />
-
                             {/* pages  */}
                             <Route path='/products' element={<Product />} >
                                 <Route index element={<ProductList />} />
@@ -99,11 +101,11 @@ export default function Router() {
                         <Route path="/" element={<Auth />} >
                             <Route index element={<Login />} />
                             <Route path='register' element={<SignOut />} />
-
+                            <Route path="*" element={<NotFound />} />
                         </Route>
                     )}
 
-                    <Route path="*" element={<NotFound />} />
+                    
                 </Routes>
 
             </div>

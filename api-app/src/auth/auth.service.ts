@@ -43,9 +43,9 @@ export class AuthService {
               email: dto.email,
             },
           });
-          if (user) {
-            throw new HttpException('invalid email', HttpStatus.BAD_REQUEST);
-          }
+          // if (!user) {
+          //   throw new HttpException('invalid email', HttpStatus.BAD_REQUEST);
+          // }
         }
         const user = await this.prisma.user.update({
           where: { id: id },

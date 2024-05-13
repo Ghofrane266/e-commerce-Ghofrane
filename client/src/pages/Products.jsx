@@ -32,7 +32,7 @@ const Products = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center" key={index}>
             <div data-aos="zoom-in" className="mt-20">
               <img
-                src={pr2}
+                src={product.Images[0].url}
                 alt=""
                 className="w-full sm:w-[80%] mx-auto max-h-[350px] object-cover"
                 />

@@ -15,8 +15,8 @@ export default function EditProfile({ title }) {
 
   const navigate = useNavigate()
   const user = useSelector((store) => store.auth.me);
-  const [image, setImage] = useState(null);
   const [userUpdated, setUserUpdated] = useState({})
+  const [image, setImage] = useState(null);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -24,8 +24,9 @@ export default function EditProfile({ title }) {
     setUserUpdated({ ...userUpdated, [name]: value })
   }
   const handleFileChange = (e) => {
-    if (e.target.files && e.target.files.lenght > 0) {
+    if (e.target.files && e.target.files.length > 0) {
       setImage(e.target.files[0]);
+      console.log(e.target.files[0])
     }
   }
   const onSubmit = async (e) => {
@@ -43,10 +44,10 @@ export default function EditProfile({ title }) {
       dispatch(updateProfile(profileImage));
     } catch (error) {
       console.error("Error uploading file:", error);
-      
+
     }
   };
-  
+
 
 
 
@@ -64,7 +65,7 @@ export default function EditProfile({ title }) {
             <img
               className='imgs'
               src={
-            image
+                image
                   ? URL.createObjectURL(image)
                   : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
               }
@@ -100,7 +101,9 @@ export default function EditProfile({ title }) {
               </div>
               <div className="formInput" key={3}>
                 <label className='lab'>Password</label>
-                <input className='inputs' type='password' placeholder='password' name='password' value={userUpdated.password} onChange={handleChange} />
+
+                           <input className='inputs' type='password' placeholder='password' name='password' value={userUpdated.password} onChange={handleChange} disabled />
+
               </div>
               <div className="formInput" key={4}>
                 <label className='lab'>Phone</label>
@@ -128,11 +131,7 @@ export default function EditProfile({ title }) {
         </div>
       </div>
     </div>
-
-
-
-
-
-
   );
 }
+
+
