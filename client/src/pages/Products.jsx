@@ -1,5 +1,5 @@
 
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import pr2 from "../assets/images/pr2.png";
 import pr from "../assets/images/pr.png";
 import pr3 from "../assets/images/pr3.png";
@@ -10,7 +10,7 @@ import Navb from "../components/Navb";
 import OneProduct from "./OneProduct";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import {fetchProducts} from '../store/products'
+import { fetchProducts } from '../store/products'
 
 const Products = () => {
 
@@ -19,136 +19,40 @@ const Products = () => {
   useEffect(() => {
     dispatch(fetchProducts())
   }, [dispatch])
-  console.log(products,"state")
-  const navigate= useNavigate()
+  console.log(products, "state")
+  const navigate = useNavigate()
   return (
     <div className=" overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
-      <Navb/>
-      <section  >
-        <div className="container ">
+      <Navb />
+
+
+      <div className="flex min-h-[100vh] items-center justify-center mt-20 ">
+        <div className="  grid grid-cols-2 gap-5 md:grid-cols-1 lg:grid-cols-2 ">
           {products.map((product,index)=>
-          
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center" key={index}>
-            <div data-aos="zoom-in" className="mt-20">
-              <img
-                src={product.Images[0].url}
-                alt=""
-                className="w-full sm:w-[80%] mx-auto max-h-[350px] object-cover"
-                />
+          <div className="mb-20  w-full rounded-xl group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-2xl hover:shadow-cyan-500/50" key={index}>
+            <div className=" max-w-lg  ">
+              <img className="h-full  w-full object-cover transition-transform duration-500 group-hover:scale-125" src={product.Images[0].url} alt={product.Images[0].alt} />
             </div>
-            <div className="space-y-3 xl:pr-36 p-4 mt-10 ">
-              <p
-                data-aos="fade-up"
-                data-aos-delay="300"
-                className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary uppercase"
-                >
-                product {product.id}
-              </p>
-              <h1
-                data-aos="fade-up"
-                data-aos-delay="500"
-                className="uppercase text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
-                >
-                {product.title}
-              </h1>
-              <p data-aos="fade-up" data-aos-delay="700">
-               {product.description}
-               <div>price :{product.price}</div>
-               
-              </p>
-              <button
-              onClick={()=>navigate(`/OneProduct/:${product.id}`)}
-              // data-aos="fade-up"
-              data-aos-delay="900"
-              className=" bg-gradient-to-r from-primary to-secondary text-white hover:bg-blue-500 px-4 py-1 rounded-md duration-200"
-              >
-                View detaills
-                
-              </button>
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+            <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+              <h1 className="font-dmserif text-xl font-bold  text-white mb-5">{product.title}</h1>
+              <p className="mb-5 text-xl italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">${product.price}</p>
+              <button className="rounded-full bg-gradient-to-r from-primary to-secondary py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60"  onClick={()=>navigate(`/OneProduct/:${product.id}`)}>See More</button>
             </div>
+            <div className=" flex  flex-col items-center justify-center px-9 text-center  ">
+
+            <h1 className="font-dmserif text-xl font-bold  text-white mb-3">{product.title}</h1>
+            </div>
+            
           </div>
-              )}
-          {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center ">
-            <div className="space-y-3 xl:pr-36 p-4  mt-12 px-12">
-              <p
-                data-aos="fade-up"
-                data-aos-delay="300"
-                className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary uppercase"
-              >
-                product 2
-              </p>
-              <h1
-                data-aos="fade-up"
-                data-aos-delay="500"
-                className="uppercase text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
-              >
-                Restaurant template
-              </h1>
-              <p data-aos="fade-up" data-aos-delay="700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-                molestiae reprehenderit expedita corporis, non doloremque.
-              
-              </p>
-              <button
-                data-aos="fade-up"
-                data-aos-delay="900"
-                className="bg-gradient-to-r from-primary to-secondary text-white hover:bg-blue-500 px-4 py-1 rounded-md duration-200"
-              >
-                View details
-              </button>
-            </div>
-            <div data-aos="zoom-in" className="mt-20">
-              <img
-                src={pr}
-                alt=""
-                className="w-full sm:w-[80%] mx-auto max-h-[350px] object-cover"
-              />
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center ">
-            <div data-aos="zoom-in" className="mt-20 mb-5">
-              <img
-                src={pr3}
-                alt=""
-                className="w-full sm:w-[80%] mx-auto max-h-[350px] object-cover"
-              />
-            </div>
-            <div className="space-y-3 xl:pr-36 p-4  mt-10 mb-5 px-11">
-              <p
-                data-aos="fade-up"
-                data-aos-delay="300"
-                className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary uppercase"
-              >
-                product 3
-              </p>
-              <h1
-                data-aos="fade-up"
-                data-aos-delay="500"
-                className="uppercase text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
-              >
-                Xbeat template
-              </h1>
-              <p data-aos="fade-up" data-aos-delay="700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-                molestiae reprehenderit expedita corporis, non doloremque.
-                
-              </p>
-              <button
-                //  data-aos="fade-up"
-                // data-aos-delay="900"
-                className="bg-gradient-to-r from-primary to-secondary text-white hover:bg-blue-500 px-4 py-1 rounded-md duration-200"
-              >
-                View details
-              </button>
-            </div>
-          </div> */}
+          
+        )}
         </div>
-      </section>
-      {/* <OneProduct/> */}
+      </div>
+      {/* <div className="h-[100px] w-[200px] bg-gradient-to-r from-primary to-secondary rounded-full absolute top-0 left-0 blur-3xl animated-wrapper"></div> */}
     
     </div>
-    
+
   );
 };
 

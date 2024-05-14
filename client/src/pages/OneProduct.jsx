@@ -2,19 +2,15 @@ import React, { useEffect, useState } from 'react'
 import Navb from '../components/Navb'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, EffectCoverflow, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/bundle';
-import '../style/oneproduct.css'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProduct } from '../store/products'
 
-
+import '../style/oneproduct.css'
 
 function OneProduct() {
     const { id } = useParams();
-    const OneProduct = useSelector((state) => state.products.product)
+    const oneProduct = useSelector((state) => state.products.product)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchProduct(id))
@@ -27,56 +23,41 @@ function OneProduct() {
 
         <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
             <Navb />
-            <div className="carousel">
-
-                <div>
-                    <div className="carousel-content">
-                        <span>discover</span>
-                        <h1>image slider</h1>
-                        <hr />
-                        <a href="" className='slider-btn  bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3'>Order Now</a>
-                    </div>
+           <section className="product-details">
+              <div className="product-page-img">
+                {oneProduct && oneProduct.Images.map((image, index) => 
+                <div key={index} className="mySlides">
+                 <div className="numbertext">{index + 1} / {oneProduct.Images.length} </div>
+                 <img src={image.url} alt={image.alt} />
+                 </div>   
+                )}
+                <a href="#!" className='prev'>&#10094;</a>
+                <a href="#!" className='next'>&#10095;</a>
+                <div className="slider-img">
+                    {
+                        oneProduct && oneProduct.Images.map((image, index) =>
+                            <div key={index} className="slider-box">
+                                <img src={image.url} alt={image.alt} />
+                            </div>
+                    )}
                 </div>
-                <Swiper
-                    loop={false}
-                    className='myswiper'
-                    modules={[Pagination, EffectCoverflow, Autoplay]} effect={"coverflow"} grabCursor={true}
-                    centeredSlides={true}
-                    coverflowEffect={{
-                        rotate: 0,
-                        stretch: 0,
-                        depth: 100,
-                        modifier: 3,
-                        slideShadows: true
+              </div>
+            
+              {/* {oneProduct.map((product, index) =>
+              <div key={index} className="product-page-details">
+                <strong>{product.title}</strong>
+                <p className='product-category'>Description : {product.description}</p>
+                <p className='procuct-price'>Price : ${product.price}</p>
+                <div className="cart-btns">
+                    <a href="#!" className="add-cart">Add to Cart</a>
+                    <a href="#!" className="add-cart buy-now">Buy Now</a>
+                </div>
+              </div>
+                )} */}
+           </section>
+           <section className="product-all-info">
 
-                    }} pagination={{ clickable: true }}
-                    autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false
-                    }}
-                    breakpoints={{
-                        640: {
-                            slidesPerView: 3
-                        },
-                        768: {
-                            slidesPerView: 2
-                        },
-                        1024: {
-                            slidesPerView: 2
-                        },
-                        1560: {
-                            slidesPerView: 3
-                        },
-                    }}>
-                        
-                    {OneProduct && OneProduct.Images && OneProduct.Images.map((data, index) => (
-                        <img key={index} src={data.url} alt={`Product Image ${index}`} />
-                    ))}
-
-                </Swiper>
-                   
-
-            </div>
+           </section>
            
             <div className="h-[300px] w-[300px] bg-gradient-to-r from-primary to-secondary rounded-full absolute top-0 left-0 blur-3xl animated-wrapper"></div>
 
