@@ -1,5 +1,5 @@
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import pr2 from "../assets/images/pr2.png";
 import pr from "../assets/images/pr.png";
 import pr3 from "../assets/images/pr3.png";
@@ -11,6 +11,9 @@ import OneProduct from "./OneProduct";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { fetchProducts } from '../store/products'
+import { IoCartOutline } from "react-icons/io5";
+
+
 
 const Products = () => {
 
@@ -21,6 +24,8 @@ const Products = () => {
   }, [dispatch])
   console.log(products, "state")
   const navigate = useNavigate()
+ 
+
   return (
     <div className=" overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
       <Navb />
@@ -37,11 +42,12 @@ const Products = () => {
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
               <h1 className="font-dmserif text-xl font-bold  text-white mb-5">{product.title}</h1>
               <p className="mb-5 text-xl italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">${product.price}</p>
+              <IoCartOutline size={30} color="white" className="mb-5" />
               <button className="rounded-full bg-gradient-to-r from-primary to-secondary py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60"  onClick={()=>navigate(`/OneProduct/:${product.id}`)}>See More</button>
             </div>
             <div className=" flex  flex-col items-center justify-center px-9 text-center  ">
 
-            <h1 className="font-dmserif text-xl font-bold  text-white mb-3">{product.title}</h1>
+            <h1 className="font-dmserif text-xl font-bold  text-white mt-10">{product.title}</h1>
             </div>
             
           </div>

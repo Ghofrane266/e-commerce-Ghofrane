@@ -31,7 +31,7 @@ const NavLinks = [
   },
   
 ];
-const Navb = ({ handleOrderPopup }) => {
+const Navb = () => {
   const navigate=useNavigate()
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
@@ -74,9 +74,9 @@ const Navb = ({ handleOrderPopup }) => {
                
                  
               <button
-                   onClick={() => handleOrderPopup()}
+                
                    className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3"
-                   >
+                   onClick={()=>navigate("order")} >
                    Order
                    <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
                   </button>

@@ -13,6 +13,7 @@ import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import Auth from '../apps/Auth';
 import OneProduct from '../pages/OneProduct';
+import Cart from '../pages/Cart/Cart';
 function Router() {
   const [isPlay, setIsPlay] = useState(false);
 
@@ -53,6 +54,8 @@ function Router() {
           <Route path='signup' element={<Signup />} />
 
         </Route>
+
+          <Route path='order' element={<Cart />} />
 
 
 

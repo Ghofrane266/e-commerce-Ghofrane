@@ -41,7 +41,7 @@ const App = () => {
 
   return (
     <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
-      <Navb  handleOrderPopup={handleOrderPopup}/>
+      <Navb />
       
       <Header togglePlay={togglePlay} />
       <Services  handleOrderPopup={handleOrderPopup}/>
@@ -50,7 +50,7 @@ const App = () => {
       <Testimonial/>
 
       <Footer />  
-      <OrderPopup orderPopup={orderPopup} setOrderPopup={setOrderPopup} />
+      {/* <OrderPopup orderPopup={orderPopup} setOrderPopup={setOrderPopup} /> */}
     
       {/* <Product togglePlay={togglePlay} /> */}
       {/* <Products/> */}

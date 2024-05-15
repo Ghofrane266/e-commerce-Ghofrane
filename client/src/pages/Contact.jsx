@@ -1,10 +1,12 @@
 import React from 'react'
 import '../style/contact.css'
  import contact3 from "../assets/images/contact3.png"
+import Navb from '../components/Navb'
 // import Navb from '../components/Navb'
 function Contact() {
   return (
     <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
+      <Navb/>
       <div className='contact-container'>
         <form action="" className="contact-left rounded-2xl  bg-dark hover:bg-gradient-to-r from-primary to-secondary hover:text-white relative shadow-xl duration-high group w-[500px] h-[500px]">
 

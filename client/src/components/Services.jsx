@@ -5,6 +5,7 @@ import pr3 from "../assets/images/pr3.png";
 import { FaStar } from "react-icons/fa";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
+import { useNavigate } from "react-router-dom";
 
 const ServicesData = [
   {
@@ -44,6 +45,7 @@ const Services = ({ handleOrderPopup }) => {
     setShowSignup(true);
     setShowLogin(false); // Fermer le popup de connexion
   };
+  const navigate=useNavigate()
   return (
     <>
       <span id="services"></span>
@@ -89,7 +91,7 @@ const Services = ({ handleOrderPopup }) => {
                   </p>
                   <a
                   href={service.link}
-                  className="inline-block  font-semibold mb-1 text-primary group-hover:text-white duration-300"
+                  className="inline-block  font-semibold mb-1 text-primary group-hover:text-white duration-300" onClick={()=>{navigate('products')}}
                 >
                   Learn More
                 </a>
