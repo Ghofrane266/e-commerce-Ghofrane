@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import pr from "../assets/images/pr.png";
 import pr2 from "../assets/images/pr2.png";
 import pr3 from "../assets/images/pr3.png";
@@ -6,38 +6,19 @@ import { FaStar } from "react-icons/fa";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import { useNavigate } from "react-router-dom";
+import { IoCartOutline } from "react-icons/io5";
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchProducts } from "../store/products";
 
-const ServicesData = [
-  {
-    id: 1,
-    img: pr3,
-    title: "XBeat template",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      price:"£150",
-      link:"#"
-  },
-  {
-    id: 2,
-    img: pr,
-    title: "Restaurant template",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      price:"£100",
-      link:"#"
-  },
-  {
-    id: 3,
-    img: pr2,
-    title: "Coffee shop template",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      price:"£120",
-      link:"#"
-  },
-];
+
+
 
 const Services = ({ handleOrderPopup }) => {
+  const products = useSelector((state) => state.products.products.items)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchProducts())
+  }, [dispatch])
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
 
@@ -64,15 +45,15 @@ const Services = ({ handleOrderPopup }) => {
             </p> */}
           {/* </div> */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 md:gap-5 place-items-center ">
-            {ServicesData.map((service) => (
+            {products.map((product) => (
               <div
                 data-aos="zoom-in"
-                className="rounded-2xl  bg-dark hover:bg-gradient-to-r from-primary to-secondary hover:text-white relative shadow-xl duration-high group max-w-[300px]"
+                className="rounded-2xl  bg-dark hover:bg-gradient-to-r from-primary to-secondary hover:text-white relative shadow-xl duration-high group max-w-sm flex-wrap"
               >
-                <div className="h-[100px]">
+                <div className="h-[80px]">
                   <img
-                    src={service.img}
-                    alt=""
+                    src={product.Images[0].url}
+                    alt={product.Images[0].alt}
                     className="max-w-[180px] block mx-auto transform -translate-y-14
                   group-hover:scale-105  duration-300 shadow-md  h-[150px]"
                   />
@@ -84,25 +65,29 @@ const Services = ({ handleOrderPopup }) => {
                     <FaStar className="text-yellow-500" />
                     <FaStar className="text-yellow-500" />
                   </div> */}
-                  <h1 className="text-xl font-bold mb-5 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:text-white">{service.title}</h1>
-                  <p className="mb-3 text-white group-hover:text-white duration-high text-sm line-clamp-2">
-                    {service.description}
+                  <h1 className="text-xl font-bold mt-5 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:text-white">{product.title}</h1>
+                  {/* <p className="mb-3 text-white group-hover:text-white duration-high text-sm line-clamp-2">
+                    {product.description}
                      
-                  </p>
+                  </p> */}
+                  <h2 className="text-xl font-bold mb-3 mt-3 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:text-white" >${product.price}</h2>
                   <a
-                  href={service.link}
-                  className="inline-block  font-semibold mb-1 text-primary group-hover:text-white duration-300" onClick={()=>{navigate('products')}}
+                  
+                  className="inline-block cursor-pointer  text-sm font-italic mb-1 text-white group-hover:text-white duration-300" onClick={()=>{navigate('products')}}
                 >
                   Learn More
                 </a>
-                  <h2 className="text-xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:text-white" >{service.price}</h2>
                  
-                  <button
+                 <div className="flex items-center justify-center gap-8 mb-4">
+                 <button
                     className=" bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-300 text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white group-hover:text-white"
                     onClick={() => setShowLogin(true)}
                   >
                     Order Now
                   </button>
+              <IoCartOutline size={30}  className="mt-4 text-primary group-hover:text-white" />
+
+                 </div>
                 </div>
               </div>
             ))}

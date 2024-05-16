@@ -5,9 +5,18 @@ import { FaLock ,FaTimes} from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import '../style/login.css'
 import Login from './Login';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { signup } from '../store/auth';
 
 
 function Signup({ onClose }) {
+  const dispatch = useDispatch();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
     
   return (
     <main  className="h-screen w-screen fixed top-0 left-0 bg-black/50 z-50 backdrop-blur-sm shadow-md " >
@@ -15,23 +24,39 @@ function Signup({ onClose }) {
         <div className='Auth rounded-2xl  bg-gradient-to-r from-primary to-secondary hover:text-white relative shadow-xl duration-high group'>
         <FaTimes onClick={onClose} className="absolute top-3 right-4 text-white cursor-pointer" />
 
-            <form action=''>
+            <form action=''  onSubmit={(e) => {
+                        e.preventDefault()
+                        if (password !== confirmPassword) {
+                          alert('Passwords do not match');
+                          return;
+                        }
+                        dispatch(signup({ email, password,username }))
+                        onClose()
+                    }}>
                 <h1>Register</h1>
                 <div className='input-box'>
-                    <input type="text" placeholder='Username' required />
+                    <input type="text" placeholder='username' required onChange={(e) => {
+                                setUsername(e.target.value)
+                            }}/>
                     <FaUser className='icon'/>
                 </div>
                 <div className='input-box'>
-                    <input type="email" placeholder='email' required />
+                    <input type="email" placeholder='email' required onChange={(e) => {
+                                setEmail(e.target.value)
+                            }}/>
                     <MdEmail className='icon'/>
                     
                 </div>
                 <div className='input-box'>
-                    <input type="password" placeholder='Password' required />
+                    <input type="password" placeholder='password' required  onChange={(e) => {
+                                setPassword(e.target.value)
+                            }}/>
                     <FaLock className='icon'/>
                 </div>
                 <div className='input-box'>
-                    <input type="password" placeholder='Confirm Password' required />
+                    <input type="password" placeholder='confirm password' required onChange={(e) => {
+                                setConfirmPassword(e.target.value)
+                            }}/>
                     <FaLock className='icon'/>
                 </div>
               

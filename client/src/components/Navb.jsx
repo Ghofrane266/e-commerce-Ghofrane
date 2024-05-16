@@ -7,7 +7,8 @@ import { FaCartShopping } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser, FaTimes } from "react-icons/fa";
+
 const NavLinks = [
   {
     id: 1,
@@ -29,10 +30,10 @@ const NavLinks = [
     name: "Contact",
     link: "contact",
   },
-  
 ];
+
 const Navb = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
   const [showLogin, setShowLogin] = useState(false);
@@ -42,25 +43,26 @@ const Navb = () => {
     setShowSignup(true);
     setShowLogin(false); // Fermer le popup de connexion
   };
+
   return (
     <div className="relative z-[9999] text-black dark:text-white duration-300">
-      <div className="container py-2 md:py-0  " >
+      <div className=" py-2 md:py-0 shadow-xl dark:shadow-2xl dark:shadow-white/10">
         <div className="flex justify-between items-center">
-          {/* logo section */}
-          <div className="flex items-center gap-2">
-            <img src={logo}  alt="" className="h-16" />
+          {/* Logo section */}
+          <div className="flex items-center gap-2 px-5">
+            <img src={logo} alt="" className="h-16" />
             <p className="text-3xl">
               SaaS <span className="font-bold">e-commerce</span>
             </p>
           </div>
           {/* Desktop Menu section */}
-          <nav className="hidden md:block ">
-            <ul className="flex items-center gap-8 ">
+          <nav className="hidden md:block">
+            <ul className="flex items-center gap-8 px-8">
               {NavLinks.map(({ id, name, link }) => {
                 return (
                   <li key={id} className="py-4">
                     <a
-                     onClick={()=>navigate(`${link}`)}                   
+                      onClick={() => navigate(`${link}`)}
                       className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500"
                     >
                       {name}
@@ -69,17 +71,18 @@ const Navb = () => {
                 );
               })}
               {/* Darkmode feature */}
-              <FaRegUser  onClick={() => setShowLogin(true)} size={20} style={{cursor:"pointer"}}/>
-                    
-               
-                 
+              <FaRegUser
+                onClick={() => setShowLogin(true)}
+                size={20}
+                style={{ cursor: "pointer" }}
+              />
               <button
-                
-                   className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3"
-                   onClick={()=>navigate("order")} >
-                   Order
-                   <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
-                  </button>
+                className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3"
+                onClick={() => navigate("order")}
+              >
+                Order
+                <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
+              </button>
               <DarkMode />
             </ul>
           </nav>
@@ -91,13 +94,13 @@ const Navb = () => {
               {showMenu ? (
                 <HiMenuAlt1
                   onClick={toggleMenu}
-                  className="cursor-pointer "
+                  className="cursor-pointer"
                   size={30}
                 />
               ) : (
                 <HiMenuAlt3
                   onClick={toggleMenu}
-                  className="cursor-pointer "
+                  className="cursor-pointer"
                   size={30}
                 />
               )}
@@ -105,7 +108,57 @@ const Navb = () => {
           </div>
         </div>
       </div>
-      {showLogin && <Login openSignup={openSignup} onClose={()=>setShowLogin(false)}/>}
+      {showMenu && (
+        <div className="md:hidden block absolute top-0 left-0 w-full  bg-white dark:bg-gray-800 z-[9998]">
+          <FaTimes className="absolute top-5 right-6 text-black dark:text-white cursor-pointer" size={22} onClose={() => setShowMenu(false)} onClick={toggleMenu} />
+
+          <ul className="flex flex-col items-center gap-4 pt-10 mb-4">
+            {NavLinks.map(({ id, name, link }) => {
+              return (
+                <li key={id}>
+                  <a
+                    onClick={() => {
+                      navigate(`${link}`);
+                      toggleMenu(); // Ferme le menu après la navigation
+                    }}
+                    className="text-xl font-semibold hover:text-primary py-2"
+                  >
+                    {name}
+                  </a>
+                </li>
+              );
+            })}
+            <li>
+              <FaRegUser
+                onClick={() => {
+                  setShowLogin(true);
+                  toggleMenu();
+                }}
+                size={20}
+                style={{ cursor: "pointer" }}
+              />
+            </li>
+            <li>
+              <button
+                className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3"
+                onClick={() => {
+                  navigate("order");
+                  toggleMenu();
+                }}
+              >
+                Order
+                <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
+              </button>
+            </li>
+            <li>
+              <DarkMode />
+            </li>
+          </ul>
+        </div>
+      )}
+      {showLogin && (
+        <Login openSignup={openSignup} onClose={() => setShowLogin(false)} />
+      )}
       {showSignup && <Signup onClose={() => setShowSignup(false)} />}
     </div>
   );
@@ -113,80 +166,3 @@ const Navb = () => {
 
 export default Navb;
 
-
-
-
-
-
-
-
-
-
-
-
-// import Container from 'react-bootstrap/Container';
-// import Form from 'react-bootstrap/Form';
-// import Nav from 'react-bootstrap/Nav';
-// import Navbar from 'react-bootstrap/Navbar';
-
-// import Offcanv from './Offcanv';
-// import { useState } from 'react';
-// import { NavLink } from 'react-router-dom';
-
-// import { IoMdLogIn } from "react-icons/io";
-// import './nav.css'
-
-
-// export default function Navb(props) {
-//     const [show, setshow] = useState(false);
-//     const handleClose = () => setshow(false);
-//     // const handleShow = () => setshow(true);
-//     console.log(props);
-
-  
-//     return (
-        
-//         <Navbar expand="lg" className="nav"  list={props.itemList}  addcart={props.addToCart}  changeValue={props.changeValue} changeitem={props.removeFromCart}  >
-//             <Container fluid>
-//                 <Navbar.Brand href="#"  className='fs-4 fw-bold textp'><i>logo</i></Navbar.Brand>
-//                 <Navbar.Toggle aria-controls="navbarScroll"  style={{color:"white"}}/>
-//                 <Navbar.Collapse id="navbarScroll" style={{color:"white"}} >
-//                 {/* <Form >
-//                         {/* <FaCartPlus className='mx-3' size={40} onClick={handleShow} /> */}
-// {/*                      
-//                         <Form.Control
-                     
-//                             type="search"
-//                              placeholder= "Search"
-//                             className=" ms-4 "
-//                             // aria-label="Search"
-//                             onChange={(e)=>props.changeValue(e)}
-//                         /> */}
-                     
-//                     {/* </Form> */} 
-//                     <Nav
-//                         className="ms-auto my-2 m-5"
-//                         style={{ maxHeight: '100px' }}
-//                         navbarScroll
-//                     >
-                        
-//                         <Nav.Link to="/" as={NavLink} className='link' style={{color:"white",fontSize:"18px",fontWeight:500,marginRight:'24px'}}  >Home</Nav.Link>
-                        
-//                         <Nav.Link to="/about" as={NavLink} className='link' style={{color:"white" ,fontSize:"18px",fontWeight:500,marginRight:'24px'}} >About</Nav.Link>
-//                         {/* <Nav.Link to="/template" as={NavLink} className='link' style={{color:"white" ,fontSize:"18px",fontWeight:500,marginRight:'24px'}} >template</Nav.Link> */}
-//                         <Nav.Link to="/pricing" as={NavLink} className='link' style={{color:"white" ,fontSize:"18px",fontWeight:500,marginRight:'24px'}} >Pricing</Nav.Link>
-//                         <Nav.Link to="/blog" as={NavLink} className='link' style={{color:"white" ,fontSize:"18px",fontWeight:500,marginRight:'24px'}} >Blog</Nav.Link>
-                          
-//                         <Nav.Link to="/auth" as={NavLink} className='link' style={{color:"white",marginRight:'24px'}} ><IoMdLogIn size={25}/></Nav.Link>
-                        
-//                     </Nav>
-
-                   
-//                 </Navbar.Collapse>
-//             </Container>
-//             <Offcanv show={show} onHide={handleClose} items={props.itemList}  removeitems={props.removeFromCart} />
-//         </Navbar>
-
-//     );
-
-// }

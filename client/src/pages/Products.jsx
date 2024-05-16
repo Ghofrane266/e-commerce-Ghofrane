@@ -10,7 +10,7 @@ import Navb from "../components/Navb";
 import OneProduct from "./OneProduct";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import { fetchProducts } from '../store/products'
+import {  fetchProducts } from '../store/products'
 import { IoCartOutline } from "react-icons/io5";
 
 
@@ -32,7 +32,7 @@ const Products = () => {
 
 
       <div className="flex min-h-[100vh] items-center justify-center mt-20 ">
-        <div className="  grid grid-cols-2 gap-5 md:grid-cols-1 lg:grid-cols-2 ">
+        <div className="  grid grid-cols-2 gap-12 md:grid-cols-1 lg:grid-cols-2  ">
           {products.map((product,index)=>
           <div className="mb-20  w-full rounded-xl group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-2xl hover:shadow-cyan-500/50" key={index}>
             <div className=" max-w-lg  ">
@@ -45,7 +45,7 @@ const Products = () => {
               <IoCartOutline size={30} color="white" className="mb-5" />
               <button className="rounded-full bg-gradient-to-r from-primary to-secondary py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60"  onClick={()=>navigate(`/OneProduct/:${product.id}`)}>See More</button>
             </div>
-            <div className=" flex  flex-col items-center justify-center px-9 text-center  ">
+            <div className=" flex  flex-col items-center justify-center px-4 text-center  ">
 
             <h1 className="font-dmserif text-xl font-bold  text-white mt-10">{product.title}</h1>
             </div>

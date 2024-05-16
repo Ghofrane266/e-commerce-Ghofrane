@@ -14,7 +14,7 @@ function Login() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate()
     return (
-        <div className='d-flex justify-content-center align-items-center' style={{height:'100vh'}}>
+        <div className='flex justify-center items-center' style={{height:'100vh'}}>
         <div className='Auth'>
             <form onSubmit={(e) => {
                 e.preventDefault()

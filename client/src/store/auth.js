@@ -8,6 +8,12 @@ export const login = createAsyncThunk("login",async (args,{dispatch})=>{
     dispatch(getMe())
     
 })
+export const signup = createAsyncThunk("signup",async (args,{dispatch})=>{
+    const response = await axios.post("http://localhost:5000/api/v1/auth/login",args)
+    localStorage.setItem('token',response.data)
+    dispatch(getMe())
+    
+})
 export const updateProfile = createAsyncThunk("updateMe",async (body,{dispatch})=>{
     const token = localStorage.getItem("token");
     const response = await axios.post('http://localhost:5000/api/v1/auth/update-me',body,{
@@ -27,6 +33,11 @@ export const getMe = createAsyncThunk("getMe",async ()=>{
 
 })
 
+export const logout = createAsyncThunk("logout",async ()=>{
+    localStorage.removeItem("token")
+    console.log("logout")
+
+})
 
 
 
@@ -40,10 +51,15 @@ export const authSlice = createSlice({
     initialState:{
         me:null,
     },
+
+
     reducers: {},
     extraReducers (builder){
         builder.addCase(getMe.fulfilled, (state,action)=>{
             state.me = action.payload
+        })
+        builder.addCase(logout.fulfilled, (state,action)=>{
+            state.me = null
         })
     }
   })

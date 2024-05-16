@@ -7,13 +7,50 @@ import product1 from '../../../data/product1.jpg'
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { MdOutlineCloudUpload } from "react-icons/md";
 import './add.css'
+import axios from 'axios';
 
 
 export default function AddProduct() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [product, setProduct] = useState({});
-  const handleChange = (e) => {
+  const [product, setProduct] = useState({ Images: [] });
+  const [images, setImages] = useState([]);
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+     setImages([...images, ...Array.from(e.target.files)]);
+      // console.log(e.target.files[0])
+    }
+  }
+ 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const imageUrls = [];
+      for (let image of images) {
+        const formData = new FormData();
+        formData.append("file", image);
+
+        const response = await axios.post(
+          "http://localhost:5000/api/v1/upload",
+          formData
+        );
+
+        imageUrls.push({
+          url: response.data.path,
+          alt: image.name,
+        });
+      }
+
+      const productImages = { ...product, Images: imageUrls };
+      console.log(productImages, "product with image URLs");
+
+      dispatch(sendProduct(productImages)).then((res) => {
+        if (!res.error) navigate(-1);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };  const handleChange = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: name === "price" ? +value : value })
   }
@@ -23,7 +60,7 @@ export default function AddProduct() {
         <div className='p-8 grow flex justify-center items-center '>
 
           <label htmlFor="file" className='labIcon'> <MdOutlineCloudUpload size={45} /></label>
-          <input type="file" id='file' className='files' name=''/>
+          <input type="file" id='file' className='files' name='url' multiple onChange={handleFileChange} />
 
         </div>
         <div className="px-5 pb-5">
@@ -50,11 +87,8 @@ export default function AddProduct() {
             {/* <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span> */}
           </div>
           <div className="flex items-center  justify-between">
-            <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={() => {
-              dispatch(sendProduct(product)).then((res) => {
-                if (!res.error) navigate(-1);
-              })
-            }}>Send</a>
+            <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
+            onClick={onSubmit}>Send</a>
 
             <MdOutlineDeleteOutline size={28} />
           </div>
