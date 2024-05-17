@@ -13,15 +13,15 @@ export const dataProducts = [
     },
     {
 
-        title: "Xbeat template",
-        description: "beat",
-        price: 120,
-    },
-    {
-
         title: "Coffee Shop",
         description: "coffee",
         price: 150,
+    },
+    {
+
+        title: "Xbeat template",
+        description: "beat",
+        price: 120,
     },
 
 
@@ -92,74 +92,74 @@ export const imageData = [
     {
         url: "https://res.cloudinary.com/dsaso2a8g/image/upload/v1715541363/beat1_jilblf.png",
         alt: "xbeat image",
-        productId: 2
+        productId: 3
     },
     {
         url: "https://res.cloudinary.com/dpz0ymtax/image/upload/v1715888038/lz7agux1i57v1slc3nfz.png",
         alt: "xbeat image",
-        productId: 2
+        productId: 3
     },
     {
         url: "https://res.cloudinary.com/dsaso2a8g/image/upload/v1715541363/beat3_nn4djk.png",
         alt: "xbeat image",
-        productId: 2
+        productId: 3
     },
     {
         url: "https://res.cloudinary.com/dpz0ymtax/image/upload/v1715888100/zcqhgfc16ovhkief91cb.png",
         alt: "xbeat image",
-        productId: 2
+        productId: 3
     },
     {
         url: "https://res.cloudinary.com/dsaso2a8g/image/upload/v1715541364/beat5_kusgld.png",
         alt: "xbeat image",
-        productId: 2
+        productId: 3
     },
     {
         url: "https://res.cloudinary.com/dsaso2a8g/image/upload/v1715541364/beat6_ykjilp.png",
         alt: "xbeat image",
-        productId: 2
+        productId: 3
     },
 
     ,
     {
         url: "https://res.cloudinary.com/dpz0ymtax/image/upload/v1715887557/tpprplpkdhso0gz2xtfb.png",
         alt: 'coffee shop image',
-        productId: 3
+        productId: 2
     },
     {
         url: "https://res.cloudinary.com/dsaso2a8g/image/upload/v1715541366/coffee3_rkujxk.png",
         alt: 'coffee shop image',
-        productId: 3
+        productId: 2
     },
     {
         url: "https://res.cloudinary.com/dsaso2a8g/image/upload/v1715541364/coffee2_opwjsp.png",
         alt: 'coffee shop image',
-        productId: 3
+        productId: 2
     },
     {
         url: "https://res.cloudinary.com/dpz0ymtax/image/upload/v1715887819/jt6wh5m9vb2ohszjyanb.png",
         alt: 'coffee shop image',
-        productId: 3
+        productId: 2
     },
     {
         url: "https://res.cloudinary.com/dsaso2a8g/image/upload/v1715541363/coffee4_ljo2mu.png",
         alt: 'coffee shop image',
-        productId: 3
+        productId: 2
     },
     {
         url: "https://res.cloudinary.com/dpz0ymtax/image/upload/v1715887878/tw5u478gstzafrq54rll.png",
         alt: 'coffee shop image',
-        productId: 3
+        productId: 2
     },
     {
         url: "https://res.cloudinary.com/dpz0ymtax/image/upload/v1715887921/xfvgydvydygoqhfzbyer.png",
         alt: 'coffee shop image',
-        productId: 3
+        productId: 2
     },
     {
         url: "https://res.cloudinary.com/dpz0ymtax/image/upload/v1715887969/vn9kwifqn89rpplsmxiy.png",
         alt: 'coffee shop image',
-        productId: 3
+        productId: 2
     },
 
 

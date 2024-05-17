@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 import Services from "../components/Services";
 import Testimonial from "../components/Testimonial";
 import OrderPopup from "../components/OrderPopup";
+import { CartProvider, useCart } from "react-use-cart";
 
 
 const App = () => {
@@ -40,6 +41,8 @@ const App = () => {
   }, []);
 
   return (
+     
+
     <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
       <Navb />
       
@@ -50,11 +53,9 @@ const App = () => {
       <Testimonial/>
 
       <Footer />  
-      {/* <OrderPopup orderPopup={orderPopup} setOrderPopup={setOrderPopup} /> */}
-    
-      {/* <Product togglePlay={togglePlay} /> */}
-      {/* <Products/> */}
+     
     </main>
+      
   );
 };
 

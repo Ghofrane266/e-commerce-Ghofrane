@@ -9,7 +9,9 @@ export const fetchProducts = createAsyncThunk("fetchProducts", async () => {
 })
 export const fetchProduct = createAsyncThunk("fetchProduct", async (id) => {
     const response = await axios.get("http://localhost:5000/api/v1/products/" + id)
+    console.log(response.data,"from store")
     return response.data
+    
 })
 export const sendProduct = createAsyncThunk("addProduct", async (body) => {
     const response = await axios.post("http://localhost:5000/api/v1/products/", body)
@@ -38,9 +40,9 @@ export const counterSlice = createSlice({
         builder.addCase(fetchProduct.fulfilled, (state, action) => {
             state.product = action.payload
         })
-        builder.addCase(sendProduct.fulfilled, (state, action) => {
-            state.product = action.payload
-        })
+        // builder.addCase(sendProduct.fulfilled, (state, action) => {
+        //     state.product = action.payload
+        // })
         builder.addCase(fetchImages.fulfilled, (state, action) => {
             state.images = action.payload;
         });

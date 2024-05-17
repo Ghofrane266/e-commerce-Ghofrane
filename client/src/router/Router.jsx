@@ -55,7 +55,7 @@ function Router() {
 
         </Route>
 
-          <Route path='order' element={<Cart />} />
+          <Route path='/order' element={<Cart />} />
 
 
 

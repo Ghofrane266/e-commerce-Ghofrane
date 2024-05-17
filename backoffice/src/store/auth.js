@@ -27,7 +27,11 @@ export const getMe = createAsyncThunk("getMe",async ()=>{
 
 })
 
+export const logout = createAsyncThunk("logout",async ()=>{
+    localStorage.removeItem("token")
+    console.log("logout")
 
+})
 
 
 
@@ -44,6 +48,9 @@ export const authSlice = createSlice({
     extraReducers (builder){
         builder.addCase(getMe.fulfilled, (state,action)=>{
             state.me = action.payload
+        })
+        builder.addCase(logout.fulfilled, (state,action)=>{
+            state.me = null
         })
     }
   })

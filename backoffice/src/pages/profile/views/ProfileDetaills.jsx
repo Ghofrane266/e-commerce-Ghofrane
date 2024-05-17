@@ -14,7 +14,7 @@ const ProfileDetaills = () => {
         {/* <Navbar /> */}
         <div className="tops">
           <div className="lefts">
-            <div className="editButton" onClick={()=>navigate("edit")}>Edit</div>
+            <div className="editButton" onClick={() => navigate("edit")}>Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
               <img
@@ -23,7 +23,10 @@ const ProfileDetaills = () => {
                 className="itemImg"
               />
               <div className="details">
-                <h1 className="itemTitle">{user.fullName}</h1>
+                <div className="detailItem">
+                  <span className="itemKey">FullName: </span>
+                  <span className="itemTitle">{user.fullName}</span>
+                </div>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
                   <span className="itemValue">{user.email}</span>

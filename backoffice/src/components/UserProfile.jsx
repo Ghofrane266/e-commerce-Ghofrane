@@ -7,9 +7,14 @@ import { userProfileData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import avatar from '../data/avatar.jpg';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../store/auth';
 
 const UserProfile = ({ closeDropdown }) => {
   const navigate =useNavigate()
+  const dispatch=useDispatch()
+  const user = useSelector((store) => store.auth.me);
+
   const handleProfileClick = () => {
     navigate("profile");
     closeDropdown();
@@ -31,13 +36,13 @@ const UserProfile = ({ closeDropdown }) => {
       <div className="flex gap-5 items-center mt-6 border-color border-b-1 pb-6">
         <img
           className="rounded-full h-24 w-24"
-          src={avatar}
+          src={user.avatarUrl}
           alt="user-profile"
         />
         <div>
-          <p className="font-semibold text-xl dark:text-gray-200"> Michael Roberts </p>
+          <p className="font-semibold text-xl dark:text-gray-200"> {user.fullName} </p>
           <p className="text-gray-500 text-sm dark:text-gray-400">  Administrator   </p>
-          <p className="text-gray-500 text-sm font-semibold dark:text-gray-400"> info@shop.com </p>
+          <p className="text-gray-500 text-sm font-semibold dark:text-gray-400"> {user.email} </p>
         </div>
       </div>
       <div>
@@ -60,6 +65,7 @@ const UserProfile = ({ closeDropdown }) => {
       </div>
       <div className="mt-5">
         <Button
+        onClick={()=>dispatch(logout())}
           color="white"
           bgColor={currentColor}
           text="Logout"

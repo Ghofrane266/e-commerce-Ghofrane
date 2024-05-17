@@ -8,31 +8,36 @@ import { useNavigate } from "react-router-dom";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import { FaRegUser, FaTimes } from "react-icons/fa";
+import { useCart } from "react-use-cart";
 
 const NavLinks = [
   {
     id: 1,
     name: "Home",
-    link: "#",
+    link: "/",
   },
   {
     id: 2,
     name: "Products",
-    link: "products",
+    link: "/products",
   },
   {
     id: 3,
     name: "Pricing",
-    link: "pricing",
+    link: "/pricing",
   },
   {
     id: 4,
     name: "Contact",
-    link: "contact",
+    link: "/contact",
   },
 ];
 
 const Navb = () => {
+  const {
+    isEmpty,
+    totalItems,
+} = useCart();
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
@@ -63,7 +68,7 @@ const Navb = () => {
                   <li key={id} className="py-4">
                     <a
                       onClick={() => navigate(`${link}`)}
-                      className="text-xl font-semibold hover:text-primary py-2 hover:border-b-2 hover:border-secondary transition-colors duration-500"
+                      className="text-xl font-semibold hover:text-primary py-2 transition-colors duration-500"
                     >
                       {name}
                     </a>
@@ -72,16 +77,20 @@ const Navb = () => {
               })}
               {/* Darkmode feature */}
               <FaRegUser
+              className="hover:text-primary"
                 onClick={() => setShowLogin(true)}
                 size={20}
                 style={{ cursor: "pointer" }}
               />
               <button
-                className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3"
-                onClick={() => navigate("order")}
+                className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white rounded-full flex items-center gap-3 relative inline-flex  p-2  text-center text-white bg-blue-700 rounded-lg  "
+                onClick={() => navigate("/order")}
               >
+
                 Order
-                <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
+                <FaCartShopping size={25} className="text-xl text-white drop-shadow-sm cursor-pointer" />
+              <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900 p-3" >{totalItems} </span> 
+
               </button>
               <DarkMode />
             </ul>
@@ -142,7 +151,7 @@ const Navb = () => {
               <button
                 className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3"
                 onClick={() => {
-                  navigate("order");
+                  navigate("/order");
                   toggleMenu();
                 }}
               >

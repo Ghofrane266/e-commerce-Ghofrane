@@ -6,10 +6,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchImages, fetchProduct } from '../store/products'
+import { useCart } from 'react-use-cart'
 
 
 
 const OneProduct = () => {
+    const { addItem, items } = useCart();
+
+    
+
     const [slideIndex, setSlideIndex] = useState(1);
     const [width, setWidth] = useState(0);
     const [start, setStart] = useState(0);
@@ -29,8 +34,8 @@ const OneProduct = () => {
     }
     function slideShow(n) {
 
-        if (n > images.length) { setSlideIndex(1); }
-        if (n < 1) { setSlideIndex(images.length); }
+        if (n > oneProduct?.Images?.length) { setSlideIndex(1); }
+        if (n < 1) { setSlideIndex(oneProduct?.Images?.length); }
     }
     //drag
     function dragStart(e) {
@@ -56,57 +61,64 @@ const OneProduct = () => {
     };
     //details
     const { id } = useParams();
-    const oneProduct = useSelector((state) => state.products)
-    const images = useSelector(state => state.products.images);
+    const oneProduct = useSelector((state) => state.products?.product)
+    console.log(oneProduct, "state")
+
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchProduct(id));
-        dispatch(fetchImages());
 
-    }, [dispatch,id])
-    
+
+    }, [dispatch, id])
+    console.log(items,'items')
+    const addToCart = () => {
+        const item = items.filter((e, i) => e.id === oneProduct.id )
+        if (item.length === 0) {
+            addItem(oneProduct)}
+    }
+
     return (
 
         <main>
             <Navb />
-            
+
             <section className="product-details">
                 <div className="product-page-img">
-                <div className='big-images'>
-                    {images.map((image, index) =>
-                        <div key={index} className="mySlides" style={{ display: (index + 1) === slideIndex ? 'block' : 'none' }}>
-                            <div className="numbertext">{index + 1} / {images.length} </div>
-                            <img src={image.url} alt={image.alt} />
-                        </div>
-                    )}
-                    <a href="#!" className='prev' onClick={() => plusSlides(-1)}>&#10094;</a>
-                    <a href="#!" className='next' onClick={() => plusSlides(1)}>&#10095;</a>
-                   </div>
+                    <div className='big-images'>
+                        {oneProduct?.Images?.map((image, index) =>
+                            <div key={index} className="mySlides" style={{ display: (index + 1) === slideIndex ? 'block' : 'none' }}>
+                                <div className="numbertext">{index + 1} / {oneProduct?.Images?.length} </div>
+                                <img src={image.url} alt={image.alt} />
+                            </div>
+                        )}
+                        <a href="#!" className='prev' onClick={() => plusSlides(-1)}>&#10094;</a>
+                        <a href="#!" className='next' onClick={() => plusSlides(1)}>&#10095;</a>
+                    </div>
                     <div className="slider-img" draggable={true} ref={slideRef}
                         onDragStart={dragStart} onDragOver={dragOver} onDragEnd={dragEnd}>
-                        {
-                            images.map((image, index) =>
-                                <div key={index} className={`slider-box ${index + 1 === slideIndex && 'active'}`}
-                                    onClick={() => setSlideIndex(index + 1)}>
-                                    <img src={image.url} alt={image.alt} />
-                                </div>
-                            )}
+
+                        {oneProduct?.Images?.map((image, index) =>
+                            <div key={index} className={`slider-box ${index + 1 === slideIndex && 'active'}`}
+                                onClick={() => setSlideIndex(index + 1)}>
+                                <img src={image.url} alt={image.alt} />
+                            </div>
+                        )}
                     </div>
                 </div>
 
-        
-                 
-              <div  className="product-page-details">
-                <strong>{oneProduct.title}</strong>
-                <p className='small-desc'>Description : {oneProduct.description}</p>
-                <p className='procuct-price'>Price : ${oneProduct.price}</p>
-                <div className="cart-btns">
-                    <a href="#!" className="add-cart bg-gradient-to-r from-primary to-secondary">Add to Cart</a>
-                    <a href="#!" className="add-cart buy-now bg-gradient-to-r from-primary to-secondary">Buy Now</a>
+
+
+                <div className="product-page-details">
+                    <strong>{oneProduct?.title}</strong>
+                    <p className='small-desc'>Description : {oneProduct?.description}</p>
+                    <p className='procuct-price'>Price : ${oneProduct?.price}</p>
+                    <div className="cart-btns">
+                        {oneProduct && <p className="add-cart bg-gradient-to-r from-primary to-secondary cursor-pointer" onClick={() => addToCart()}>Add to Cart</p>}
+                        <p className="add-cart buy-now bg-gradient-to-r from-primary to-secondary">Buy Now</p>
+                    </div>
                 </div>
-              </div>
-          
-             
+
+
             </section>
             <section className="product-all-info">
 

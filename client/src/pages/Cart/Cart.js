@@ -5,41 +5,32 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 // import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import { resetCart } from "../../redux/orebiSlice";
-import emptyCart from "../../assets/images/emptyCart.png";
+import emptyCart1 from "../../assets/images/emptyCart1.png";
 import ItemCard from "./ItemCard";
 import Navb from "../../components/Navb";
+import { useCart } from "react-use-cart";
 
 const Cart = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const [cart, setCart] = useState([]);
-    const [totalAmt, setTotalAmt] = useState("");
-    const [shippingCharge, setShippingCharge] = useState("");
-    useEffect(() => {
-        let price = 0;
-        cart.map((item) => {
-            price += item.price * item.quantity;
-            return price;
-        });
-        setTotalAmt(price);
-    }, [cart]);
-    useEffect(() => {
-        if (totalAmt <= 200) {
-            setShippingCharge(30);
-        } else if (totalAmt <= 400) {
-            setShippingCharge(25);
-        } else if (totalAmt > 401) {
-            setShippingCharge(20);
-        }
-    }, [totalAmt]);
-
+  const {
+    isEmpty,
+    totalUniqueItems,
+    emptyCart,
+    items,
+    updateItemQuantity,
+    removeItem,
+  } = useCart();
+  const initialValue = 0;
+const sumWithInitial = items.reduce(
+  (accumulator, currentValue) => accumulator + currentValue.price,
+  initialValue,
+);
     return (
         <div className=" overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
 
             <Navb />
             <div className="max-w-container mx-auto px-4">
                 {/* <Breadcrumbs title="Cart" /> */}
-                {cart.length > 0 ? (
+                {items.length > 0 ? (
                     <div className="pb-20">
                         <div className="w-full h-20 bg-[#F5F7F7] text-primeColor hidden lgl:grid grid-cols-5 place-content-center px-6 text-lg font-titleFont font-semibold">
                             <h2 className="col-span-2">Product</h2>
@@ -48,7 +39,7 @@ const Cart = () => {
                             <h2>Sub Total</h2>
                         </div>
                         <div className="mt-5">
-                            {cart.map((item) => (
+                            {items.map((item) => (
                                 <div key={item.id}>
                                     <ItemCard item={item} />
                                 </div>
@@ -56,7 +47,7 @@ const Cart = () => {
                         </div>
 
                         <button
-                            onClick={() => dispatch(resetCart())}
+                        onClick={()=>emptyCart()}
                             className="py-2 px-10 bg-red-500 text-white font-semibold uppercase mb-4 hover:bg-red-700 duration-300"
                         >
                             Reset cart
@@ -82,19 +73,19 @@ const Cart = () => {
                                     <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
                                         Subtotal
                                         <span className="font-semibold tracking-wide font-titleFont">
-                                            ${totalAmt}
+                                            $0
                                         </span>
                                     </p>
-                                    <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
+                                    {/* <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
                                         Shipping Charge
                                         <span className="font-semibold tracking-wide font-titleFont">
-                                            ${shippingCharge}
+                                            
                                         </span>
-                                    </p>
+                                    </p> */}
                                     <p className="flex items-center justify-between border-[1px] border-gray-400 py-1.5 text-lg px-4 font-medium">
                                         Total
                                         <span className="font-bold tracking-wide text-lg font-titleFont">
-                                            ${totalAmt + shippingCharge}
+                                            ${sumWithInitial}
                                         </span>
                                     </p>
                                 </div>
@@ -118,7 +109,7 @@ const Cart = () => {
                         <div>
                             <img
                                 className="w-80 rounded-lg p-4 mx-auto"
-                                src={emptyCart}
+                                src={emptyCart1}
                                 alt="emptyCart"
                             />
                         </div>
@@ -144,3 +135,35 @@ const Cart = () => {
 };
 
 export default Cart;
+// import React from 'react'
+// import { useCart } from 'react-use-cart';
+
+// export default function Cart() {
+
+    
+//       if (isEmpty) return <p>Your cart is empty</p>;
+//   return (
+//     <>
+//       <h1>Cart ({totalUniqueItems})</h1>
+
+//       <ul>
+//         {items.map((item) => (
+//           <li key={item.id}>
+//             {item.quantity} x {item.name} &mdash;
+//             <button
+//               onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
+//             >
+//               -
+//             </button>
+//             <button
+//               onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
+//             >
+//               +
+//             </button>
+//             <button onClick={() => removeItem(item.id)}>&times;</button>
+//           </li>
+//         ))}
+//       </ul>
+//     </>
+//   )
+// }
