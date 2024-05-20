@@ -114,7 +114,7 @@ const OneProduct = () => {
                     <p className='procuct-price'>Price : ${oneProduct?.price}</p>
                     <div className="cart-btns">
                         {oneProduct && <p className="add-cart bg-gradient-to-r from-primary to-secondary cursor-pointer" onClick={() => addToCart()}>Add to Cart</p>}
-                        <p className="add-cart buy-now bg-gradient-to-r from-primary to-secondary">Buy Now</p>
+                        <p className="add-cart buy-now bg-gradient-to-r from-primary to-secondary" onClick={()=>window.location.replace("http://localhost:4002")}>Live Preview</p>
                     </div>
                 </div>
 
