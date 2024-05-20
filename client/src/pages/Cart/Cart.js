@@ -1,14 +1,12 @@
 
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-// import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
-import { resetCart } from "../../redux/orebiSlice";
 import emptyCart1 from "../../assets/images/emptyCart1.png";
 import ItemCard from "./ItemCard";
 import Navb from "../../components/Navb";
 import { useCart } from "react-use-cart";
+import Footer from "../../components/Footer";
 
 const Cart = () => {
   const {
@@ -28,7 +26,7 @@ const sumWithInitial = items.reduce(
         <div className=" overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
 
             <Navb />
-            <div className="max-w-container mx-auto px-4">
+            <container className=" d-flex flex-column align-items-center ">
                 {/* <Breadcrumbs title="Cart" /> */}
                 {items.length > 0 ? (
                     <div className="pb-20">
@@ -38,7 +36,7 @@ const sumWithInitial = items.reduce(
                             <h2>Quantity</h2>
                             <h2>Sub Total</h2>
                         </div>
-                        <div className="mt-5">
+                        <div className="d-flex flex-wrap">
                             {items.map((item) => (
                                 <div key={item.id}>
                                     <ItemCard item={item} />
@@ -91,7 +89,7 @@ const sumWithInitial = items.reduce(
                                 </div>
                                 <div className="flex justify-end">
                                     <Link to="/paymentgateway">
-                                        <button className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300">
+                                        <button className="w-52 h-10 font-bold text-white bg-black duration-300">
                                             Proceed to Checkout
                                         </button>
                                     </Link>
@@ -129,7 +127,8 @@ const sumWithInitial = items.reduce(
                         </div>
                     </motion.div>
                 )}
-            </div>
+                <Footer/>
+            </container>
         </div>
     );
 };

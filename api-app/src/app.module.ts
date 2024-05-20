@@ -20,12 +20,13 @@ import { BlogsModule } from './blogs/blogs.module';
 import { ReviewsModule } from './reviews/reviews.module';
 // import { CategoriesModule } from './categories/categories.module';
 import { ImagesModule } from './images/images.module';
+import { ContactsModule } from './contacts/contacts.module';
 
 
 
 
 @Module({
-  imports: [UsersModule, PrismaModule, ProductsModule, AuthModule, OrdersModule, VuesModule, CategoriesModule, CommentairesModule, LikesModule, PayementsModule, TypesModule, AbonnementsModule, ContentsModule, ClientsModule, BlogsModule, ReviewsModule, ImagesModule],
+  imports: [UsersModule, PrismaModule, ProductsModule, AuthModule, OrdersModule, VuesModule, CategoriesModule, CommentairesModule, LikesModule, PayementsModule, TypesModule, AbonnementsModule, ContentsModule, ClientsModule, BlogsModule, ReviewsModule, ImagesModule, ContactsModule],
   controllers: [AppController],
   providers: [AppService],
 })

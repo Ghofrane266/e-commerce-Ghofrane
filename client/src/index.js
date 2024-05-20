@@ -10,19 +10,19 @@ import Router from './router/Router';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { CartProvider} from "react-use-cart";
+import { CartProvider } from "react-use-cart";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <Provider store={store}>
-    <CartProvider>
+    <Provider store={store}>
+      
+      <CartProvider>
+        <Router />
+      </CartProvider>
 
-   <Router/>
-    </CartProvider>
+    </Provider>
 
-   </Provider>
-    
   </React.StrictMode>
 );
 

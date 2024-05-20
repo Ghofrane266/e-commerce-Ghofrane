@@ -62,13 +62,13 @@ const Navb = () => {
           </div>
           {/* Desktop Menu section */}
           <nav className="hidden md:block">
-            <ul className="flex items-center gap-8 px-8">
+            <ul className="flex items-center gap-4 px-8">
               {NavLinks.map(({ id, name, link }) => {
                 return (
                   <li key={id} className="py-4">
                     <a
                       onClick={() => navigate(`${link}`)}
-                      className="text-xl font-semibold hover:text-primary py-2 transition-colors duration-500"
+                      className="cursor-pointer  text-xl font-semibold hover:text-primary py-2 transition-colors duration-500"
                     >
                       {name}
                     </a>
@@ -83,13 +83,13 @@ const Navb = () => {
                 style={{ cursor: "pointer" }}
               />
               <button
-                className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white rounded-full flex items-center gap-3 relative inline-flex  p-2  text-center text-white bg-blue-700 rounded-lg  "
+                className=" hover:scale-105 duration-200 text-white rounded-full flex items-center gap-3 relative inline-flex  p-2  text-center text-white rounded-lg  "
                 onClick={() => navigate("/order")}
               >
 
-                Order
-                <FaCartShopping size={25} className="text-xl text-white drop-shadow-sm cursor-pointer" />
-              <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900 p-3" >{totalItems} </span> 
+                
+                <FaCartShopping size={25} className="text-xl drop-shadow-sm cursor-pointer text-black dark:text-white mt-1" />
+              <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900 p-3 mt-1" >{totalItems} </span> 
 
               </button>
               <DarkMode />
@@ -148,15 +148,15 @@ const Navb = () => {
               />
             </li>
             <li>
-              <button
-                className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3"
-                onClick={() => {
-                  navigate("/order");
-                  toggleMenu();
-                }}
+            <button
+                className=" hover:scale-105 duration-200 text-white rounded-full flex items-center gap-3 relative inline-flex  p-2  text-center text-white rounded-lg  "
+                onClick={() => navigate("/order")}
               >
-                Order
-                <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
+
+                
+                <FaCartShopping size={25} className="text-xl drop-shadow-sm cursor-pointer text-black dark:text-white mt-1" />
+              <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900 p-3 mt-1" >{totalItems} </span> 
+
               </button>
             </li>
             <li>
