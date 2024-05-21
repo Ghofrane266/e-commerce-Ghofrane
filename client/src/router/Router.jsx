@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
 import App from '../apps/App';
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -14,7 +14,17 @@ import Signup from '../pages/Signup';
 import Auth from '../apps/Auth';
 import OneProduct from '../pages/OneProduct';
 import Cart from '../pages/Cart/Cart';
+import Checkout from '../pages/Checkout';
+import { getMe } from '../store/auth';
+
 function Router() {
+  const user = useSelector((store) => store.auth.me);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token) dispatch(getMe());
+  }, [dispatch]);
   const [isPlay, setIsPlay] = useState(false);
 
   const togglePlay = () => {
@@ -48,14 +58,21 @@ function Router() {
 
 
         <Route path='contact' element={<Contact />} />
-        <Route path='auth' element={<Auth />} >
 
+
+
+
+        <Route path='/order' element={<Cart />} />
+        <Route path='/checkout' element={user ? <Checkout /> : <Navigate to="/auth" />} />
+
+        <Route path='auth' element={<Auth />} >
           <Route index element={<Login />} />
           <Route path='signup' element={<Signup />} />
-
         </Route>
+     
 
-          <Route path='/order' element={<Cart />} />
+
+
 
 
 

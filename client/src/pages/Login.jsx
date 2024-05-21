@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, unstable_HistoryRouter, useNavigate } from 'react-router-dom'
 import { FaLock, FaTimes } from "react-icons/fa";
 
 import { MdEmail } from "react-icons/md";
 import '../style/login.css'
 import Signup from './Signup';
 import { useDispatch } from 'react-redux';
-import login from '../store/auth'
+import {login} from '../store/auth'
 
 
 function Login({ onClose, openSignup }) {
+    const history = unstable_HistoryRouter();
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -58,10 +59,13 @@ function Login({ onClose, openSignup }) {
                         </div>
                         <button type='submit' onSubmit={(e) => {
                             e.preventDefault()
-                            dispatch(login({ email, password }));
+                            dispatch(login({ email, password })).then(() => {
+                                history.push("/checkout");
+                            });
                         }}>Submit</button>
                         <div className="register-link">
-                            <p ><a style={{ cursor: 'pointer' }} onClick={openSignup} >register</a></p>
+                        <Link to="/auth/signup" style={{ cursor: 'pointer' }}>register</Link>
+                            
                         </div>
 
 

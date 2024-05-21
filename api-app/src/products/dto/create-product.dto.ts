@@ -8,6 +8,9 @@ export class CreateProductDto {
     @IsNotEmpty()
     description?: string;
     @ApiProperty()
+    @IsNotEmpty()
+    link: string;
+    @ApiProperty()
     @IsNumber()
     price: number;
 

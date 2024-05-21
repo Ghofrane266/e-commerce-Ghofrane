@@ -9,6 +9,7 @@ export const dataProducts = [
 
 
         price: 100,
+        link:"https://restaurant-product-1.netlify.app/"
 
     },
     {
@@ -16,12 +17,14 @@ export const dataProducts = [
         title: "Coffee Shop",
         description: "coffee",
         price: 150,
+        link:"https://coffee-shop-product-3.netlify.app/"
     },
     {
 
         title: "Xbeat template",
         description: "beat",
         price: 120,
+        link:"https://xbeat-product-2.netlify.app/"
     },
 
 

@@ -51,7 +51,7 @@ console.log(products, "state")
               <h1 className="font-dmserif text-xl font-bold  text-white ">{product.title}</h1>
               <p className="mb-5 text-xl italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">${product.price}</p>
               <IoCartOutline size={30} color="white" className="mb-5" onClick={() => addToCart(product)}/>
-              <button className="rounded-full bg-gradient-to-r from-primary to-secondary py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60"  onClick={()=>navigate(`/OneProduct/${product.id}`)}>See More</button>
+              <button className="rounded-full bg-gradient-to-r from-primary to-secondary py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60"  onClick={()=>navigate(`/OneProduct/${product.id}`)}> See More</button>
             </div>
             <div className=" flex  flex-col items-center justify-center px-4 text-center  ">
 
