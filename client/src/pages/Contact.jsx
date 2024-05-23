@@ -3,6 +3,7 @@ import '../style/contact.css'
  import contact3 from "../assets/images/contact3.png"
 import Navb from '../components/Navb'
 // import Navb from '../components/Navb'
+
 function Contact() {
   return (
     <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
@@ -29,6 +30,7 @@ function Contact() {
 
 
     </main>
+
   )
 }
 

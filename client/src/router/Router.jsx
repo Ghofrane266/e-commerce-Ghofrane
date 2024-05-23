@@ -59,17 +59,25 @@ function Router() {
 
         <Route path='contact' element={<Contact />} />
 
-
-
-
-        <Route path='/order' element={<Cart />} />
-        <Route path='/checkout' element={user ? <Checkout /> : <Navigate to="/auth" />} />
-
         <Route path='auth' element={<Auth />} >
           <Route index element={<Login />} />
           <Route path='signup' element={<Signup />} />
         </Route>
-     
+
+
+        <Route path='/order' element={<Cart />} />
+        {/* <Route path='/checkout' element={user ? <Checkout /> : <Navigate to="/auth" />} /> */}
+
+
+
+
+
+        {user && <Route path="/checkout" element={<Checkout />} />}
+
+
+
+
+
 
 
 

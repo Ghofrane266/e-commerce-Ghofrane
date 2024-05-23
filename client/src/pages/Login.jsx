@@ -10,12 +10,13 @@ import {login} from '../store/auth'
 
 
 function Login({ onClose, openSignup }) {
-    const history = unstable_HistoryRouter();
+    // const history = unstable_HistoryRouter();
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    // const navigate = useNavigate()
+
+    const navigate = useNavigate();
     const [showSignup, setShowSignup] = useState(false);
 
     const handleShowSignup = () => {
@@ -57,11 +58,12 @@ function Login({ onClose, openSignup }) {
                             </label>
                             <a href="#">Forgot password</a>
                         </div>
-                        <button type='submit' onSubmit={(e) => {
+                        <button  onClick={(e) => {
                             e.preventDefault()
-                            dispatch(login({ email, password })).then(() => {
-                                history.push("/checkout");
-                            });
+                            dispatch(login({ email, password }));
+                                navigate('/')
+                            
+                        
                         }}>Submit</button>
                         <div className="register-link">
                         <Link to="/auth/signup" style={{ cursor: 'pointer' }}>register</Link>

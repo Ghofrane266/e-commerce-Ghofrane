@@ -7,8 +7,11 @@ import ItemCard from "./ItemCard";
 import Navb from "../../components/Navb";
 import { useCart } from "react-use-cart";
 import Footer from "../../components/Footer";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
+    const user = useSelector((store) => store.auth.me);
+    const navigate = useNavigate();
   const {
     isEmpty,
     totalUniqueItems,
@@ -88,11 +91,11 @@ const sumWithInitial = items.reduce(
                                     </p>
                                 </div>
                                 <div className="flex justify-end">
-                                    <Link to="/checkout">
-                                        <button className="w-52 h-10 font-bold text-white bg-black duration-300">
+                                   
+                                        <button className="w-52 h-10 font-bold text-white bg-black duration-300" onClick={() =>user? navigate("/checkout"): navigate("/auth")}>
                                             Proceed to Checkout
                                         </button>
-                                    </Link>
+                                    
                                 </div>
                             </div>
                         </div>
