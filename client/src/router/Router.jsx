@@ -19,6 +19,8 @@ import { getMe } from '../store/auth';
 
 function Router() {
   const user = useSelector((store) => store.auth.me);
+  const [searchTerm, setSearchTerm] = useState('');
+
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -45,12 +47,12 @@ function Router() {
 
       <Routes>
 
-        <Route path='/' element={<App />} />
+        <Route path='/' element={<App searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>} />
 
 
 
 
-        <Route path='/products' element={<Products />} />
+        <Route path='/products' element={<Products  searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>} />
         <Route path='/OneProduct/:id' element={<OneProduct />} />
 
         <Route path='pricing' element={<Pricing togglePlay={togglePlay} />} />

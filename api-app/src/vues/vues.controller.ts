@@ -2,7 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { VuesService } from './vues.service';
 import { CreateVueDto } from './dto/create-vue.dto';
 import { UpdateVueDto } from './dto/update-vue.dto';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('vues')
 @Controller('vues')
 export class VuesController {
   constructor(private readonly vuesService: VuesService) {}

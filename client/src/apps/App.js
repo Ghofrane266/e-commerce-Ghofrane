@@ -13,9 +13,12 @@ import Services from "../components/Services";
 import Testimonial from "../components/Testimonial";
 import OrderPopup from "../components/OrderPopup";
 import { CartProvider, useCart } from "react-use-cart";
+import { useSelector } from "react-redux";
 
 
-const App = () => {
+const App = ({searchTerm, setSearchTerm}) => {
+  const products = useSelector((state) => state.products.products.items)
+  
   
     const [orderPopup, setOrderPopup] = React.useState(false);
   
@@ -44,10 +47,10 @@ const App = () => {
      
 
     <main className="overflow-x-hidden bg-white dark:bg-black text-black dark:text-white duration-300">
-      <Navb />
+      <Navb searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       
       <Header togglePlay={togglePlay} />
-      <Services  handleOrderPopup={handleOrderPopup}/>
+      <Services />
       <Banner togglePlay={togglePlay} />
       <Features />
       <Testimonial/>

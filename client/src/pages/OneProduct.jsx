@@ -107,12 +107,14 @@ const OneProduct = () => {
                 </div>
 
 
-
-                <div className="product-page-details">
+                <div className="product-page-details" >
                     <strong>{oneProduct?.title}</strong>
                     <p className='small-desc'>Description : {oneProduct?.description}</p>
                     <p className='procuct-price'>Price : ${oneProduct?.price}</p>
+                    {/* <p className='procuct-price'>Categorie : ${oneProduct?.Categorie[categorieId]}</p> */}
+
                     <div className="cart-btns">
+
                         {oneProduct && <p className="add-cart bg-gradient-to-r from-primary to-secondary cursor-pointer" onClick={() => addToCart()}>Add to Cart</p>}
                         <p className="add-cart buy-now bg-gradient-to-r from-primary to-secondary cursor-pointer" onClick={()=>window.open(`${oneProduct?.link}`)}>Live Preview</p>
                     </div>

@@ -10,7 +10,6 @@ import {login} from '../store/auth'
 
 
 function Login({ onClose, openSignup }) {
-    // const history = unstable_HistoryRouter();
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

@@ -4,6 +4,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { LoginDto } from './dto/create-auth.dto';
 import * as bcrypt from 'bcrypt';
 import { UpdateAuthDto } from './dto/update-auth.dto';
+import { CreateUserDto } from 'src/users/dto/create-user.dto';
 @Injectable()
 export class AuthService {
     constructor(private readonly prisma: PrismaService, private readonly jwtService: JwtService,) { }
@@ -54,5 +55,24 @@ export class AuthService {
         const { password, ...rest } = user;
         const token = this.jwtService.sign(rest);
         return token
+      }
+
+      async signup(dto:CreateUserDto){
+        const {password,email,...rest} = dto
+        const newUser=await this.prisma.user.findUnique({
+          where:{
+            email:email
+          }
+        })
+        if(newUser){
+          throw new HttpException('email already exists', HttpStatus.BAD_REQUEST);
+        }
+        const salt = await bcrypt.genSalt();
+        const hashedPassword = await bcrypt.hash(password, salt);
+        console.log(hashedPassword)
+        return await this.prisma.user.create({
+          data: {...dto,password: hashedPassword },
+        });
+      
       }
 }

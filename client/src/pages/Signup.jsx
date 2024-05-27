@@ -8,15 +8,16 @@ import Login from './Login';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { signup } from '../store/auth';
+import { useNavigate } from 'react-router-dom';
 
 
 function Signup({ onClose }) {
   const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [username, setUsername] = useState('');
+    const [fullName, setFullName] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-
+const navigate = useNavigate();
     
   return (
     <main  className="h-screen w-screen fixed top-0 left-0 bg-black/50 z-50 backdrop-blur-sm shadow-md " >
@@ -30,13 +31,13 @@ function Signup({ onClose }) {
                           alert('Passwords do not match');
                           return;
                         }
-                        dispatch(signup({ email, password,username }))
+                        dispatch(signup({ email, password,fullName }))
                         onClose()
                     }}>
                 <h1>Register</h1>
                 <div className='input-box'>
-                    <input type="text" placeholder='username' required onChange={(e) => {
-                                setUsername(e.target.value)
+                    <input type="text" placeholder='fullName' required onChange={(e) => {
+                                setFullName(e.target.value)
                             }}/>
                     <FaUser className='icon'/>
                 </div>
@@ -60,7 +61,13 @@ function Signup({ onClose }) {
                     <FaLock className='icon'/>
                 </div>
               
-                <button type='submit'>Register</button>
+                <button  onClick={(e) => {
+                            e.preventDefault()
+                            dispatch(signup({ email, password ,fullName}));
+                                navigate('/auth')
+                            
+                        
+                        }}>Register</button>
                 {/* <div >
               <p>
                 Already have an account? <a style={{ cursor: 'pointer' }} onClick={onClose}>Login</a>

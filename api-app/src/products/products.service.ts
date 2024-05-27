@@ -11,7 +11,14 @@ export class ProductsService {
 
 
     return await this.prisma.product.create({
-      data: dto
+      data: {
+        ...dto,
+        Images :{
+          createMany : {
+            data : dto.Images
+          }
+        }
+      }
         
         
       })
@@ -22,22 +29,26 @@ export class ProductsService {
   findAll() {
     return this.prisma.product.findMany({
       include : {
-        Images : true
-      }
+        Images : true,
+        Categorie : true
+      },
+      
     })
   }
 
   findOne(id: number) {
     return this.prisma.product.findUnique({ where: { id:id },
       include : {
-        Images : true
+        Images : true,
+        Categorie : true
       } });
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
+    const {Images,...rest} = updateProductDto
     return this.prisma.product.update({
       where: { id },
-      data: updateProductDto,
+      data: rest,
     });
   }
 

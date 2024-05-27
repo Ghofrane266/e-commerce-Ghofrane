@@ -51,6 +51,7 @@ const Header = ({ togglePlay }) => {
               </div>
             </div>
             {/* image section */}
+   
             <div
               data-aos="fade-up"
               data-aos-offset="0"

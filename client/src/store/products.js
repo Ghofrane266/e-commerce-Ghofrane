@@ -21,6 +21,10 @@ export const fetchImages = createAsyncThunk("products/fetchImages", async () => 
     const response = await axios.get("http://localhost:5000/api/v1/images");
     return response.data;
 });
+export const deleteProduct = createAsyncThunk("deleteProduct", async (id) => {
+    const response = await axios.delete("http://localhost:5000/api/v1/products/" + id)
+    return response.data
+})
 
 export const counterSlice = createSlice({
     name: 'products',
@@ -46,6 +50,11 @@ export const counterSlice = createSlice({
         builder.addCase(fetchImages.fulfilled, (state, action) => {
             state.images = action.payload;
         });
+        builder.addCase(deleteProduct.fulfilled, (state, action) => {
+            state.products.items = state.products.items.filter(
+                (product) => product.id !== action.payload
+            );
+        })
     }
 })
 export default counterSlice.reducer;

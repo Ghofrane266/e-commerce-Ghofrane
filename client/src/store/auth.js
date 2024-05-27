@@ -9,9 +9,12 @@ export const login = createAsyncThunk("login",async (args,{dispatch})=>{
     
 })
 export const signup = createAsyncThunk("signup",async (args,{dispatch})=>{
-    const response = await axios.post("http://localhost:5000/api/v1/auth/login",args)
-    localStorage.setItem('token',response.data)
+    const response = await axios.post("http://localhost:5000/api/v1/auth/signup",args)
+    const token = response.data.token;
+    localStorage.setItem('token',token)
     dispatch(getMe())
+    return response.data
+
     
 })
 export const updateProfile = createAsyncThunk("updateMe",async (body,{dispatch})=>{

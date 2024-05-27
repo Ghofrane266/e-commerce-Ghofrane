@@ -9,7 +9,12 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import { FaRegUser, FaTimes } from "react-icons/fa";
 import { useCart } from "react-use-cart";
-
+import { IoLogOutOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { logout } from "../store/auth";
+import { IoSearchOutline } from "react-icons/io5"
+import '../style/searchbar.css'
+import DropDown from "./DropDown";
 const NavLinks = [
   {
     id: 1,
@@ -33,11 +38,26 @@ const NavLinks = [
   },
 ];
 
-const Navb = () => {
+const Navb = ({ searchTerm, setSearchTerm }) => {
+  const [localSearchTerm, setLocalSearchTerm] = useState('');
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setSearchTerm(localSearchTerm);
+    navigate('/products');
+  };
   const {
     isEmpty,
     totalItems,
-} = useCart();
+  } = useCart();
+
+  const handleChange = (e) => {
+
+    setLocalSearchTerm(e.target.value);
+
+  };
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
@@ -63,6 +83,7 @@ const Navb = () => {
           {/* Desktop Menu section */}
           <nav className="hidden md:block">
             <ul className="flex items-center gap-4 px-8">
+
               {NavLinks.map(({ id, name, link }) => {
                 return (
                   <li key={id} className="py-4">
@@ -75,31 +96,35 @@ const Navb = () => {
                   </li>
                 );
               })}
-              {/* Darkmode feature */}
-              <FaRegUser
-              className="hover:text-primary"
-                onClick={() => setShowLogin(true)}
-                size={20}
-                style={{ cursor: "pointer" }}
-              />
+             
+
+              <ul><DropDown /></ul>
+              {/* Search bar */}
+              <ul>
+                <form onSubmit={handleSearchSubmit} className="boxx mt-1">
+                  <input type="text" placeholder="Search..." value={localSearchTerm}
+                    onChange={handleChange} />
+                  <button type="submit"><IoSearchOutline color="black" /></button>
+                </form>
+              </ul>
               <button
                 className=" hover:scale-105 duration-200 text-white rounded-full flex items-center gap-3 relative inline-flex  p-2  text-center text-white rounded-lg  "
                 onClick={() => navigate("/order")}
               >
 
-                
+
                 <FaCartShopping size={25} className="text-xl drop-shadow-sm cursor-pointer text-black dark:text-white mt-1" />
-              <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900 p-3 mt-1" >{totalItems} </span> 
+                <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900 p-3 mt-1" >{totalItems} </span>
 
               </button>
-              <DarkMode />
+
             </ul>
           </nav>
 
           {/* Mobile View Sidebar */}
           <div className="md:hidden block">
-            <div className="flex items-center gap-4">
-              <DarkMode />
+            <div className="flex items-center gap-4 mx-2">
+            
               {showMenu ? (
                 <HiMenuAlt1
                   onClick={toggleMenu}
@@ -122,6 +147,8 @@ const Navb = () => {
           <FaTimes className="absolute top-5 right-6 text-black dark:text-white cursor-pointer" size={22} onClose={() => setShowMenu(false)} onClick={toggleMenu} />
 
           <ul className="flex flex-col items-center gap-4 pt-10 mb-4">
+
+
             {NavLinks.map(({ id, name, link }) => {
               return (
                 <li key={id}>
@@ -138,37 +165,33 @@ const Navb = () => {
               );
             })}
             <li>
-              <FaRegUser
-                onClick={() => {
-                  setShowLogin(true);
-                  toggleMenu();
-                }}
-                size={20}
-                style={{ cursor: "pointer" }}
-              />
+              <DropDown />
             </li>
+            
+              {/* Search bar */}
+              <form onSubmit={handleSearchSubmit} className="boxx mt-1">
+                <input type="text" placeholder="Search..." value={localSearchTerm}
+                  onChange={handleChange} />
+                <button type="submit"><IoSearchOutline color="black" /></button>
+              </form>
+            
             <li>
-            <button
+              <button
                 className=" hover:scale-105 duration-200 text-white rounded-full flex items-center gap-3 relative inline-flex  p-2  text-center text-white rounded-lg  "
                 onClick={() => navigate("/order")}
               >
 
-                
+
                 <FaCartShopping size={25} className="text-xl drop-shadow-sm cursor-pointer text-black dark:text-white mt-1" />
-              <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900 p-3 mt-1" >{totalItems} </span> 
+                <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900 p-3 mt-1" >{totalItems} </span>
 
               </button>
             </li>
-            <li>
-              <DarkMode />
-            </li>
+           
           </ul>
         </div>
       )}
-      {showLogin && (
-        <Login openSignup={openSignup} onClose={() => setShowLogin(false)} />
-      )}
-      {showSignup && <Signup onClose={() => setShowSignup(false)} />}
+
     </div>
   );
 };

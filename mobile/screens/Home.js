@@ -123,7 +123,7 @@ export default function Home() {
 
             {productStore && productStore.items.map((product) => (
               <View key={product.id} style={{ flexDirection: "row", alignItems: "center", padding: 15, marginTop: 10, borderRadius: 15, backgroundColor: "#fff", width: "90%", left: 18, marginVertical: 10, shadowColor: "#14366F", elevation: 10 }}>
-                <Image source={{ uri: product.url }} resizeMode="cover" style={{ width: 100, height: 100, borderRadius: 10, }} />
+                <Image source={{ uri: product.Images[0].url }} resizeMode="cover" style={{ width: 100, height: 100, borderRadius: 10, }} />
                 <View style={{ width: "65%", paddingHorizontal: 20 }}>
                   <Text style={{ flex: 1, color: "#14366F", fontWeight: "600", paddingVertical: 15 }}>{product.title}</Text>
                   <Text style={{ flex: 1, color: "#14366F", fontWeight: "600", bottom: 10 }}>${product.price}</Text>

@@ -1,3 +1,4 @@
+import { Product } from "src/products/entities/product.entity"
 
 
 export const dataProducts = [
@@ -9,7 +10,8 @@ export const dataProducts = [
 
 
         price: 100,
-        link:"https://restaurant-product-1.netlify.app/"
+        link:"https://restaurant-product-1.netlify.app/",
+        categorieId  : 2
 
     },
     {
@@ -17,14 +19,18 @@ export const dataProducts = [
         title: "Coffee Shop",
         description: "coffee",
         price: 150,
-        link:"https://coffee-shop-product-3.netlify.app/"
+        link:"https://coffee-shop-product-3.netlify.app/",
+        categorieId  : 2
+
     },
     {
 
         title: "Xbeat template",
         description: "beat",
         price: 120,
-        link:"https://xbeat-product-2.netlify.app/"
+        link:"https://xbeat-product-2.netlify.app/",
+        categorieId  : 1
+
     },
 
 
@@ -165,5 +171,18 @@ export const imageData = [
         productId: 2
     },
 
+
+]
+export const categories=[
+    {
+        name:' Electronics and Accessories',
+        description:'A wide range of electronic devices and essential accessories for everyday tech needs, from smartphones to repair tools.',
+      
+    },
+    {
+        name:'Cafes and Restaurants',
+        description:'Drinks products',
+       
+    }
 
 ]

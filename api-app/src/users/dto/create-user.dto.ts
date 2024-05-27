@@ -10,9 +10,9 @@ export class CreateUserDto {
     @ApiProperty()
     password: string;
     @ApiProperty()
-    avatarUrl: string;
+    avatarUrl?: string;
     @ApiProperty()
-    phone: string;
+    phone?: string;
     @ApiProperty()
-    address: string;
+    address?: string;
 }

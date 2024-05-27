@@ -21,12 +21,15 @@ model Product {
 
   Images Image[]
 
-  price          Float
+  price Float
+
   productorder   ProductOrder[]
   Productcontent Productcontent[]
   PaymentUser    PaymentUser[]
   CommentaireP   CommentaireP[]
   LikesP         LikesP[]
+  Categorie      Categorie?       @relation(fields: [categorieId], references: [id])
+  categorieId    Int?
 }
 
 model Image {
@@ -99,6 +102,7 @@ model Categorie {
   name         String
   description  String
   ProductOrder ProductOrder[]
+  products     Product[]
 }
 
 model Commentaire {

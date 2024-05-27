@@ -13,6 +13,10 @@ export class CreateProductDto {
     @ApiProperty()
     @IsNumber()
     price: number;
+    Images?:[]
+    @ApiProperty()
+    categorieId  : number
+
 
 
 }

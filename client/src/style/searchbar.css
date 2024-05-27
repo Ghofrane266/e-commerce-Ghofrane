@@ -1,0 +1,23 @@
+.boxx{
+    height: 35px;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 10px;
+    /* background: #fff; */
+
+    border-radius: 30px;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+}
+.boxx:hover input{
+    width: 280px;
+}
+.boxx input{
+    width: 0;
+    outline: none;
+    border: none;
+    background: transparent;
+    font-weight: 500;
+    transition: 0.8s;
+}

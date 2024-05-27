@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from "react";
-import pr from "../assets/images/pr.png";
-import pr2 from "../assets/images/pr2.png";
-import pr3 from "../assets/images/pr3.png";
-import { FaStar } from "react-icons/fa";
-import Login from "../pages/Login";
-import Signup from "../pages/Signup";
 import { useNavigate } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from "../store/products";
 import { useCart } from "react-use-cart";
+import "../style/services.css"
 
 
 
-
-const Services = ({ handleOrderPopup }) => {
+const Services = () => {
   const products = useSelector((state) => state.products.products.items)
   const dispatch = useDispatch()
   const { addItem, items } = useCart();
@@ -38,22 +32,45 @@ const Services = ({ handleOrderPopup }) => {
   const navigate = useNavigate()
   return (
     <>
-      <span id="services"></span>
+    <div className="containe" >
+    <div className="text-center mb-20 max-w-[400px] mx-auto " data-aos="fade-up" >
+            <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Top Products</h1>
+          </div> 
+      <div className="card__container" data-aos="fade-up"   data-aos-delay="500">
+        {products.map((product) => (
+          
+        
+        <article className="card__article" key={product.id}>
+          <img src={product.Images[0].url} alt={product.Images[0].alt} className="card__img" />
+          <div className="card__data  ">
+            <h2 className="card__title text-xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:text-white" style={{fontWeight:"bold"}}>{ product.title}</h2>
+            <span className="card__description font-serif  bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:text-white " > ${product.price}</span>
+            <div className="flex justify-between">
+            <p   className="card__button cursor-pointer font-serif text-secondary group-hover:text-white" onClick={() =>navigate(`/OneProduct/${product.id}`)}>Read More</p>
+            <IoCartOutline size={30} className=" text-primary group-hover:text-white cursor-pointer " onClick={() => addToCart(product)}/>
+
+            </div>
+          </div>
+        </article>
+        ))}
+      </div>
+    </div>
+      {/* <span id="services"></span>
       <div className="py-10">
-        <div className="container">
+        <div className="container"> */}
           {/* <div className="text-center mb-20 max-w-[400px] mx-auto"> */}
           {/* <p className="text-sm bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary ">
               Trending Products
             </p> */}
-          <div className="text-center mb-20 max-w-[400px] mx-auto ">
+          {/* <div className="text-center mb-20 max-w-[400px] mx-auto ">
             <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Top Products</h1>
-          </div>
+          </div> */}
           {/* <p className="text-xs text-gray-400">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
               Perspiciatis delectus architecto error nesciunt,
             </p> */}
           {/* </div> */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 md:gap-5 place-items-center ">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 md:gap-5 place-items-center ">
             {products.map((product) => (
               <div
                 data-aos="zoom-in"
@@ -67,20 +84,20 @@ const Services = ({ handleOrderPopup }) => {
                   group-hover:scale-105  duration-300 shadow-md  h-[150px]"
                   />
                 </div>
-                <div className="p-4 text-center">
+                <div className="p-4 text-center"> */}
                   {/* <div className="w-full flex items-center justify-center gap-2 mb-3">
                     <FaStar className="text-yellow-500" />
                     <FaStar className="text-yellow-500" />
                     <FaStar className="text-yellow-500" />
                     <FaStar className="text-yellow-500" />
                   </div> */}
-                  <h1 className="text-xl font-bold mt-5 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:text-white">{product.title}</h1>
+                  {/* <h1 className="text-xl font-bold mt-5 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:text-white">{product.title}</h1> */}
                   {/* <p className="mb-3 text-white group-hover:text-white duration-high text-sm line-clamp-2">
                     {product.description}
                      
                   </p> */}
-                  <h2 className="text-xl font-bold mb-3 mt-3 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:text-white" >${product.price}</h2>
-                  <a
+                  {/* <h2 className="text-xl font-bold mb-3 mt-3 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary group-hover:text-white" >${product.price}</h2> */}
+                  {/* <a
 
                     className="inline-block cursor-pointer  text-sm font-italic mb-1 text-white group-hover:text-white duration-300" onClick={() => { navigate('products') }}
                   >
@@ -104,7 +121,7 @@ const Services = ({ handleOrderPopup }) => {
         </div>
         {showLogin && <Login openSignup={openSignup} onClose={() => setShowLogin(false)} />}
         {showSignup && <Signup onClose={() => setShowSignup(false)} />}
-      </div>
+      </div> */}
     </>
   );
 };
