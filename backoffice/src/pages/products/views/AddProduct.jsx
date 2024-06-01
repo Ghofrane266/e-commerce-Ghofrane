@@ -98,12 +98,12 @@ export default function AddProduct() {
               <span className="text-sm font-bold text-gray-900 dark:text-white"> categorie :</span>
               <Autocomplete
               disablePortal
-      id="combo-box-demo"
-      options={categorie}
-      sx={{ width: 300 }}
-      onChange={(e,v)=>setProduct({...product,categorieId:v.id})}
-      getOptionLabel={(option) => option.name}
-      renderInput={(params) => <TextField {...params} label="Categories" />}
+              id="combo-box-demo"
+              options={categorie}
+             sx={{ width: 300 }}
+             onChange={(e,v)=>setProduct({...product,categorieId:v.id})}
+             getOptionLabel={(option) => option.name}
+             renderInput={(params) => <TextField {...params} label="Categories" />}
     />
               {/* <input type="text" placeholder='categorie' className=' max-h-8' name='categorie' onChange={handleChange}/> */}
             </div>

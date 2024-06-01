@@ -134,7 +134,7 @@
 .product-page-details .product-price {
     color: #333;
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: 600;
     margin-top: 10px;
     display: flex;
     justify-content: flex-start;
@@ -146,7 +146,7 @@
     color: #4b4b4b;
     font-size: 0.9rem;
     background: #fcfcfc;
-    font-weight: 400;
+    /* font-weight: 600; */
     padding: 10px;
     border: 1px solid #f7f7f7;
 }

@@ -6,27 +6,27 @@ export const dataProducts = [
     {
 
         title: "Restaurant template",
-        description: "food",
+        description: "An e-commerce site for a restaurant allows easy table reservations and product purchases.",
 
 
         price: 100,
-        link:"https://restaurant-product-1.netlify.app/",
+        link:"https://restaurant-product1.netlify.app/",
         categorieId  : 2
 
     },
     {
 
         title: "Coffee Shop",
-        description: "coffee",
+        description: "An e-commerce site for a coffee shop allows easy table reservations and product purchases.",
         price: 150,
-        link:"https://coffee-shop-product-3.netlify.app/",
+        link:"https://coffee-prod2.netlify.app/",
         categorieId  : 2
 
     },
     {
 
         title: "Xbeat template",
-        description: "beat",
+        description: "An e-commerce site for phone accessories offers easy browsing and purchasing of various products.",
         price: 120,
         link:"https://xbeat-product-2.netlify.app/",
         categorieId  : 1

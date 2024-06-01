@@ -2,7 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { AbonnementsService } from './abonnements.service';
 import { CreateAbonnementDto } from './dto/create-abonnement.dto';
 import { UpdateAbonnementDto } from './dto/update-abonnement.dto';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('Abonnements')
 @Controller('abonnements')
 export class AbonnementsController {
   constructor(private readonly abonnementsService: AbonnementsService) {}

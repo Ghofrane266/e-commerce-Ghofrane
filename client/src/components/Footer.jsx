@@ -9,21 +9,21 @@ import {
 } from "react-icons/fa";
 
 const FooterLinks = [
-  { id: 1, title: "Home", link: "/#" },
+  { id: 1, title: "Home", link: "/" },
   {
     id: 2,
     title: "Products",
-    link: "/#products",
+    link: "/products",
   },
   {
     id: 3,
     title: "Pricing",
-    link: "/#pricing",
+    link: "/pricing",
   },
   {
     id: 4,
     title: "Contact",
-    link: "/#contact",
+    link: "/contact",
   },
 ];
 const Footer = () => {

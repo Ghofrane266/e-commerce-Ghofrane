@@ -109,8 +109,8 @@ const OneProduct = () => {
 
                 <div className="product-page-details" >
                     <strong>{oneProduct?.title}</strong>
-                    <p className='small-desc'>Description : {oneProduct?.description}</p>
-                    <p className='procuct-price'>Price : ${oneProduct?.price}</p>
+                    <p className='small-desc font-bold'>Description : {oneProduct?.description}</p>
+                    <p className='procuct-price font-bold'>Price : ${oneProduct?.price}</p>
                     {/* <p className='procuct-price'>Categorie : ${oneProduct?.Categorie[categorieId]}</p> */}
 
                     <div className="cart-btns">

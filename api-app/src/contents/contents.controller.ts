@@ -2,7 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ContentsService } from './contents.service';
 import { CreateContentDto } from './dto/create-content.dto';
 import { UpdateContentDto } from './dto/update-content.dto';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('contents')
 @Controller('contents')
 export class ContentsController {
   constructor(private readonly contentsService: ContentsService) {}

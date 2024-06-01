@@ -2,7 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { TypesService } from './types.service';
 import { CreateTypeDto } from './dto/create-type.dto';
 import { UpdateTypeDto } from './dto/update-type.dto';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('Types')
 @Controller('types')
 export class TypesController {
   constructor(private readonly typesService: TypesService) {}
